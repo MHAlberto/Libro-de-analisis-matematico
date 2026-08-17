@@ -1,0 +1,142 @@
+\chapter{Series}
+\label{ch:series}
+\index{Serie}\index{Convergencia absoluta}\index{Convergencia condicional}\index{Criterios de convergencia}\index{Serie de potencias}\index{Convergencia uniforme}
+
+\section{Series numéricas}
+
+Las series infinitas aparecieron de manera natural en el cálculo de Newton y Leibniz como sumas de infinitos términos, pero su manejo riguroso fue una de las motivaciones centrales del análisis del siglo~XIX. Series como la armónica $\sum 1/n$, que ``crece sin bounds'' aunque sus términos tiendan a cero, o la serie de Grandi $\sum (-1)^n$, cuya suma parecía ser $0$, $1$ o $1/2$ según el método de agrupación, mostraban que la intuición finita no podía extenderse al infinito sin controles explícitos. Fue Cauchy quien, en su \emph{Cours d'Analyse}, estableció la definición moderna: una serie converge si la sucesión de sus sumas parciales converge.
+
+\begin{definition}
+\label{def:serie}
+Dada una sucesión $(a_n)$ en $\mathbb{R}$ (o en $\mathbb{C}$), la \emph{serie} $\sum_{n=1}^{\infty}a_n$ es la sucesión de \emph{sumas parciales}
+\[
+  S_N=\sum_{n=1}^{N}a_n.
+\]
+Se dice que la serie \emph{converge} si $(S_N)$ converge; en tal caso, su límite se denota $\sum_{n=1}^{\infty}a_n$.
+\end{definition}
+
+\begin{theorem}[Condición necesaria de convergencia]
+\label{teo:cond-necesaria}
+Si $\sum a_n$ converge, entonces $a_n\to 0$.
+\end{theorem}
+\begin{proof}
+Si $S_N\to S$, entonces $a_N=S_N-S_{N-1}\to S-S=0$.
+\end{proof}
+
+\begin{example}
+\label{ej:armonica}
+La serie armónica $\sum_{n=1}^{\infty}1/n$ diverge, aunque $1/n\to 0$. Esto muestra que la condición necesaria no es suficiente.
+\end{example}
+
+\section{Series absolutamente convergentes}
+
+\begin{definition}
+\label{def:absoluta}
+Una serie $\sum a_n$ converge \emph{absolutamente} si $\sum|a_n|$ converge.
+\end{definition}
+
+\begin{theorem}
+\label{teo:absoluta-implica-convergencia}
+Toda serie absolutamente convergente es convergente.
+\end{theorem}
+\begin{proof}
+Si $\sum|a_n|$ converge, entonces las sumas parciales de $\sum|a_n|$ forman una sucesión de Cauchy. Dado $\varepsilon>0$, existe $N$ tal que $\sum_{k=m+1}^{n}|a_k|<\varepsilon$ para $n>m\geq N$. Entonces $|\sum_{k=m+1}^{n}a_k|\leq\sum_{k=m+1}^{n}|a_k|<\varepsilon$, luego las sumas parciales de $\sum a_n$ son de Cauchy y convergen.
+\end{proof}
+
+\section{Series condicionalmente convergentes}
+
+\begin{definition}
+\label{def:condicional}
+Una serie convergente $\sum a_n$ es \emph{condicionalmente convergente} si $\sum|a_n|$ diverge.
+\end{definition}
+
+\begin{theorem}[Riemann]
+\label{teo:riemann}
+Si $\sum a_n$ es condicionalmente convergente, entonces para todo $L\in\mathbb{R}\cup\{\pm\infty\}$ existe una reordenación $(a_{\sigma(n)})$ tal que $\sum a_{\sigma(n)}=L$.
+\end{theorem}
+
+Este teorema, publicado por Bernhard Riemann en 1854, es uno de los resultados más sorprendentes del análisis clásico: demuestra que la conmutatividad de la suma, evidente en cantidades finitas, se pierde radicalmente en el infinito si la convergencia no es absoluta.
+
+\section{Criterios de convergencia}
+
+\begin{theorem}[Criterio de comparación]
+\label{teo:comparacion-series}
+Sean $\sum a_n$ y $\sum b_n$ series de términos no negativos con $a_n\leq b_n$ para todo $n$. Si $\sum b_n$ converge, entonces $\sum a_n$ converge.
+\end{theorem}
+
+\begin{theorem}[Criterio de la razón]
+\label{teo:cociente-series}
+Sea $\sum a_n$ con $a_n\neq 0$. Si $\lim_{n\to\infty}|a_{n+1}/a_n|=L$, entonces:
+\begin{itemize}
+  \item Si $L<1$, la serie converge absolutamente.
+  \item Si $L>1$, la serie diverge.
+  \item Si $L=1$, el criterio no decide.
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Criterio de la raíz]
+\label{teo:raiz}
+Sea $\sum a_n$. Si $\limsup_{n\to\infty}\sqrt[n]{|a_n|}=L$, entonces la serie converge absolutamente si $L<1$ y diverge si $L>1$.
+\end{theorem}
+
+\begin{theorem}[Criterio de Dirichlet]
+\label{teo:dirichlet}
+Sean $(a_n)$ y $(b_n)$ sucesiones reales tales que las sumas parciales de $\sum a_n$ están acotadas, $b_n\to 0$ monótonamente. Entonces $\sum a_nb_n$ converge.
+\end{theorem}
+
+\section{Series de potencias}
+
+\begin{definition}
+\label{def:serie-potencias}
+Una \emph{serie de potencias} centrada en $x_0$ es una serie de la forma
+\[
+  \sum_{n=0}^{\infty}c_n(x-x_0)^n,
+\]
+donde $(c_n)$ es una sucesión de coeficientes.
+\end{definition}
+
+\begin{theorem}
+\label{teo:radio-convergencia}
+Para toda serie de potencias existe un número $R\in[0,+\infty]$, llamado \emph{radio de convergencia}, tal que la serie converge absolutamente si $|x-x_0|<R$ y diverge si $|x-x_0|>R$.
+\end{theorem}
+\begin{proof}
+Sea $R=1/\limsup_{n\to\infty}\sqrt[n]{|c_n|}$ (con las convenciones $1/0=+\infty$, $1/\infty=0$). El criterio de la raíz da el resultado.
+\end{proof}
+
+\section{Convergencia uniforme}
+
+\begin{definition}
+\label{def:convergencia-uniforme}
+Una serie de funciones $\sum f_n(x)$ converge \emph{uniformemente} en un conjunto $A$ si la sucesión de sumas parciales converge uniformemente en $A$.
+\end{definition}
+
+\begin{theorem}[Weierstrass $M$]
+\label{teo:weierstrass-m}
+Si $|f_n(x)|\leq M_n$ para todo $x\in A$ y $\sum M_n$ converge, entonces $\sum f_n$ converge absoluta y uniformemente en $A$.
+\end{theorem}
+
+\section{Intercambio de límites}
+
+\begin{theorem}
+\label{teo:intercambio}
+Si $\sum f_n$ converge uniformemente en $[a,b]$ y cada $f_n$ es continua, entonces la función suma $S(x)=\sum f_n(x)$ es continua. Además,
+\[
+  \int_a^b\sum_{n=1}^{\infty}f_n(x)\,dx=\sum_{n=1}^{\infty}\int_a^bf_n(x)\,dx.
+\]
+\end{theorem}
+
+\begin{exercise}
+Demuestre que $\sum_{n=1}^{\infty}1/n^2$ converge. Calcule su valor (sugerencia: relación con la función zeta de Riemann).
+\end{exercise}
+
+\begin{exercise}
+Determine el radio de convergencia de $\sum_{n=0}^{\infty}n!x^n$ y de $\sum_{n=0}^{\infty}x^n/n!$.
+\end{exercise}
+
+\begin{exercise}
+Dé una reordenación de $\sum_{n=1}^{\infty}(-1)^{n+1}/n$ que converja a $0$.
+\end{exercise}
+
+\begin{problem}
+Sea $\sum a_n$ una serie de números reales. Pruebe que si $\sum|a_n|$ diverge, entonces existe una sucesión $(b_n)$ acotada tal que $\sum a_nb_n$ diverge.
+\end{problem}

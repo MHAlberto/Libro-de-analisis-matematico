@@ -1,0 +1,24 @@
+# Fdb version 4
+["pdflatex"] 1786977939.45924 "c:/Users/Mario/Desktop/01_Escritos/analisis-matematico/main.tex" "main.pdf" "main" 1786977940.10279 2
+  "C:/Users/Mario/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1773404122 13333890 5642f7638f1953963799953c56d60660 ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr10.tfm" 1136765053 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty" 1734114575 7984 7dbb9280f03c0a315425f1b4f35d43ee ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty" 1734114575 1057 525c2192b5febbd8c1f662c9468335bb ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/base/bk11.clo" 1761900684 8303 2071da3acba2d0a95d86972f99c305b1 ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/base/book.cls" 1761900684 23268 0045640547c14751e547e94fe4a0e0a8 ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty" 1759156201 3804 debc05110ffb506cef68ea4e72c7bcee ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg" 1578053545 1104 7ac475a4e3466b0b43e138e9356bda83 ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty" 1578053545 42759 9cf6c5257b1bc7af01a58859749dd37a ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty" 1749322634 2671 d9941f4bf4750e9b0603c9a2ec54693b ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1761202581 30662 bfd6e864f4ffc5018b0e2b6260c3181c ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty" 1768987099 6558 45786cbbf5684a09ee65aa45a7b367e0 ""
+  "C:/Users/Mario/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xparse.sty" 1761203377 10176 c2fc1c663b3f3899ddac6e6ed3fb1d7e ""
+  "c:/Users/Mario/Desktop/01_Escritos/analisis-matematico/main.tex" 1786974066 3038 3f111506543390dfe51e3f34f73a3b98 ""
+  "main.aux" 1786977931 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "main.tex" 1786974066 3038 3f111506543390dfe51e3f34f73a3b98 ""
+  "preambulo/estilos.tex" 1786970109 4495 bb83f6dd7b508ef41ff48ac847fb4e19 ""
+  (generated)
+  "main.aux"
+  "main.log"
+  "main.pdf"
+  (rewritten before read)

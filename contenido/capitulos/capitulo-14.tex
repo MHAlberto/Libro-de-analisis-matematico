@@ -1,0 +1,115 @@
+\chapter{Introducción a las distribuciones}
+\label{ch:distribuciones}
+\index{Distribución}\index{Función de prueba}\index{Delta de Dirac}\index{Derivada débil}\index{Soporte}
+
+\section{Motivación}
+
+La física del siglo~XX obligó a los matemáticos a manipular objetos que no eran funciones en el sentido clásico. La ``delta de Dirac'', usada extensamente desde los trabajos de Paul Dirac en mecánica cuántica, era una ``función'' $\delta(x)$ nula en todo $x\neq 0$, infinita en $x=0$, y cuya integral sobre $\mathbb{R}$ valía $1$. Tales propiedades son incompatibles con la teoría de la integral de Riemann. La respuesta matemática, desarrollada por Laurent Schwartz a partir de 1945, fue la teoría de \emph{distribuciones}: una generalización del concepto de función en la que los objetos se definen no por sus valores puntuales, sino por su acción sobre un espacio de ``funciones de prueba''.
+
+\begin{definition}
+\label{def:funcion-prueba}
+Una función $\varphi\colon\mathbb{R}\to\mathbb{R}$ es de \emph{prueba} (o \emph{test}) si es de clase $C^{\infty}$ y tiene \emph{soporte compacto}, es decir, existe $M>0$ tal que $\varphi(x)=0$ para $|x|>M$. Al espacio de tales funciones se le denota $\mathcal{D}(\mathbb{R})$.
+\end{definition}
+
+El espacio $\mathcal{D}(\mathbb{R})$ es no vacío: las funciones de la forma $\varphi(x)=e^{-1/(1-x^2)}$ para $|x|<1$ extendidas por $0$ fuera de $[-1,1]$ son ejemplo paradigmático.
+
+\section{Funciones de prueba}
+
+\begin{definition}
+\label{def:convergencia-prueba}
+Una sucesión $(\varphi_n)$ converge a $\varphi$ en $\mathcal{D}(\mathbb{R})$ si existe un compacto $K$ tal que $\operatorname{sop}(\varphi_n)\subseteq K$ para todo $n$, y $\varphi_n^{(k)}\to\varphi^{(k)}$ uniformemente para todo $k\geq 0$.
+\end{definition}
+
+\section{Distribuciones}
+
+\begin{definition}
+\label{def:distribucion}
+Una \emph{distribución} es un funcional lineal $T\colon\mathcal{D}(\mathbb{R})\to\mathbb{R}$ que es \emph{continuo}: si $\varphi_n\to\varphi$ en $\mathcal{D}(\mathbb{R})$, entonces $T(\varphi_n)\to T(\varphi)$. Al conjunto de distribuciones se le denota $\mathcal{D}'(\mathbb{R})$.
+\end{definition}
+
+\begin{example}[Funciones localmente integrables]
+\label{ej:distribucion-l1}
+Si $f\in L^1_{\mathrm{loc}}(\mathbb{R})$, entonces
+\[
+  T_f(\varphi)=\int_{-\infty}^{\infty}f(x)\varphi(x)\,dx
+\]
+define una distribución. Así, toda función integrable da origen a una distribución.
+\end{example}
+
+\begin{example}[Medidas de Radon]
+\label{ej:distribucion-medida}
+Toda medida de Borel finita sobre compactos $\mu$ define una distribución $T_\mu(\varphi)=\int\varphi\,d\mu$.
+\end{example}
+
+\section{Delta de Dirac}
+
+\begin{definition}
+\label{def:delta-dirac}
+La \emph{delta de Dirac} centrada en $a\in\mathbb{R}$ es la distribución definida por
+\[
+  \delta_a(\varphi)=\varphi(a).
+\]
+\end{definition}
+
+\begin{remark}
+La delta de Dirac no es una función en el sentido clásico: no existe $f\in L^1_{\mathrm{loc}}$ tal que $\int f\varphi=\varphi(0)$ para todo $\varphi$. Sin embargo, puede aproximarse por funciones: si $(f_n)$ es una sucesión de funciones no negativas con integral $1$ y soporte tendiendo a $\{0\}$, entonces $T_{f_n}\to\delta_0$ en $\mathcal{D}'(\mathbb{R})$.
+\end{remark}
+
+\section{Derivadas débiles}
+
+La mayor ventaja de las distribuciones es que todas son infinitamente diferenciables.
+
+\begin{definition}
+\label{def:derivada-distribucion}
+La \emph{derivada} de una distribución $T$ es la distribución $T'$ definida por
+\[
+  T'(\varphi)=-T(\varphi').
+\]
+\end{definition}
+
+\begin{example}
+\label{ej:derivada-heaviside}
+Sea $H$ la función de Heaviside ($H(x)=0$ para $x<0$, $H(x)=1$ para $x\geq 0$). Como distribución, $H'=\delta_0$:
+\[
+  H'(\varphi)=-\int_0^{\infty}\varphi'(x)\,dx=\varphi(0)=\delta_0(\varphi).
+\]
+\end{example}
+
+\section{Soporte de una distribución}
+
+\begin{definition}
+\label{def:soporte-distribucion}
+El \emph{soporte} de $T\in\mathcal{D}'(\mathbb{R})$ es el complemento del mayor abierto $U$ tal que $T(\varphi)=0$ para toda $\varphi$ con soporte en $U$.
+\end{definition}
+
+\begin{example}
+El soporte de $\delta_a$ es $\{a\}$.
+\end{example}
+
+\section{Aplicaciones elementales}
+
+\begin{example}[Ecuaciones diferenciales]
+\label{ej:edo-distribuciones}
+La ecuación $y'=\delta_0$ tiene como solución general $y=H+C$ en el sentido de distribuciones, donde $H$ es la función de Heaviside.
+\end{example}
+
+\begin{example}[Ecuaciones en derivadas parciales]
+\label{ej:edp-distribuciones}
+La ecuación de Laplace $\Delta u=0$ admite soluciones fundamentales en el sentido de distribuciones, como la función de Green.
+\end{example}
+
+\begin{exercise}
+Demuestre que si $f\in C^1(\mathbb{R})$, entonces la derivada distribucional de $T_f$ coincide con $T_{f'}$.
+\end{exercise}
+
+\begin{exercise}
+Calcule la segunda derivada distribucional de $f(x)=|x|$.
+\end{exercise}
+
+\begin{exercise}
+Sea $T_n(\varphi)=n\int_{-1/n}^{1/n}\varphi(x)\,dx$. Demuestre que $T_n\to 2\delta_0$ en $\mathcal{D}'(\mathbb{R})$.
+\end{exercise}
+
+\begin{problem}
+Demuestre que toda distribución con soporte compacto puede extenderse a un funcional lineal continuo sobre $C^{\infty}(\mathbb{R})$.
+\end{problem}

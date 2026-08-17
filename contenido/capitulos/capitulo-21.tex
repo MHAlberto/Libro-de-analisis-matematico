@@ -1,0 +1,143 @@
+\chapter{Introducción a la probabilidad moderna}
+\label{ch:probabilidad-moderna}
+\index{Espacio de probabilidad}\index{Variable aleatoria}\index{Esperanza}\index{Convergencia en probabilidad}\index{Varianza}\index{Leyes de los grandes números}\index{Teorema central del límite}
+
+\section{Espacios de probabilidad}
+
+La probabilidad moderna, fundada por Andrei Kolmogorov en 1933, no es más que la teoría de la medida aplicada a espacios donde la medida total es $1$. Este enfoque transformó la probabilidad de una colección de técnicas intuitivas en una rama del análisis matemático con definiciones rigurosas, teoremas generales y aplicaciones profundas.
+
+\begin{definition}
+\label{def:espacio-probabilidad}
+Un \emph{espacio de probabilidad} es un espacio de medida $(\Omega,\mathcal{F},\mathbb{P})$ donde $\mathbb{P}(\Omega)=1$.
+\end{definition}
+
+\begin{example}
+\label{ej:bernoulli-prob}
+El espacio de Bernoulli: $\Omega=\{0,1\}^{\mathbb{N}}$, $\mathcal{F}$ la $\sigma$-álgebra producto, y $\mathbb{P}$ la medida producto con $\mathbb{P}(\omega_n=1)=p$.
+\end{example}
+
+\section{Variables aleatorias}
+
+\begin{definition}
+\label{def:variable-aleatoria}
+Una \emph{variable aleatoria} es una función medible $X\colon\Omega\to\mathbb{R}$ (o a un espacio medible cualquiera).
+\end{definition}
+
+\begin{definition}
+\label{def:distribucion-prob}
+La \emph{distribución} de $X$ es la medida imagen $\mu_X(B)=\mathbb{P}(X^{-1}(B))$ sobre $\mathbb{R}$.
+\end{definition}
+
+\section{Esperanza matemática}
+
+\begin{definition}
+\label{def:esperanza}
+La \emph{esperanza} de una variable aleatoria integrable es
+\[
+  \mathbb{E}[X]=\int_{\Omega}X(\omega)\,d\mathbb{P}(\omega).
+\]
+\end{definition}
+
+\begin{theorem}[Propiedades]
+\label{teo:prop-esperanza}
+La esperanza es lineal, monótona, y $\mathbb{E}[1]=1$.
+\end{theorem}
+
+\section{Modos de convergencia}
+
+\begin{definition}
+\label{def:convergencias-probabilidad}
+\begin{itemize}
+  \item $X_n\to X$ \emph{casi seguramente} si $\mathbb{P}(\lim X_n=X)=1$.
+  \item $X_n\to X$ \emph{en probabilidad} si $\mathbb{P}(|X_n-X|>\varepsilon)\to 0$ para todo $\varepsilon>0$.
+  \item $X_n\to X$ en $L^p$ si $\mathbb{E}[|X_n-X|^p]\to 0$.
+  \item $X_n\to X$ \emph{en distribución} si $\mathbb{E}[f(X_n)]\to\mathbb{E}[f(X)]$ para toda $f$ continua acotada.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+\label{prop:implicaciones-convergencia}
+Convergencia casi segura o en $L^p$ implica convergencia en probabilidad, la cual implica convergencia en distribución.
+\end{proposition}
+
+\section{Varianza y desigualdades básicas}
+
+\begin{definition}
+\label{def:varianza}
+La \emph{varianza} de una variable aleatoria integrable $X$ es
+\[
+  \operatorname{Var}(X)=\mathbb{E}\bigl[(X-\mathbb{E}[X])^2\bigr]=\mathbb{E}[X^2]-(\mathbb{E}[X])^2,
+\]
+siempre que estas esperanzas existan.
+\end{definition}
+
+\begin{theorem}[Desigualdad de Chebyshev]
+\label{teo:chebyshev}
+Sea $X$ una variable aleatoria con varianza finita. Para todo $\varepsilon>0$,
+\[
+  \mathbb{P}(|X-\mathbb{E}[X]|\geq\varepsilon)\leq\frac{\operatorname{Var}(X)}{\varepsilon^2}.
+\]
+\end{theorem}
+\begin{proof}
+Aplicamos la desigualdad de Markov $\mathbb{P}(Y\geq a)\leq\mathbb{E}[Y]/a$ (válida para $Y\geq 0$, $a>0$) a $Y=(X-\mathbb{E}[X])^2$ y $a=\varepsilon^2$.
+\end{proof}
+
+\begin{corollary}[Desigualdad de Markov]
+\label{cor:markov}
+Si $X\geq 0$ casi seguramente y $a>0$, entonces $\mathbb{P}(X\geq a)\leq\mathbb{E}[X]/a$.
+\end{corollary}
+\begin{proof}
+Notemos que $a\,\mathbf{1}_{\{X\geq a\}}\leq X$. Tomando esperanza en ambos lados se obtiene el resultado.
+\end{proof}
+
+\section{Leyes de los grandes números}
+
+\begin{theorem}[Ley débil]
+\label{teo:ley-debil}
+Sea $(X_n)$ una sucesión de variables aleatorias independientes e idénticamente distribuidas (i.i.d.) con $\mathbb{E}[X_1]=\mu$ y varianza finita. Entonces
+\[
+  \frac{1}{n}\sum_{k=1}^{n}X_k\xrightarrow{\mathbb{P}}\mu.
+\]
+\end{theorem}
+\begin{proof}[Bosquejo]
+Por la desigualdad de Chebyshev (\cref{teo:chebyshev}),
+\[
+  \mathbb{P}\Bigl(\Bigl|\frac{S_n}{n}-\mu\Bigr|\geq\varepsilon\Bigr)\leq\frac{\operatorname{Var}(S_n/n)}{\varepsilon^2}=\frac{\sigma^2}{n\varepsilon^2}\to 0.
+\]
+\end{proof}
+
+\begin{theorem}[Ley fuerte de Kolmogorov]
+\label{teo:ley-fuerte}
+Bajo las mismas hipótesis, $S_n/n\to\mu$ casi seguramente.
+\end{theorem}
+
+\section{Teorema central del límite (introducción)}
+
+\begin{theorem}[Central del límite]
+\label{teo:tcl}
+Sea $(X_n)$ i.i.d. con $\mathbb{E}[X_1]=\mu$ y $\operatorname{Var}(X_1)=\sigma^2<\infty$. Entonces
+\[
+  \frac{S_n-n\mu}{\sigma\sqrt{n}}\xrightarrow{d}\mathcal{N}(0,1),
+\]
+donde $\mathcal{N}(0,1)$ es la distribución normal estándar.
+\end{theorem}
+
+\begin{remark}
+El TCL explica por qué la distribución normal aparece universalmente en fenómenos que resultan de la suma de muchas contribuciones independientes: errores de medida, fluctuaciones termodinámicas, ruido en señales, etc.
+\end{remark}
+
+\begin{exercise}
+Demuestre que si $X_n\to X$ en probabilidad, existe una subsucesión que converge casi seguramente.
+\end{exercise}
+
+\begin{exercise}
+Calcule la esperanza y varianza de una variable aleatoria de Bernoulli.
+\end{exercise}
+
+\begin{exercise}
+Use la ley débil para estimar la probabilidad de que la frecuencia de caras en $n$ lanzamientos de una moneda honesta difiera de $1/2$ en más de $0.01$.
+\end{exercise}
+
+\begin{problem}
+Demuestre el teorema central del límite usando funciones características y el teorema de continuidad de Lévy.
+\end{problem}

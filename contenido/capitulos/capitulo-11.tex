@@ -1,0 +1,107 @@
+\chapter{Familias de funciones}
+\label{ch:familias-funciones}
+\index{Equicontinuidad}\index{Acotación uniforme}\index{Teorema de Ascoli--Arzelà}\index{Espacio normado}\index{Dualidad}
+
+\section{Equicontinuidad}
+
+Cuando estudiamos una familia de funciones, la continuidad individual de cada miembro no garantiza ningún comportamiento uniforme de la familia como conjunto. La noción de equicontinuidad, introducida por Ascoli en 1883 y perfeccionada por Arzelà en 1889, precisamente impone que la elección de $\delta$ en la definición de continuidad pueda hacerse de manera uniforme para toda la familia simultáneamente.
+
+\begin{definition}
+\label{def:equicontinuidad}
+Una familia $\mathcal{F}$ de funciones de $(X,d_X)$ en $(Y,d_Y)$ es \emph{equicontinua} en $x_0\in X$ si para todo $\varepsilon>0$ existe $\delta>0$ tal que
+\[
+  d_X(x,x_0)<\delta\quad\Longrightarrow\quad d_Y(f(x),f(x_0))<\varepsilon\quad\text{para todo }f\in\mathcal{F}.
+\]
+Se dice que $\mathcal{F}$ es equicontinua en $X$ si lo es en cada punto.
+\end{definition}
+
+\begin{example}
+\label{ej:equicontinua}
+La familia de funciones $\{f_n(x)=\sin(nx)/n:\,n\in\mathbb{N}\}$ en $C([0,2\pi])$ es equicontinua, pues $|f_n(x)-f_n(y)|\leq |x-y|$ para todo $n$.
+\end{example}
+
+\begin{example}
+\label{ej:no-equicontinua}
+La familia $\{f_n(x)=x^n:\,n\in\mathbb{N}\}$ en $C([0,1])$ no es equicontinua en $x=1$. Para $\varepsilon=1/2$, cualquier $\delta>0$ permite encontrar $n$ suficientemente grande tal que $|1^n-(1-\delta/2)^n|>1/2$.
+\end{example}
+
+\section{Acotación uniforme}
+
+\begin{definition}
+\label{def:acotacion-uniforme}
+Una familia $\mathcal{F}\subseteq C(X,Y)$ está \emph{uniformemente acotada} si existe $M>0$ tal que $d_Y(f(x),g(x))\leq M$ para todo $f,g\in\mathcal{F}$ y todo $x\in X$. (En particular, cada $f\in\mathcal{F}$ tiene rango acotado por una constante común.)
+\end{definition}
+
+\section{Compacidad en espacios de funciones}
+
+El teorema de Ascoli--Arzelà responde a la pregunta: ¿cuándo una familia de funciones continuas se comporta como un conjunto compacto?
+
+\begin{theorem}[Ascoli--Arzelà]
+\label{teo:ascoli-arzela}
+Sea $X$ un espacio métrico compacto. Una familia $\mathcal{F}\subseteq C(X,\mathbb{R}^n)$ es relativamente compacta en la métrica del supremo si y solo si está puntualmente acotada y equicontinua.
+\end{theorem}
+\begin{proof}[Demostración completa]
+$(\Rightarrow)$ Si $\overline{\mathcal{F}}$ es compacta, entonces está acotada (compacto implica acotado) y equicontinua. La equicontinuidad se prueba por reducción al absurdo: si no fuera equicontinua en algún punto, existirían $\varepsilon>0$, puntos $x_n\to x_0$ y funciones $f_n\in\mathcal{F}$ con $|f_n(x_n)-f_n(x_0)|\geq\varepsilon$. Por compactidad, $f_n$ tiene una subsucesión convergente $f_{n_k}\to f$ uniformemente, lo cual contradice la continuidad uniforme de $f$.
+
+$(\Leftarrow)$ Sea $(f_n)$ una sucesión en $\mathcal{F}$. Como $X$ es compacto, existe un subconjunto denso numerable $\{x_k\}$ (por separabilidad). Por acotación puntual, la sucesión $(f_n(x_1))$ está acotada, luego tiene una subsucesión convergente. Por diagonalización, extraemos una subsucesión $(f_{n_j})$ que converge puntualmente en todo $\{x_k\}$. La equicontinuidad permite extender la convergencia puntual a convergencia uniforme en $X$ mediante un argumento de $\varepsilon/3$.
+\end{proof}
+
+\section{Aplicaciones del teorema de Ascoli--Arzelà}
+
+\begin{example}[Existencia en ecuaciones diferenciales]
+\label{ej:edo-ascoli}
+En la prueba del teorema de Peano de existencia de soluciones para ecuaciones diferenciales sin hipótesis de Lipschitz, se construye una sucesión de aproximaciones de Euler. La equicontinuidad se deduce de la acotación de la derivada, y el teorema de Ascoli--Arzelà proporciona una subsucesión convergente cuyo límite es la solución buscada.
+\end{example}
+
+\begin{example}[Teorema de Montel]
+\label{ej:montel}
+En análisis complejo, el teorema de Montel establece que una familia de funciones holomorfas localmente acotadas es normal (relativamente compacta en la topología de la convergencia uniforme sobre compactos). Es esencialmente el teorema de Ascoli--Arzelà combinado con la estimación de Cauchy.
+\end{example}
+
+\section{Recordatorio de espacios normados y dualidad}
+
+El teorema de Ascoli--Arzelà estudia compacidad en espacios de funciones continuas con la métrica del supremo, que es un caso particular de espacio normado. Para la última sección de este capítulo necesitamos los conceptos básicos de norma y dualidad, que se desarrollan en el \cref{ch:analisis-funcional}; los recordamos aquí de forma autocontenida.
+
+\begin{definition}
+\label{def:norma-recordatorio}
+Una \emph{norma} sobre un espacio vectorial real $E$ es una función $\|\cdot\|\colon E\to\mathbb{R}$ tal que:
+\begin{enumerate}
+  \item[(i)] $\|x\|\geq 0$, y $\|x\|=0\Leftrightarrow x=0$;
+  \item[(ii)] $\|\lambda x\|=|\lambda|\,\|x\|$ para todo $\lambda\in\mathbb{R}$;
+  \item[(iii)] $\|x+y\|\leq\|x\|+\|y\|$.
+\end{enumerate}
+Al par $(E,\|\cdot\|)$ se le llama \emph{espacio normado}.
+\end{definition}
+
+\begin{definition}
+\label{def:dual-recordatorio}
+El \emph{dual topológico} $E'$ de un espacio normado $E$ es el espacio de todos los funcionales lineales continuos $\phi\colon E\to\mathbb{R}$. La norma en $E'$ es $\|\phi\|=\sup_{\|x\|\leq 1}|\phi(x)|$.
+\end{definition}
+
+\section{Convergencia de familias de funciones}
+
+\begin{definition}
+\label{def:convergencia-debil}
+Sea $X$ un espacio normado. Una sucesión $(f_n)$ en el espacio dual $X'$ converge \emph{débilmente*} a $f$ si $f_n(x)\to f(x)$ para todo $x\in X$.
+\end{definition}
+
+\begin{theorem}[Banach--Alaoglu, enunciado]
+\label{teo:banach-alaoglu}
+La bola unidad cerrada del dual de un espacio normado es compacta en la topología débil*.
+\end{theorem}
+
+\begin{exercise}
+Demuestre que si $\mathcal{F}\subseteq C([a,b])$ es una familia de funciones lipschitzianas con la misma constante $L$, entonces $\mathcal{F}$ es equicontinua.
+\end{exercise}
+
+\begin{exercise}
+Sea $\mathcal{F}=\{f\in C^1([0,1]):\,|f'(x)|\leq 1\text{ para todo }x\}$. Demuestre que $\mathcal{F}$ es relativamente compacta en $C([0,1])$.
+\end{exercise}
+
+\begin{exercise}
+Use el teorema de Ascoli--Arzelà para probar que toda sucesión de funciones holomorfas uniformemente acotadas en un disco posee una subsucesión que converge uniformemente sobre compactos.
+\end{exercise}
+
+\begin{problem}
+Sea $X$ compacto y $\mathcal{F}\subseteq C(X)$ equicontinua. Demuestre que la clausura de $\mathcal{F}$ en la topología de la convergencia puntual coincide con su clausura en la topología del supremo.
+\end{problem}

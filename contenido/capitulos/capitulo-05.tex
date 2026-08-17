@@ -1,0 +1,139 @@
+\chapter{Compacidad}
+\label{ch:compacidad}
+\index{Compacidad}\index{Cubierta abierta}\index{Compacidad secuencial}\index{Totalmente acotado}\index{Teorema de Heine--Borel}\index{Teorema de Bolzano--Weierstrass}\index{Punto límite}
+
+\section{Cubiertas abiertas}
+
+La compacidad es la propiedad topológica que generaliza, en espacios métricos arbitrarios, la combinación de ``cerrado y acotado'' que caracteriza a los subconjuntos compactos de $\mathbb{R}^n$. Esta generalización no fue inmediata: durante décadas, los matemáticos trabajaron con nociones de ``acotación'' que resultaban insuficientes en dimensiones infinitas. La definición moderna, basada en cubiertas abiertas, fue introducida por Maurice Fréchet y refinada por Pavel Alexandrov y Pavel Urysohn en la década de 1920.
+
+\begin{definition}
+\label{def:cubierta}
+Una \emph{cubierta abierta} de un espacio métrico $X$ es una familia $\{U_i\}_{i\in I}$ de abiertos tal que $X=\bigcup_{i\in I}U_i$.
+\end{definition}
+
+\begin{definition}
+\label{def:compacto}
+Un espacio métrico $X$ es \emph{compacto} si de toda cubierta abierta se puede extraer una subcubierta finita, es decir, existen $i_1,\dots,i_n\in I$ tales que $X=U_{i_1}\cup\dots\cup U_{i_n}$.
+\end{definition}
+
+\begin{example}
+\label{ej:intervalo-cerrado}
+El intervalo $[0,1]\subseteq\mathbb{R}$ es compacto. Este es el contenido del \emph{lema de Heine--Borel} para la recta, que generalizaremos más adelante.
+\end{example}
+
+\begin{example}
+\label{ej:bola-unitaria-l2}
+La bola unidad cerrada de $\ell^2$ no es compacta. La base canónica $(e_n)$, donde $e_n$ tiene un $1$ en la posición $n$ y $0$ en las demás, es una sucesión acotada sin subsucesiones convergentes.
+\end{example}
+
+\section{Compacidad}
+
+\begin{proposition}
+\label{prop:compacto-cerrado}
+Todo subespacio compacto de un espacio métrico es cerrado.
+\end{proposition}
+\begin{proof}
+Sea $K\subseteq X$ compacto. Para probar que $K$ es cerrado, mostramos que $X\setminus K$ es abierto. Sea $x\notin K$. Para cada $y\in K$, sean $U_y=B(y,d(x,y)/2)$ y $V_y=B(x,d(x,y)/2)$. Los $U_y$ forman una cubierta abierta de $K$, de la cual extraemos una subcubierta finita $U_{y_1},\dots,U_{y_n}$. Entonces $V=\bigcap_{i=1}^n V_{y_i}$ es un abierto que contiene a $x$ y no intersecta a $K$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:imagen-compacta}
+La imagen continua de un compacto es compacta.
+\end{proposition}
+\begin{proof}
+Sea $f\colon X\to Y$ continua, $K\subseteq X$ compacto, y $\{V_j\}$ una cubierta abierta de $f(K)$. Entonces $\{f^{-1}(V_j)\}$ cubre $K$; extrayendo una subcubierta finita y aplicando $f$, obtenemos una subcubierta finita de $f(K)$.
+\end{proof}
+
+\section{Compacidad secuencial}
+
+\begin{definition}
+\label{def:compacto-sucesiones}
+Un espacio métrico $(X,d)$ es \emph{secuencialmente compacto} si toda sucesión en $X$ posee una subsucesión convergente.
+\end{definition}
+
+\begin{theorem}
+\label{teo:equivalencia-compacidad}
+En un espacio métrico, las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+  \item[(i)] $X$ es compacto (por cubiertas).
+  \item[(ii)] $X$ es secuencialmente compacto.
+  \item[(iii)] $X$ es completo y totalmente acotado.
+\end{enumerate}
+\end{theorem}
+\begin{proof}[Bosquejo]
+(i)$\Rightarrow$(ii): Si existiera una sucesión sin subsucesión convergente, cada punto tendría un entorno conteniendo solo finitos términos, proporcionando una cubierta sin subcubierta finita.
+
+(ii)$\Rightarrow$(iii): La completitud se sigue de que toda sucesión de Cauchy con subsucesión convergente converge. La total acotación se prueba por reducción al absurdo: si existiera $\varepsilon>0$ sin recubrimiento finito por $\varepsilon$-bolas, se construiría inductivamente una sucesión con todos sus términos a distancia $\geq\varepsilon$.
+
+(iii)$\Rightarrow$(i): Dada una cubierta abierta, se prueba que existe un $\varepsilon>0$ de Lebesgue tal que toda bola de radio $\varepsilon$ está contenida en algún abierto de la cubierta. La total acotación proporciona un recubrimiento finito por tales bolas.
+\end{proof}
+
+\section{Compacidad por punto límite}
+
+\begin{definition}
+\label{def:punto-limite}
+Un espacio métrico $X$ tiene la \emph{propiedad del punto límite} si todo subconjunto infinito de $X$ posee al menos un punto de acumulación en $X$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:punto-limite-equivalente}
+En espacios métricos, la propiedad del punto límite es equivalente a la compacidad.
+\end{proposition}
+
+\section{Totalmente acotado}
+
+\begin{definition}
+\label{def:totalmente-acotado}
+Un espacio métrico $X$ es \emph{totalmente acotado} si para todo $\varepsilon>0$ existe un recubrimiento finito de $X$ por bolas de radio $\varepsilon$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:totalmente-acotado-acotado}
+Todo espacio totalmente acotado está acotado. En $\mathbb{R}^n$, un conjunto está totalmente acotado si y solo si está acotado.
+\end{proposition}
+
+\section{Teorema de Heine--Borel}
+
+\begin{theorem}[Heine--Borel]
+\label{teo:heine-borel}
+Un subconjunto de $\mathbb{R}^n$ (con la métrica euclidiana) es compacto si y solo si es cerrado y acotado.
+\end{theorem}
+\begin{proof}
+Si $K\subseteq\mathbb{R}^n$ es compacto, es cerrado (\cref{prop:compacto-cerrado}) y acotado (todo compacto en un espacio métrico está acotado). Recíprocamente, si $K$ es cerrado y acotado, está contenido en un cubo $[-M,M]^n$, que es compacto por el teorema de Tychonoff para productos finitos. Como subconjunto cerrado de un compacto, $K$ es compacto.
+\end{proof}
+
+\section{Teorema de Bolzano--Weierstrass}
+
+\begin{theorem}[Bolzano--Weierstrass]
+\label{teo:bw-compacidad}
+Todo subconjunto infinito acotado de $\mathbb{R}^n$ posee un punto de acumulación.
+\end{theorem}
+\begin{proof}
+Sea $A\subseteq\mathbb{R}^n$ infinito y acotado. Su clausura $\overline{A}$ es cerrada y acotada, luego compacta por Heine--Borel. Como subconjunto infinito de un compacto, $A$ posee un punto de acumulación.
+\end{proof}
+
+\section{Funciones continuas sobre compactos}
+
+\begin{theorem}[del máximo y mínimo]
+\label{teo:max-min}
+Sea $X$ compacto y $f\colon X\to\mathbb{R}$ continua. Entonces $f$ alcanza su máximo y su mínimo en $X$.
+\end{theorem}
+\begin{proof}
+Por \cref{prop:imagen-compacta}, $f(X)$ es compacto en $\mathbb{R}$, luego cerrado y acotado. Todo conjunto cerrado y acotado de $\mathbb{R}$ contiene su supremo e ínfimo.
+\end{proof}
+
+\begin{exercise}
+Demuestre que la intersección arbitraria de compactos es compacta, y que la unión finita de compactos es compacta.
+\end{exercise}
+
+\begin{exercise}
+Sea $X$ compacto e $Y$ Hausdorff. Demuestre que toda biyección continua $f\colon X\to Y$ es un homeomorfismo.
+\end{exercise}
+
+\begin{exercise}
+Muestre que $C([a,b])$ con la métrica del supremo no es totalmente acotado.
+\end{exercise}
+
+\begin{problem}
+Sea $(X,d)$ un espacio métrico. Pruebe que $X$ es compacto si y solo si toda función continua $f\colon X\to\mathbb{R}$ está acotada superiormente.
+\end{problem}

@@ -1,0 +1,85 @@
+\chapter{Conexidad}
+\label{ch:conexidad}
+\index{Conexidad}\index{Conjunto conexo}\index{Conexión por caminos}\index{Componente conexa}\index{Arco}
+
+\section{Conjuntos conexos}
+
+La conexidad es la propiedad topológica que formaliza la idea intuitiva de que un espacio "está todo en una pieza''. Aunque parezca obvia en contextos geométricos, su formulación exacta requiere cuidado: el intervalo $[0,1]\cup[2,3]$ no está ``en una pieza'', pero ¿cómo capturar esto sin apelar a la intuición visual? La respuesta, debida esencialmente a los primeros topólogos del siglo~XX, consiste en observar que $[0,1]\cup[2,3]$ puede descomponerse en dos abiertos disjuntos no vacíos, mientras que $[0,1]$ no admite tal descomposición.
+
+\begin{definition}
+\label{def:conexo}
+Un espacio métrico $X$ es \emph{conexo} si los únicos subconjuntos de $X$ que son simultáneamente abiertos y cerrados son $\emptyset$ y $X$. Un subconjunto $A\subseteq X$ es conexo si lo es como subespacio métrico.
+\end{definition}
+
+\begin{theorem}
+\label{teo:r-conexo}
+El espacio $\mathbb{R}$ con la métrica usual es conexo.
+\end{theorem}
+\begin{proof}
+Supongamos que $\mathbb{R}=U\cup V$ con $U,V$ abiertos disjuntos no vacíos. Sea $a\in U$ y $b\in V$; podemos suponer $a<b$. Sea $s=\sup(U\cap[a,b])$. Como $U$ es abierto, $s\notin U$ (de lo contrario existiría una bola alrededor de $s$ contenida en $U$, contradiciendo la definición de supremo). Como $V$ es abierto, $s\notin V$ (pues de lo contrario $s>a$ y una bola alrededor de $s$ evitaría que puntos menores que $s$ y cercanos estuvieran en $U$). Contradicción.
+\end{proof}
+
+\begin{theorem}
+\label{teo:intervalos-conexos}
+Los únicos subconjuntos conexos de $\mathbb{R}$ son los intervalos (abiertos, cerrados, semiabiertos, acotados o no, incluyendo los puntos).
+\end{theorem}
+
+\section{Conexión por caminos}
+
+\begin{definition}
+\label{def:conexo-por-caminos}
+Un espacio métrico $X$ es \emph{conexo por caminos} si para cualesquiera $x,y\in X$ existe una función continua $\gamma\colon[0,1]\to X$ tal que $\gamma(0)=x$ y $\gamma(1)=y$. A tal función se le llama \emph{camino} de $x$ a $y$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:caminos-implica-conexo}
+Todo espacio conexo por caminos es conexo.
+\end{proposition}
+\begin{proof}
+Supongamos $X=U\cup V$ con $U,V$ abiertos disjuntos no vacíos. Sea $x\in U$, $y\in V$ y $\gamma$ un camino de $x$ a $y$. Entonces $\gamma^{-1}(U)$ y $\gamma^{-1}(V)$ son abiertos disjuntos no vacíos de $[0,1]$ cuya unión es $[0,1]$, contradiciendo la conexidad de $[0,1]$.
+\end{proof}
+
+El recíproco no es cierto en general. El \emph{peine del topólogo} y la \emph{curva del seno del topólogo} son ejemplos clásicos de espacios conexos pero no conexos por caminos.
+
+\section{Componentes conexas}
+
+\begin{definition}
+\label{def:componente}
+La \emph{componente conexa} de un punto $x\in X$ es la unión de todos los subconjuntos conexos de $X$ que contienen a $x$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:componentes-propiedades}
+Las componentes conexas de un espacio métrico forman una partición en subconjuntos cerrados, maximalmente conexos y disjuntos dos a dos.
+\end{proposition}
+
+\section{Aplicaciones de la conexidad}
+
+\begin{theorem}[del valor intermedio]
+\label{teo:valor-intermedio}
+Sea $f\colon[a,b]\to\mathbb{R}$ continua. Si $c$ es un valor entre $f(a)$ y $f(b)$, entonces existe $x\in[a,b]$ tal que $f(x)=c$.
+\end{theorem}
+\begin{proof}
+Si $f$ es continua y $[a,b]$ es conexo, entonces $f([a,b])$ es conexo en $\mathbb{R}$, luego es un intervalo. Como contiene a $f(a)$ y $f(b)$, contiene a todo valor intermedio.
+\end{proof}
+
+\begin{theorem}
+\label{teo:homeomorfismo-intervalos}
+Dos intervalos compactos $[a,b]$ y $[c,d]$ son homeomorfos. Sin embargo, $[a,b]$ no es homeomorfo a $[a,b)\cup(b,c]$ (la conexidad es un invariante topológico).
+\end{theorem}
+
+\begin{exercise}
+Demuestre que la circunferencia $S^1=\{(x,y)\in\mathbb{R}^2:\,x^2+y^2=1\}$ es conexa. Sugerencia: considere la parametrización $t\mapsto(\cos t,\sin t)$.
+\end{exercise}
+
+\begin{exercise}
+Pruebe que el conjunto de Cantor no es conexo. De hecho, determine sus componentes conexas.
+\end{exercise}
+
+\begin{exercise}
+Sea $f\colon\mathbb{R}\to\mathbb{R}$ continua tal que $f(x)\in\mathbb{Q}$ para todo $x$. Demuestre que $f$ es constante.
+\end{exercise}
+
+\begin{problem}
+Sea $X$ conexo por caminos. Demuestre que para todo $n\in\mathbb{N}$, el espacio producto $X^n$ es conexo por caminos.
+\end{problem}

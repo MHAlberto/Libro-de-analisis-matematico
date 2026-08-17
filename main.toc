@@ -1,0 +1,224 @@
+\xpg@aux {}{spanish}
+\contentsline {chapter}{Prólogo}{v}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Espacios métricos}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Definición}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}La desigualdad de Cauchy--Schwarz}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Ejemplos fundamentales}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Métricas equivalentes}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Homeomorfismos}{3}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Subespacios}{5}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Productos de espacios métricos}{6}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Bolas abiertas}{6}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Conjuntos abiertos}{6}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Conjuntos cerrados}{7}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Entornos}{7}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Clausura}{7}{section.1.12}%
+\contentsline {section}{\numberline {1.13}Interior}{7}{section.1.13}%
+\contentsline {section}{\numberline {1.14}Frontera}{7}{section.1.14}%
+\contentsline {section}{\numberline {1.15}Puntos de acumulación}{8}{section.1.15}%
+\contentsline {section}{\numberline {1.16}Puntos aislados}{8}{section.1.16}%
+\contentsline {section}{\numberline {1.17}Conjuntos densos}{8}{section.1.17}%
+\contentsline {section}{\numberline {1.18}Bases topológicas}{8}{section.1.18}%
+\contentsline {section}{\numberline {1.19}Axiomas de separación en espacios métricos}{8}{section.1.19}%
+\contentsline {section}{\numberline {1.20}Ejercicios}{9}{section.1.20}%
+\contentsline {chapter}{\numberline {2}Espacios topológicos}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Definición y ejemplos básicos}{11}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Conjuntos abiertos y cerrados}{12}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Interior, adherencia y frontera}{12}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Bases y subbases}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Conexidad}{13}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Ejercicios}{13}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Sucesiones}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Convergencia}{15}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Subsucesiones}{16}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Sucesiones de Cauchy}{16}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Límite superior e inferior}{16}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Criterios de convergencia}{16}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Funciones continuas}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Continuidad}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Continuidad secuencial}{19}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Caracterización topológica}{20}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Homeomorfismos}{20}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Continuidad uniforme}{20}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Compacidad}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Cubiertas abiertas}{23}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Compacidad}{23}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Compacidad secuencial}{24}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Compacidad por punto límite}{24}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Totalmente acotado}{24}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Teorema de Heine--Borel}{24}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Teorema de Bolzano--Weierstrass}{25}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Funciones continuas sobre compactos}{25}{section.5.8}%
+\contentsline {chapter}{\numberline {6}Conexidad}{27}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conjuntos conexos}{27}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Conexión por caminos}{27}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Componentes conexas}{28}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Aplicaciones de la conexidad}{28}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Completitud}{29}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Espacios completos}{29}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Completación de espacios métricos}{29}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Teorema de intersección de Cantor}{30}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Principio de contracción de Banach}{30}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Aplicaciones}{30}{section.7.5}%
+\contentsline {chapter}{\numberline {8}Series}{33}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Series numéricas}{33}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Series absolutamente convergentes}{33}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Series condicionalmente convergentes}{34}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Criterios de convergencia}{34}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Series de potencias}{34}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Convergencia uniforme}{35}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Intercambio de límites}{35}{section.8.7}%
+\contentsline {chapter}{\numberline {9}Grandes teoremas del análisis}{37}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Principio de contracción de Banach}{37}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Teorema de la Categoría de Baire}{37}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Teorema de Ascoli--Arzelà}{38}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Teorema de Stone--Weierstrass}{38}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Teorema de Dini}{38}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Lema de Urysohn (introducción)}{38}{section.9.6}%
+\contentsline {section}{\numberline {9.7}Teorema de extensión de Tietze (introducción)}{39}{section.9.7}%
+\contentsline {chapter}{\numberline {10}Espacios separables y espacios completos}{41}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Espacios separables}{41}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Conjuntos densos numerables}{41}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Espacios completamente métricos}{42}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Espacios de Baire}{42}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Propiedades fundamentales}{42}{section.10.5}%
+\contentsline {section}{\numberline {10.6}Ejemplos importantes}{42}{section.10.6}%
+\contentsline {chapter}{\numberline {11}Familias de funciones}{45}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Equicontinuidad}{45}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Acotación uniforme}{45}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Compacidad en espacios de funciones}{46}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Aplicaciones del teorema de Ascoli--Arzelà}{46}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Recordatorio de espacios normados y dualidad}{46}{section.11.5}%
+\contentsline {section}{\numberline {11.6}Convergencia de familias de funciones}{47}{section.11.6}%
+\contentsline {chapter}{\numberline {12}Funciones de variación acotada}{49}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Variación total}{49}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Funciones monótonas}{49}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Funciones de variación acotada}{50}{section.12.3}%
+\contentsline {section}{\numberline {12.4}Funciones absolutamente continuas}{50}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Derivada puntual y conjuntos de medida cero}{50}{section.12.5}%
+\contentsline {section}{\numberline {12.6}Derivadas casi en todas partes}{50}{section.12.6}%
+\contentsline {section}{\numberline {12.7}Relación entre continuidad absoluta y variación acotada}{51}{section.12.7}%
+\contentsline {section}{\numberline {12.8}Teorema fundamental del cálculo para funciones absolutamente continuas}{51}{section.12.8}%
+\contentsline {chapter}{\numberline {13}Aproximación de funciones}{53}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Aproximación uniforme}{53}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Polinomios de Bernstein}{53}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Teorema de Stone--Weierstrass}{54}{section.13.3}%
+\contentsline {section}{\numberline {13.4}Funciones suaves}{54}{section.13.4}%
+\contentsline {section}{\numberline {13.5}Densidad en espacios de funciones}{54}{section.13.5}%
+\contentsline {section}{\numberline {13.6}Aplicaciones}{54}{section.13.6}%
+\contentsline {chapter}{\numberline {14}Introducción a las distribuciones}{57}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Motivación}{57}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Funciones de prueba}{57}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Distribuciones}{57}{section.14.3}%
+\contentsline {section}{\numberline {14.4}Delta de Dirac}{58}{section.14.4}%
+\contentsline {section}{\numberline {14.5}Derivadas débiles}{58}{section.14.5}%
+\contentsline {section}{\numberline {14.6}Soporte de una distribución}{58}{section.14.6}%
+\contentsline {section}{\numberline {14.7}Aplicaciones elementales}{58}{section.14.7}%
+\contentsline {chapter}{\numberline {15}Introducción a la teoría de la medida}{61}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Motivación}{61}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Álgebras y $\mitsigma $-álgebras}{61}{section.15.2}%
+\contentsline {section}{\numberline {15.3}Medidas}{62}{section.15.3}%
+\contentsline {section}{\numberline {15.4}Medida exterior}{62}{section.15.4}%
+\contentsline {section}{\numberline {15.5}Conjuntos medibles}{62}{section.15.5}%
+\contentsline {section}{\numberline {15.6}Medida de Lebesgue}{62}{section.15.6}%
+\contentsline {section}{\numberline {15.7}Funciones medibles}{62}{section.15.7}%
+\contentsline {section}{\numberline {15.8}Integral de Lebesgue (introducción)}{63}{section.15.8}%
+\contentsline {section}{\numberline {15.9}Principales teoremas de convergencia}{63}{section.15.9}%
+\contentsline {chapter}{\numberline {16}Introducción al análisis funcional}{65}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Espacios normados}{65}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Espacios de Banach}{65}{section.16.2}%
+\contentsline {section}{\numberline {16.3}Espacios de Hilbert}{66}{section.16.3}%
+\contentsline {section}{\numberline {16.4}Operadores lineales}{66}{section.16.4}%
+\contentsline {section}{\numberline {16.5}Funcionales lineales}{66}{section.16.5}%
+\contentsline {section}{\numberline {16.6}Operadores compactos}{66}{section.16.6}%
+\contentsline {section}{\numberline {16.7}Panorama de los teoremas fundamentales}{66}{section.16.7}%
+\contentsline {section}{\numberline {16.8}Aplicaciones}{67}{section.16.8}%
+\contentsline {chapter}{\numberline {17}Diferenciación en espacios normados}{69}{chapter.17}%
+\contentsline {section}{\numberline {17.1}El diferencial de Fréchet}{69}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Reglas de diferenciación}{69}{section.17.2}%
+\contentsline {section}{\numberline {17.3}El teorema de la función inversa}{70}{section.17.3}%
+\contentsline {section}{\numberline {17.4}Ejercicios}{70}{section.17.4}%
+\contentsline {chapter}{\numberline {18}Introducción a la teoría espectral}{71}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Valores propios}{71}{section.18.1}%
+\contentsline {section}{\numberline {18.2}Funciones propias}{71}{section.18.2}%
+\contentsline {section}{\numberline {18.3}Operadores compactos}{71}{section.18.3}%
+\contentsline {section}{\numberline {18.4}Operadores autoadjuntos (idea)}{72}{section.18.4}%
+\contentsline {section}{\numberline {18.5}Descomposición espectral (motivación)}{72}{section.18.5}%
+\contentsline {section}{\numberline {18.6}Aplicaciones a ecuaciones diferenciales}{72}{section.18.6}%
+\contentsline {chapter}{\numberline {19}Introducción a las ecuaciones diferenciales}{73}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Problemas de valor inicial}{73}{section.19.1}%
+\contentsline {section}{\numberline {19.2}Existencia y unicidad}{73}{section.19.2}%
+\contentsline {section}{\numberline {19.3}Métodos de punto fijo}{74}{section.19.3}%
+\contentsline {section}{\numberline {19.4}Sistemas lineales y exponencial de matrices}{74}{section.19.4}%
+\contentsline {section}{\numberline {19.5}Estabilidad}{74}{section.19.5}%
+\contentsline {section}{\numberline {19.6}Dependencia continua}{75}{section.19.6}%
+\contentsline {section}{\numberline {19.7}Introducción a las ecuaciones en derivadas parciales}{75}{section.19.7}%
+\contentsline {chapter}{\numberline {20}Introducción a la topología general}{77}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Espacios topológicos}{77}{section.20.1}%
+\contentsline {section}{\numberline {20.2}Bases y subbases}{77}{section.20.2}%
+\contentsline {section}{\numberline {20.3}Continuidad}{78}{section.20.3}%
+\contentsline {section}{\numberline {20.4}Compacidad}{78}{section.20.4}%
+\contentsline {section}{\numberline {20.5}Conexidad}{78}{section.20.5}%
+\contentsline {section}{\numberline {20.6}Axiomas de separación}{78}{section.20.6}%
+\contentsline {section}{\numberline {20.7}Productos de espacios}{78}{section.20.7}%
+\contentsline {section}{\numberline {20.8}Teorema de Tychonoff (panorama)}{78}{section.20.8}%
+\contentsline {chapter}{\numberline {21}Introducción a la probabilidad moderna}{81}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Espacios de probabilidad}{81}{section.21.1}%
+\contentsline {section}{\numberline {21.2}Variables aleatorias}{81}{section.21.2}%
+\contentsline {section}{\numberline {21.3}Esperanza matemática}{81}{section.21.3}%
+\contentsline {section}{\numberline {21.4}Modos de convergencia}{82}{section.21.4}%
+\contentsline {section}{\numberline {21.5}Varianza y desigualdades básicas}{82}{section.21.5}%
+\contentsline {section}{\numberline {21.6}Leyes de los grandes números}{82}{section.21.6}%
+\contentsline {section}{\numberline {21.7}Teorema central del límite (introducción)}{83}{section.21.7}%
+\contentsline {chapter}{\numberline {22}Introducción al análisis convexo y la optimización}{85}{chapter.22}%
+\contentsline {section}{\numberline {22.1}Conjuntos convexos}{85}{section.22.1}%
+\contentsline {section}{\numberline {22.2}Funciones convexas}{85}{section.22.2}%
+\contentsline {section}{\numberline {22.3}Separación de conjuntos convexos}{86}{section.22.3}%
+\contentsline {section}{\numberline {22.4}Optimización en espacios normados}{86}{section.22.4}%
+\contentsline {section}{\numberline {22.5}Aplicaciones al aprendizaje automático}{86}{section.22.5}%
+\contentsline {chapter}{\numberline {A}Teoría de conjuntos}{87}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Conjuntos y la crisis de los fundamentos}{87}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}La paradoja de Russell}{88}{subsection.A.1.1}%
+\contentsline {section}{\numberline {A.2}Operaciones entre conjuntos}{88}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Relaciones}{89}{section.A.3}%
+\contentsline {section}{\numberline {A.4}Funciones}{90}{section.A.4}%
+\contentsline {section}{\numberline {A.5}Familias de conjuntos}{91}{section.A.5}%
+\contentsline {section}{\numberline {A.6}Cardinalidad}{91}{section.A.6}%
+\contentsline {section}{\numberline {A.7}Conjuntos numerables}{92}{section.A.7}%
+\contentsline {section}{\numberline {A.8}Conjuntos no numerables}{92}{section.A.8}%
+\contentsline {section}{\numberline {A.9}El axioma de elección}{93}{section.A.9}%
+\contentsline {section}{\numberline {A.10}Ejercicios}{93}{section.A.10}%
+\contentsline {chapter}{\numberline {B}Los números reales}{95}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Construcción de los sistemas numéricos}{95}{section.B.1}%
+\contentsline {subsection}{\numberline {B.1.1}De $\symbb {N}$ a $\symbb {Z}$}{95}{subsection.B.1.1}%
+\contentsline {subsection}{\numberline {B.1.2}De $\symbb {Z}$ a $\symbb {Q}$}{95}{subsection.B.1.2}%
+\contentsline {subsection}{\numberline {B.1.3}De $\symbb {Q}$ a $\symbb {R}$}{96}{subsection.B.1.3}%
+\contentsline {subsubsection}{Cortaduras de Dedekind}{96}{subsubsection*.2}%
+\contentsline {subsubsection}{Sucesiones de Cauchy}{96}{subsubsection*.3}%
+\contentsline {section}{\numberline {B.2}Propiedades algebraicas y de orden}{96}{section.B.2}%
+\contentsline {section}{\numberline {B.3}Suprema, ínfimos y completitud}{96}{section.B.3}%
+\contentsline {section}{\numberline {B.4}Valor absoluto y desigualdades fundamentales}{97}{section.B.4}%
+\contentsline {section}{\numberline {B.5}Propiedad arquimediana}{97}{section.B.5}%
+\contentsline {section}{\numberline {B.6}Densidad de $\symbb {Q}$ y de los irracionales}{98}{section.B.6}%
+\contentsline {section}{\numberline {B.7}Intervalos encajados y completitud}{98}{section.B.7}%
+\contentsline {section}{\numberline {B.8}Completitud de Cauchy}{98}{section.B.8}%
+\contentsline {section}{\numberline {B.9}La recta real extendida}{99}{section.B.9}%
+\contentsline {section}{\numberline {B.10}Sucesiones reales elementales}{99}{section.B.10}%
+\contentsline {section}{\numberline {B.11}Ejercicios}{100}{section.B.11}%
+\contentsline {chapter}{\numberline {C}Números complejos}{101}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Construcción del cuerpo $\symbb {C}$}{101}{section.C.1}%
+\contentsline {section}{\numberline {C.2}Conjugación y módulo}{102}{section.C.2}%
+\contentsline {section}{\numberline {C.3}Forma polar}{102}{section.C.3}%
+\contentsline {section}{\numberline {C.4}Raíces de la unidad}{102}{section.C.4}%
+\contentsline {section}{\numberline {C.5}El teorema fundamental del álgebra}{103}{section.C.5}%
+\contentsline {section}{\numberline {C.6}Funciones de variable compleja}{103}{section.C.6}%
+\contentsline {section}{\numberline {C.7}Ejercicios}{103}{section.C.7}%
+\contentsline {chapter}{\numberline {D}Álgebra lineal: espacios vectoriales y valores propios}{105}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Espacios vectoriales y normas}{105}{section.D.1}%
+\contentsline {section}{\numberline {D.2}Producto interno}{106}{section.D.2}%
+\contentsline {section}{\numberline {D.3}Valores propios y vectores propios}{106}{section.D.3}%
+\contentsline {section}{\numberline {D.4}Exponencial de matrices}{106}{section.D.4}%
+\contentsline {section}{\numberline {D.5}Ejercicios}{107}{section.D.5}%
+\contentsline {chapter}{Índice de palabras}{109}{section*.4}%
+\contentsline {chapter}{Referencias}{111}{appendix*.7}%
+\contentsfinish 

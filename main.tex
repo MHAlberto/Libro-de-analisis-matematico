@@ -1,0 +1,111 @@
+% =====================================================================
+%  LIBRO DE ANÁLISIS MATEMÁTICO — ESTRUCTURA MODULAR
+%  Compilar con: xelatex -> biber -> xelatex -> xelatex
+%  (makeindex se ejecuta automáticamente)
+% =====================================================================
+\documentclass[11pt,twoside,openright]{book}
+
+% --- Preámbulo modular ---
+\input{preambulo/estilos}
+\input{preambulo/macros}
+\input{preambulo/referencias}
+
+% --- Índice de palabras ---
+\usepackage{imakeidx}
+\makeindex
+
+% --- Metadatos del libro ---
+\title{Análisis Matemático\\[-4pt] \large Del rigor foundational a las estructuras del análisis moderno}
+\author{}
+\date{}
+
+% --- Bibliografía ---
+\addbibresource{bibliografia.bib}
+
+% --- Metadatos PDF ---
+\hypersetup{
+  pdfinfo={
+    Title={Análisis Matemático},
+    Author={},
+    Subject={Análisis matemático, espacios métricos, topología, convergencia, completitud},
+    Keywords={análisis matemático, espacios métricos, topología, convergencia, completitud, compacidad, teoremas estructurales},
+    Creator={XeLaTeX con biblatex},
+    Producer={MiKTeX}
+  }
+}
+
+% =====================================================================
+\begin{document}
+
+% --- Front matter: portada, prólogo, índices (páginas en números romanos) ---
+% Cada elemento ocupa siempre una página propia.
+\frontmatter
+
+% Portada
+\input{contenido/portada}
+\clearpage
+
+% Dedicatoria
+\input{contenido/dedicatoria}
+\clearpage
+
+% Prólogo
+\input{contenido/prologo}
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\listoffigures
+\clearpage
+
+\listoftables
+
+\mainmatter
+
+% --- Capítulos ---
+\input{contenido/capitulos/capitulo-01}
+\input{contenido/capitulos/capitulo-02}
+\input{contenido/capitulos/capitulo-03}
+\input{contenido/capitulos/capitulo-04}
+\input{contenido/capitulos/capitulo-05}
+\input{contenido/capitulos/capitulo-06}
+\input{contenido/capitulos/capitulo-07}
+\input{contenido/capitulos/capitulo-08}
+\input{contenido/capitulos/capitulo-09}
+\input{contenido/capitulos/capitulo-10}
+\input{contenido/capitulos/capitulo-11}
+\input{contenido/capitulos/capitulo-12}
+\input{contenido/capitulos/capitulo-13}
+\input{contenido/capitulos/capitulo-14}
+\input{contenido/capitulos/capitulo-15}
+\input{contenido/capitulos/capitulo-16}
+\input{contenido/capitulos/capitulo-17}
+\input{contenido/capitulos/capitulo-18}
+\input{contenido/capitulos/capitulo-19}
+\input{contenido/capitulos/capitulo-20}
+\input{contenido/capitulos/capitulo-21}
+\input{contenido/capitulos/capitulo-22}
+
+% Apéndices
+\appendix
+\input{contenido/apendices/apendice-teoria-conjuntos}
+\input{contenido/apendices/apendice-numeros-reales}
+\input{contenido/apendices/apendice-numeros-complejos}
+\input{contenido/apendices/apendice-algebra-lineal}
+
+% --- Índice de palabras ---
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Índice de palabras}
+\printindex
+
+\backmatter
+
+% --- Referencias (bibliografía) ---
+\cleardoublepage
+\phantomsection
+\nocite{*}
+\printbibliography[heading=bibintoc, title=Referencias]
+
+\end{document}

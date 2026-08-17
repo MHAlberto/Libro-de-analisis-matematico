@@ -1,0 +1,126 @@
+\chapter{Introducción a las ecuaciones diferenciales}
+\label{ch:ecuaciones-diferenciales}
+\index{Ecuación diferencial}\index{Problema de valor inicial}\index{Existencia y unicidad}\index{Exponencial de matrices}\index{Estabilidad}\index{Ecuación en derivadas parciales}
+
+\section{Problemas de valor inicial}
+
+Las ecuaciones diferenciales fueron el motor original del cálculo: Newton las usó para describir la gravitación, y desde entonces han sido el lenguaje natural de la física y la ingeniería. Sin embargo, la pregunta fundamental ---¿tiene una ecuación dada una solución, y es única?--- no pudo responderse rigurosamente hasta que el análisis matemático desarrolló las herramientas de espacios métricos completos y contracciones.
+
+\begin{definition}
+\label{def:pvi}
+Un \emph{problema de valor inicial} (PVI) de primer orden es una ecuación de la forma
+\[
+  y'(t)=F(t,y(t)),\qquad y(t_0)=y_0,
+\]
+donde $F\colon D\subseteq\mathbb{R}^2\to\mathbb{R}$ es una función dada.
+\end{definition}
+
+\section{Existencia y unicidad}
+
+\begin{theorem}[Picard--Lindelöf]
+\label{teo:picard}
+Sea $F\colon[t_0-a,t_0+a]\times[y_0-b,y_0+b]\to\mathbb{R}$ continua y lipschitziana en la segunda variable. Entonces existe $\delta>0$ tal que el PVI tiene una única solución en $[t_0-\delta,t_0+\delta]$.
+\end{theorem}
+\begin{proof}[Bosquejo]
+Se transforma el PVI en la ecuación integral
+\[
+  y(t)=y_0+\int_{t_0}^{t}F(s,y(s))\,ds.
+\]
+El operador de Picard $T(y)(t)=y_0+\int_{t_0}^t F(s,y(s))\,ds$ actúa sobre $C([t_0-\delta,t_0+\delta])$ y es contractivo para $\delta$ suficientemente pequeño. El teorema de Banach (\cref{teo:banach}) da la existencia y unicidad.
+\end{proof}
+
+\section{Métodos de punto fijo}
+
+El método de punto fijo no es solo una prueba teórica; es también una herramienta numérica. Las iteraciones de Picard $y_{n+1}=T(y_n)$ convergen a la solución, y la estimación de error \eqref{eq:error-banach} permite controlar la precisión.
+
+\begin{example}
+\label{ej:picard-lineal}
+Para $y'=ky$, $y(0)=1$, las iteradas de Picard son $y_n(t)=\sum_{j=0}^{n}(kt)^j/j!$, que convergen a $e^{kt}$.
+\end{example}
+
+\section{Sistemas lineales y exponencial de matrices}
+
+\begin{definition}
+\label{def:sistema-lineal}
+Un \emph{sistema lineal} de ecuaciones diferenciales ordinarias es una ecuación vectorial
+\[
+  y'(t)=A\,y(t)+g(t),\qquad y(t_0)=y_0,
+\]
+donde $A\in M_n(\mathbb{R})$ es una matriz constante, $g$ es una función vectorial conocida y $y$ es la función incógnita con valores en $\mathbb{R}^n$.
+\end{definition}
+
+\begin{definition}
+\label{def:exponencial-matriz-edo}
+La \emph{exponencial de matriz} $e^{tA}$ se define como la serie
+\[
+  e^{tA}=\sum_{k=0}^{\infty}\frac{t^k A^k}{k!},
+\]
+que converge absolutamente para todo $t\in\mathbb{R}$ (véase el \cref{ap:algebra-lineal}).
+\end{definition}
+
+\begin{theorem}
+\label{teo:solucion-lineal}
+La solución del problema $y'=Ay$, $y(t_0)=y_0$ viene dada por $y(t)=e^{(t-t_0)A}y_0$.
+\end{theorem}
+\begin{proof}
+Derivando término a término la serie de $e^{(t-t_0)A}$ se obtiene $\frac{d}{dt}e^{(t-t_0)A}=A\,e^{(t-t_0)A}$, luego $y'(t)=A\,y(t)$. Además $y(t_0)=e^{0}y_0=I y_0=y_0$.
+\end{proof}
+
+\begin{theorem}[Fórmula de variación de parámetros]
+\label{teo:variacion-parametros}
+La solución de $y'=Ay+g(t)$, $y(t_0)=y_0$ es
+\[
+  y(t)=e^{(t-t_0)A}y_0+\int_{t_0}^{t}e^{(t-s)A}g(s)\,ds.
+\]
+\end{theorem}
+
+\section{Estabilidad}
+
+\begin{definition}
+\label{def:estabilidad}
+Una solución $y(t)$ es \emph{estable} (en el sentido de Lyapunov) si para todo $\varepsilon>0$ existe $\delta>0$ tal que toda solución $\widetilde{y}(t)$ con $|\widetilde{y}(t_0)-y(t_0)|<\delta$ satisface $|\widetilde{y}(t)-y(t)|<\varepsilon$ para todo $t\geq t_0$.
+\end{definition}
+
+Recordemos que los \emph{valores propios} de una matriz $A$ son las raíces de $\det(A-\lambda I)=0$; los conceptos básicos de álgebra lineal necesarios están en el \cref{ap:algebra-lineal}.
+
+\begin{theorem}
+\label{teo:estabilidad-lineal}
+Para sistemas lineales $y'=Ay$, la estabilidad de la solución nula está determinada por los valores propios de $A$: si todos tienen parte real negativa, la solución nula es asintóticamente estable. Si algún valor propio tiene parte real positiva, la solución nula es inestable.
+\end{theorem}
+\begin{proof}[Bosquejo]
+Mediante la forma canónica de Jordan (o la descomposición espectral para matrices diagonalizables), se reduce el sistema a bloques donde cada bloque evoluciona como $e^{\lambda t}$. El comportamiento asintótico está gobernado por $\operatorname{Re}(\lambda)$.
+\end{proof}
+
+\section{Dependencia continua}
+
+\begin{theorem}
+\label{teo:dependencia-continua}
+Bajo las hipótesis del teorema de Picard--Lindelöf, la solución depende continuamente de las condiciones iniciales $(t_0,y_0)$.
+\end{theorem}
+
+\section{Introducción a las ecuaciones en derivadas parciales}
+
+Las ecuaciones en derivadas parciales (EDP) surgen cuando el estado de un sistema depende de múltiples variables independientes. Ejemplos clásicos son:
+\begin{itemize}
+  \item \textbf{Ecuación del calor} (parabólica): $u_t=\Delta u$.
+  \item \textbf{Ecuación de ondas} (hiperbólica): $u_{tt}=\Delta u$.
+  \item \textbf{Ecuación de Laplace} (elíptica): $\Delta u=0$.
+\end{itemize}
+
+La teoría de EDP requiere herramientas del análisis funcional (espacios de Sobolev), la teoría de la medida y la topología. Es uno de los campos más activos de las matemáticas contemporáneas.
+
+\begin{exercise}
+Aplique el método de Picard para $y'=y$, $y(0)=1$ y calcule las tres primeras iteradas.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que $y'=3y^{2/3}$, $y(0)=0$, tiene al menos dos soluciones. ¿Por qué falla Picard--Lindelöf?
+\end{exercise}
+
+\begin{exercise}
+Analice la estabilidad del sistema $y'=Ay$ para $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$.
+\end{exercise}
+
+\begin{problem}
+Demuestre el teorema de Peano de existencia (sin unicidad) usando el teorema de Ascoli--Arzelà.
+\end{problem}

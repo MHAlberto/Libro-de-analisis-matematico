@@ -1,0 +1,106 @@
+\chapter{Completitud}
+\label{ch:completitud}
+\index{Espacio completo}\index{Completación}\index{Criterio de Cantor}\index{Principio de contracción de Banach}\index{Punto fijo}
+
+\section{Espacios completos}
+
+La completitud es la propiedad que distingue a $\mathbb{R}$ de $\mathbb{Q}$, y que hace posible gran parte del análisis matemático moderno. Sin ella, las sucesiones de Cauchy serían huérfanas de límite, los operadores contractivos no tendrían punto fijo garantizado, y las ecuaciones diferenciales carecerían de solución en general. El concepto fue clarificado por Cauchy en 1821, pero su formulación axiomática y la construcción de completaciones arbitrarias son obra de Cantor, Dedekind y, en el contexto métrico, de Fréchet y Hausdorff.
+
+\begin{definition}
+\label{def:espacio-completo}
+Un espacio métrico $(X,d)$ es \emph{completo} si toda sucesión de Cauchy en $X$ converge a un punto de $X$.
+\end{definition}
+
+\begin{example}
+\label{ej:rn-completo}
+$\mathbb{R}^n$ con la métrica euclidiana es completo. Este hecho, heredado de la completitud de $\mathbb{R}$, es la base de casi toda el análisis en dimensiones finitas.
+\end{example}
+
+\begin{example}
+\label{ej:cb-completo}
+El espacio $C([a,b])$ con la métrica del supremo es completo. La convergencia en esta métrica es la convergencia uniforme, y el límite uniforme de funciones continuas es continua.
+\end{example}
+
+\begin{example}
+\label{ej:q-incompleto}
+$\mathbb{Q}$ con la métrica usual no es completo. La sucesión de aproximaciones decimales de $\sqrt{2}$ es de Cauchy pero no converge en $\mathbb{Q}$.
+\end{example}
+
+\section{Completación de espacios métricos}
+
+\begin{theorem}
+\label{teo:completacion}
+Todo espacio métrico $(X,d)$ admite una \emph{completación}: existe un espacio métrico completo $(\widetilde{X},\widetilde{d})$ y una isometría $i\colon X\to\widetilde{X}$ tal que $i(X)$ es denso en $\widetilde{X}$. La completación es única salvo isometría.
+\end{theorem}
+\begin{proof}[Bosquejo]
+Se considera el conjunto de todas las sucesiones de Cauchy en $X$, dotado de la métrica $d((x_n),(y_n))=\lim_{n\to\infty}d(x_n,y_n)$. Se identifican sucesiones cuya distancia tiende a cero, obteniendo $\widetilde{X}$. La isometría $i$ envía cada $x\in X$ a la sucesión constante $(x,x,\dots)$.
+\end{proof}
+
+\begin{remark}
+La construcción de Cantor de $\mathbb{R}$ a partir de $\mathbb{Q}$ es exactamente este procedimiento de completación aplicado al espacio métrico de los racionales.
+\end{remark}
+
+\section{Teorema de intersección de Cantor}
+
+\begin{theorem}[de intersección de Cantor]
+\label{teo:cantor-interseccion}
+Un espacio métrico $(X,d)$ es completo si y solo si toda sucesión $(F_n)$ de conjuntos cerrados no vacíos, encajados ($F_{n+1}\subseteq F_n$) y tales que $\operatorname{diam}(F_n)\to 0$, tiene intersección no vacía $\bigcap_n F_n=\{x^*\}$.
+\end{theorem}
+\begin{proof}
+$(\Rightarrow)$ Elijamos $x_n\in F_n$. La condición $\operatorname{diam}(F_n)\to 0$ implica que $(x_n)$ es de Cauchy; por completitud, $x_n\to x^*$. Como cada $F_n$ es cerrado y contiene a todos los $x_k$ con $k\geq n$, se sigue $x^*\in F_n$ para todo $n$. La unicidad se deduce de que $\operatorname{diam}(\bigcap F_n)\leq\operatorname{diam}(F_n)\to 0$.
+
+$(\Leftarrow)$ Sea $(x_n)$ de Cauchy. Sea $F_n=\overline{\{x_k:\,k\geq n\}}$. Los $F_n$ son cerrados, encajados, y $\operatorname{diam}(F_n)\to 0$. Por hipótesis, $\bigcap F_n=\{x^*\}$, y se verifica que $x_n\to x^*$.
+\end{proof}
+
+\section{Principio de contracción de Banach}
+
+\begin{definition}
+\label{def:contractiva}
+Una función $f\colon X\to X$ es \emph{contractiva} (o de \emph{Lipschitz} con constante $L<1$) si existe $L\in[0,1)$ tal que
+\begin{equation}\label{eq:contractiva}
+  d(f(x),f(y))\leq L\,d(x,y)\quad\text{para todo }x,y\in X.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[del punto fijo de Banach]
+\label{teo:banach}
+Sea $(X,d)$ un espacio métrico completo no vacío. Toda aplicación contractiva $f\colon X\to X$ posee un único punto fijo $x^*\in X$, es decir, $f(x^*)=x^*$. Además, para cualquier $x_0\in X$, la sucesión $x_{n+1}=f(x_n)$ converge a $x^*$, con la estimación de error
+\begin{equation}\label{eq:error-banach}
+  d(x_n,x^*)\leq\frac{L^n}{1-L}\,d(x_0,x_1).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Definimos $x_{n+1}=f(x_n)$. De \eqref{eq:contractiva} se deduce inductivamente $d(x_n,x_{n+1})\leq L^n d(x_0,x_1)$. Para $m>n$,
+\[
+  d(x_n,x_m)\leq\sum_{k=n}^{m-1}d(x_k,x_{k+1})\leq d(x_0,x_1)\sum_{k=n}^{\infty}L^k=\frac{L^n}{1-L}d(x_0,x_1).
+\]
+Luego $(x_n)$ es de Cauchy. Por completitud, $x_n\to x^*$. La continuidad de $f$ implica $f(x^*)=\lim f(x_n)=\lim x_{n+1}=x^*$. La unicidad: si $f(x)=x$ y $f(y)=y$, entonces $d(x,y)=d(f(x),f(y))\leq L\,d(x,y)$, luego $d(x,y)=0$.
+\end{proof}
+
+\section{Aplicaciones}
+
+\begin{example}[Ecuaciones diferenciales]
+\label{ej:edo-banach}
+El teorema de existencia y unicidad de Picard--Lindelöf para ecuaciones diferenciales ordinarias se prueba transformando el problema de valor inicial $y'=F(t,y)$, $y(t_0)=y_0$ en una ecuación integral y definiendo un operador de Picard sobre un espacio $C([t_0-\delta,t_0+\delta])$ adecuado. Bajo una condición de Lipschitz en $F$, este operador es contractivo para $\delta$ suficientemente pequeño.
+\end{example}
+
+\begin{example}[Método de Newton]
+\label{ej:newton}
+El método iterativo $x_{n+1}=x_n-f(x_n)/f'(x_n)$ para hallar raíces de $f$ puede interpretarse como una aplicación de Banach en un entorno adecuado de la raíz, siempre que $f'$ no se anule y ciertas cotas de convexidad se cumplan.
+\end{example}
+
+\begin{exercise}
+Demuestre que toda función lipschitziana es uniformemente continua, pero que el recíproco no es cierto. Sugerencia: considere $f(x)=\sqrt{x}$ en $[0,1]$.
+\end{exercise}
+
+\begin{exercise}
+Sea $X$ completo y $f\colon X\to X$ tal que $f^k$ (la $k$-ésima iterada) es contractiva para algún $k\in\mathbb{N}$. Demuestre que $f$ posee un único punto fijo.
+\end{exercise}
+
+\begin{exercise}
+Sea $K\subseteq\mathbb{R}^n$ compacto y $f\colon K\to K$ contractiva. Demuestre que la convergencia de $x_{n+1}=f(x_n)$ es exponencialmente rápida, y estime el número de iteraciones necesarias para alcanzar una precisión $\varepsilon$.
+\end{exercise}
+
+\begin{problem}
+Sea $(X,d)$ completo y $f\colon X\to X$ tal que $d(f(x),f(y))<d(x,y)$ para todo $x\neq y$. ¿Tiene $f$ necesariamente un punto fijo? Si no, dé un contraejemplo.
+\end{problem}

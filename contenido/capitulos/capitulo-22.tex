@@ -1,0 +1,109 @@
+\chapter{Introducción al análisis convexo y la optimización}
+\label{ch:analisis-convexo}
+\index{Conjunto convexo}\index{Función convexa}\index{Teorema de separación}\index{Optimización}\index{Punto de silla}
+
+\section{Conjuntos convexos}
+
+La convexidad es una propiedad geométrica que permea gran parte del análisis moderno: desigualdades, optimización, análisis funcional, probabilidad y, más recientemente, aprendizaje automático. Hermann Minkowski, a finales del siglo~XIX, inició el estudio sistemático de los cuerpos convexos, y las herramientas que desarrolló ---teoremas de separación, funciones de soporte, poliedros--- son hoy fundamentales.
+
+\begin{definition}
+\label{def:convexo}
+Un conjunto $C\subseteq V$ en un espacio vectorial es \emph{convexo} si para todo $x,y\in C$ y todo $\lambda\in[0,1]$,
+\[
+  \lambda x+(1-\lambda)y\in C.
+\]
+\end{definition}
+
+\begin{example}
+\label{ej:convexos-basicos}
+Las bolas en espacios normados, los semiespacios, los simplex, y las intersecciones arbitrarias de convexos, son convexos.
+\end{example}
+
+\begin{theorem}[Minkowski]
+\label{teo:minkowski}
+En $\mathbb{R}^n$, todo conjunto convexo compacto es la envolvente convexa de sus puntos extremos.
+\end{theorem}
+
+\section{Funciones convexas}
+
+\begin{definition}
+\label{def:funcion-convexa}
+Una función $f\colon C\to\mathbb{R}$ definida en un convexo es \emph{convexa} si
+\[
+  f(\lambda x+(1-\lambda)y)\leq\lambda f(x)+(1-\lambda)f(y)
+\]
+para todo $x,y\in C$ y $\lambda\in[0,1]$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:convexa-continua}
+Toda función convexa en un abierto convexo de $\mathbb{R}^n$ es continua.
+\end{proposition}
+
+\begin{theorem}[Desigualdad de Jensen]
+\label{teo:jensen}
+Si $f$ es convexa y $X$ es una variable aleatoria integrable, entonces $f(\mathbb{E}[X])\leq\mathbb{E}[f(X)]$.
+\end{theorem}
+
+\section{Separación de conjuntos convexos}
+
+\begin{theorem}[Hahn--Banach geométrico]
+\label{teo:hahn-banach-convexo}
+Sean $A,B\subseteq V$ convexos disjuntos no vacíos en un espacio normado, con $A$ abierto. Entonces existe un funcional lineal continuo $\phi$ y $\alpha\in\mathbb{R}$ tales que
+\[
+  \phi(a)<\alpha\leq\phi(b)\quad\text{para todo }a\in A,\,b\in B.
+\]
+\end{theorem}
+
+\section{Optimización en espacios normados}
+
+\begin{definition}
+\label{def:problema-optimizacion}
+Un \emph{problema de optimización convexo} es minimizar una función convexa $f$ sobre un conjunto convexo $C$, es decir, hallar $x^*\in C$ tal que $f(x^*)=\inf_{x\in C}f(x)$.
+\end{definition}
+
+\begin{theorem}
+\label{teo:minimo-convexo}
+Si $f$ es convexa y $C$ es convexo, todo mínimo local es global. Si $f$ es estrictamente convexa, el mínimo es único.
+\end{theorem}
+
+\begin{theorem}[Condiciones de optimalidad]
+\label{teo:kkt}
+Bajo ciertas condiciones de regularidad (qualifications), un punto $x^*$ es mínimo de un problema convexo con restricciones $g_i(x)\leq 0$ si y solo si existen multiplicadores de Lagrange $\lambda_i\geq 0$ tales que
+\[
+  \nabla f(x^*)+\sum\lambda_i\nabla g_i(x^*)=0,\qquad \lambda_i g_i(x^*)=0.
+\]
+\end{theorem}
+
+\section{Aplicaciones al aprendizaje automático}
+
+\begin{example}[Regresión logística]
+\label{ej:regresion-logistica}
+La función de pérdida de la regresión logística es convexa en los parámetros, lo cual garantiza que los métodos de descenso por gradiente converjan a un mínimo global.
+\end{example}
+
+\begin{example}[Máquinas de vectores de soporte]
+\label{ej:svm}
+El problema primal de una SVM es minimizar $\|w\|^2$ sujeto a restricciones lineales, un problema cuadrático convexo que admite solución eficiente y única.
+\end{example}
+
+\begin{example}[Descenso por gradiente estocástico]
+\label{ej:sgd}
+En optimización de funciones convexas, el método SGD converge en media al mínimo global bajo hipótesis de acotación del gradiente y tasas de aprendizaje decrecientes.
+\end{example}
+
+\begin{exercise}
+Demuestre que la intersección de convexos es convexa, y que la imagen de un convexo por una aplicación afín es convexa.
+\end{exercise}
+
+\begin{exercise}
+Pruebe que $f(x)=\|x\|^2$ es estrictamente convexa en un espacio de Hilbert.
+\end{exercise}
+
+\begin{exercise}
+Formule el problema de mínimos cuadrados $\min_x\|Ax-b\|^2$ como un problema convexo y derive la ecuación normal $A^\top Ax=A^\top b$.
+\end{exercise}
+
+\begin{problem}
+Demuestre que el subdiferencial $\partial f(x)=\{v:\,f(y)\geq f(x)+\langle v,y-x\rangle\text{ para todo }y\}$ de una función convexa es no vacío en todo punto interior del dominio.
+\end{problem}

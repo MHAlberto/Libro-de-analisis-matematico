@@ -1,0 +1,130 @@
+\chapter{Introducción a la topología general}
+\label{ch:topologia-general}
+\index{Espacio topológico}\index{Subbase}\index{Axiomas de separación}\index{Producto de espacios}\index{Teorema de Tychonoff}
+
+\section{Espacios topológicos}
+
+La topología general nace de la abstracción de las propiedades de los espacios métricos que no dependen de la distancia explícita. Hausdorff, en su \emph{Grundzüge der Mengenlehre} (1914), formalizó esta idea definiendo un espacio topológico mediante una familia de conjuntos abiertos. Este salto conceptual permitió estudiar espacios que no provienen de ninguna métrica: topologías débiles en análisis funcional, topologías de Zariski en geometría algebraica, y topologías de orden en teoría de conjuntos.
+
+\begin{definition}
+\label{def:espacio-topologico}
+Un \emph{espacio topológico} es un par $(X,\tau)$ donde $X$ es un conjunto y $\tau\subseteq\mathcal{P}(X)$ es una familia, llamada \emph{topología}, que satisface:
+\begin{enumerate}
+  \item[(T1)] $\emptyset,X\in\tau$.
+  \item[(T2)] La unión arbitraria de elementos de $\tau$ pertenece a $\tau$.
+  \item[(T3)] La intersección finita de elementos de $\tau$ pertenece a $\tau$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\label{ej:metrico-topologico}
+Todo espacio métrico induce una topología métrica (\cref{teo:topologia-metrica}).
+\end{example}
+
+\begin{example}
+\label{ej:cofinita}
+La \emph{topología cofinita} sobre un conjunto infinito $X$, donde los abiertos son $\emptyset$ y los complementos de conjuntos finitos, no es metrizable.
+\end{example}
+
+\section{Bases y subbases}
+
+\begin{definition}
+\label{def:base-topologia}
+Una \emph{base} de una topología $\tau$ es una subfamilia $\mathcal{B}\subseteq\tau$ tal que todo abierto no vacío es unión de elementos de $\mathcal{B}$.
+\end{definition}
+
+\begin{definition}
+\label{def:subbase}
+Una \emph{subbase} es una familia $\mathcal{S}$ tal que las intersecciones finitas de sus elementos forman una base.
+\end{definition}
+
+\section{Continuidad}
+
+\begin{definition}
+\label{def:continuidad-topologica}
+Una función $f\colon(X,\tau_X)\to(Y,\tau_Y)$ es \emph{continua} si $f^{-1}(V)\in\tau_X$ para todo $V\in\tau_Y$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:comp-topologica}
+La composición de funciones continuas es continua.
+\end{proposition}
+
+\section{Compacidad}
+
+\begin{definition}
+\label{def:compacto-topologia}
+Un espacio topológico $X$ es \emph{compacto} si de todo recubrimiento abierto se puede extraer un subrecubrimiento finito.
+\end{definition}
+
+\begin{theorem}
+\label{teo:compacto-cerrado}
+En un espacio compacto Hausdorff, los compactos coinciden con los cerrados.
+\end{theorem}
+
+\section{Conexidad}
+
+\begin{definition}
+\label{def:conexo-topologia}
+Un espacio topológico es \emph{conexo} si no puede escribirse como unión de dos abiertos disjuntos no vacíos.
+\end{definition}
+
+\begin{proposition}
+\label{prop:imagen-conexa}
+La imagen continua de un conexo es conexa.
+\end{proposition}
+
+\section{Axiomas de separación}
+
+\begin{definition}
+\label{def:separacion}
+\begin{itemize}
+  \item $T_0$: para puntos distintos, al menos uno tiene un entorno que no contiene al otro.
+  \item $T_1$: para puntos distintos, cada uno tiene un entorno que no contiene al otro.
+  \item $T_2$ (Hausdorff): puntos distintos tienen entornos disjuntos.
+  \item $T_3$ (regular): cerrado y punto fuera de él tienen entornos disjuntos.
+  \item $T_4$ (normal): dos cerrados disjuntos tienen entornos disjuntos.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Urysohn]
+\label{teo:urysohn-general}
+En un espacio normal, cualesquiera dos cerrados disjuntos pueden separarse por una función continua $f\colon X\to[0,1]$.
+\end{theorem}
+
+\begin{theorem}[Tietze]
+\label{teo:tietze-general}
+En un espacio normal, toda función continua definida en un cerrado y con valores en $\mathbb{R}$ puede extenderse continuamente a todo $X$.
+\end{theorem}
+
+\section{Productos de espacios}
+
+\begin{definition}
+\label{def:producto-topologico}
+La \emph{topología producto} sobre $\prod_{i\in I}X_i$ es la generada por las proyecciones $\pi_j$.
+\end{definition}
+
+\section{Teorema de Tychonoff (panorama)}
+
+\begin{theorem}[Tychonoff]
+\label{teo:tychonoff}
+El producto arbitrario de espacios compactos es compacto en la topología producto.
+\end{theorem}
+
+Este teorema, uno de los más profundos de la topología general, es equivalente al axioma de elección. Su demostración requiere lemas auxiliares (Alexander subbase theorem) y está fuera del alcance elemental de este capítulo.
+
+\begin{exercise}
+Demuestre que la topología cofinita sobre $\mathbb{N}$ es compacta pero no Hausdorff.
+\end{exercise}
+
+\begin{exercise}
+Pruebe que un espacio es Hausdorff si y solo si la diagonal $\Delta=\{(x,x):\,x\in X\}$ es cerrada en $X\times X$.
+\end{exercise}
+
+\begin{exercise}
+Demuestre el lema de Urysohn en espacios métricos construyendo $f(x)=d(x,A)/(d(x,A)+d(x,B))$.
+\end{exercise}
+
+\begin{problem}
+Demuestre que todo espacio compacto Hausdorff es normal.
+\end{problem}

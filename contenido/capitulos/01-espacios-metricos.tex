@@ -1,0 +1,292 @@
+\chapter{Espacios métricos}
+\label{ch:espacios-metricos}
+\index{Espacio métrico}\index{Métrica}\index{Distancia}\index{Desigualdad de Cauchy--Schwarz}\index{Métricas equivalentes}\index{Subespacio métrico}
+
+\section{Definición}
+
+Con los números reales ya construidos, el siguiente paso natural en la evolución del rigor es abstraer la noción de distancia. El análisis matemático no estudia únicamente funciones sobre $\mathbb{R}$; sus objetos fundamentales son los espacios métricos, introducidos por Maurice Fréchet en su tesis de 1906 como una generalización que unifica el tratamiento de sucesiones, funciones, conjuntos y transformaciones.
+
+\begin{definition}
+\label{def:metrica}
+Sea $X$ un conjunto no vacío. Una \emph{métrica} sobre $X$ es una función $d\colon X\times X\to\mathbb{R}$ que satisface, para todos $x,y,z\in X$:
+\begin{enumerate}
+  \item[(i)] \emph{No negatividad y separación}: $d(x,y)\geq 0$, y $d(x,y)=0$ si y solo si $x=y$;
+  \item[(ii)] \emph{Simetría}: $d(x,y)=d(y,x)$;
+  \item[(iii)] \emph{Desigualdad triangular}: $d(x,z)\leq d(x,y)+d(y,z)$.
+\end{enumerate}
+Al par $(X,d)$ se le llama \emph{espacio métrico}.
+\end{definition}
+
+La condición (iii) es la que confiere a la métrica su carácter de medida de proximidad compatible con una estructura de límite. Intuitivamente, dice que ir directamente de $x$ a $z$ nunca puede ser más largo que pasar por un intermediario $y$.
+
+\begin{example}
+\label{ej:euclidea}
+El espacio $\mathbb{R}^n$ dotado de la distancia euclidiana
+\begin{equation}\label{eq:euclidea}
+  d_2(x,y)=\biggl(\sum_{i=1}^{n}(x_i-y_i)^2\biggr)^{1/2}
+\end{equation}
+es un espacio métrico. La desigualdad triangular se sigue de la desigualdad de Cauchy--Schwarz.
+\end{example}
+
+\begin{example}
+\label{ej:discreta}
+Sobre cualquier conjunto no vacío $X$, la \emph{métrica discreta}
+\[
+  d(x,y)=\begin{cases}0&\text{si }x=y,\\1&\text{si }x\neq y\end{cases}
+\]
+es una métrica. La desigualdad triangular es inmediata: si $x\neq z$, entonces al menos uno de $d(x,y)$ o $d(y,z)$ es $1$.
+\end{example}
+
+\begin{example}
+\label{ej:supremo}
+Sea $C([a,b])$ el conjunto de las funciones continuas $f\colon[a,b]\to\mathbb{R}$. La fórmula
+\begin{equation}\label{eq:supremo}
+  d(f,g)=\sup_{t\in[a,b]}|f(t)-g(t)|
+\end{equation}
+define la \emph{métrica del supremo} sobre $C([a,b])$.
+\end{example}
+
+\section{La desigualdad de Cauchy--Schwarz}
+
+Antes de continuar con más ejemplos, demostramos la herramienta básica que justifica la desigualdad triangular de la métrica euclidiana.
+
+\begin{theorem}[Cauchy--Schwarz en $\mathbb{R}^n$]
+\label{teo:cauchy-schwarz-cap5}
+Para cualesquiera $x,y\in\mathbb{R}^n$,
+\[
+  \biggl|\sum_{i=1}^{n}x_i y_i\biggr|\leq\biggl(\sum_{i=1}^{n}x_i^2\biggr)^{1/2}\biggl(\sum_{i=1}^{n}y_i^2\biggr)^{1/2}.
+\]
+La igualdad se da si y solo si $x$ e $y$ son proporcionales.
+\end{theorem}
+\begin{proof}
+Si $y=0$ el resultado es trivial. Supongamos $y\neq 0$ y sea $\lambda=\langle x,y\rangle/\langle y,y\rangle$. Entonces
+\[
+  0\leq\langle x-\lambda y,x-\lambda y\rangle=\|x\|^2-\frac{\langle x,y\rangle^2}{\|y\|^2},
+\]
+de donde se deduce el teorema.
+\end{proof}
+
+\begin{corollary}
+\label{cor:euclidiana-metrica}
+La función $d_2(x,y)=(\sum|x_i-y_i|^2)^{1/2}$ satisface la desigualdad triangular, luego es una métrica sobre $\mathbb{R}^n$.
+\end{corollary}
+\begin{proof}
+Escribiendo $z_i=x_i-y_i$ y $w_i=y_i-z_i$ (ajustando índices), se aplica Cauchy--Schwarz para acotar $\|x-z\|^2$.
+\end{proof}
+
+\section{Ejemplos fundamentales}
+
+\begin{example}[Métricas $\ell^p$ sobre $\mathbb{R}^n$]
+\label{ej:lp}
+Para $1\leq p<\infty$, la fórmula
+\[
+  d_p(x,y)=\biggl(\sum_{i=1}^{n}|x_i-y_i|^p\biggr)^{1/p}
+\]
+define una métrica. El caso $p=2$ es la euclidiana (véase el \cref{cor:euclidiana-metrica}); $p=1$ se llama \emph{taxicab} o \emph{Manhattan}; y el límite $p\to\infty$ produce la métrica del máximo $d_\infty(x,y)=\max_i|x_i-y_i|$.
+\end{example}
+
+\begin{example}[Espacio de Hilbert $\ell^2$]
+\label{ej:hilbert}
+El espacio de las sucesiones cuadrado-sumables,
+\[
+  \ell^2=\Bigl\{x=(x_n)\in\mathbb{R}^{\mathbb{N}}:\sum_{n=1}^{\infty}x_n^2<\infty\Bigr\},
+\]
+con la métrica $d(x,y)=(\sum|x_n-y_n|^2)^{1/2}$, es un espacio métrico. La convergencia de la serie que define la métrica se garantiza por la desigualdad de Cauchy--Schwarz en cada truncamiento finito y un paso al límite.
+\end{example}
+
+\begin{example}[Métrica del taxi en funciones]
+\label{ej:l1}
+Sobre $C([a,b])$, la integral
+\[
+  d_1(f,g)=\int_a^b|f(t)-g(t)|\,dt
+\]
+define otra métrica, distinta de la del supremo. La convergencia en $d_1$ se llama \emph{convergencia en media}. (La integral es la de Riemann.)
+\end{example}
+
+\section{Métricas equivalentes}
+
+\begin{definition}
+\label{def:metricas-equivalentes}
+Dos métricas $d$ y $d'$ sobre $X$ son \emph{equivalentes} si existen constantes $c,C>0$ tales que
+\[
+  c\,d(x,y)\leq d'(x,y)\leq C\,d(x,y)\quad\text{para todo }x,y\in X.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:equiv-misma-topologia}
+Métricas equivalentes generan la misma familia de conjuntos abiertos (véase el \cref{ch:topologia-metricos}).
+\end{proposition}
+
+\begin{example}
+En $\mathbb{R}^n$, todas las métricas $\ell^p$ son equivalentes. Sin embargo, la métrica discreta no es equivalente a ninguna de ellas.
+\end{example}
+
+\section{Homeomorfismos}
+
+# Homeomorfismos
+
+```latex
+\section{Homeomorfismos}
+
+La definición $\epsilon$-$\delta$ de continuidad que se utiliza
+habitualmente en cálculo de una variable supone, aunque no siempre se
+haga explícito, que estamos trabajando con la métrica euclidiana. En
+efecto, una función $f\colon \mathbb{R}\to\mathbb{R}$ es continua en un
+punto $a\in\mathbb{R}$ si, para todo $\epsilon>0$, existe
+$\delta>0$ tal que, para todo $x\in\mathbb{R}$,
+\[
+|x-a|<\delta \implies |f(x)-f(a)|<\epsilon.
+\]
+
+Esta definición utiliza directamente la distancia euclidiana en
+$\mathbb{R}$. La condición $|x-a|<\delta$ describe el intervalo abierto
+\[
+(a-\delta,a+\delta),
+\]
+mientras que la condición $|f(x)-f(a)|<\epsilon$ describe el intervalo
+abierto
+\[
+(f(a)-\epsilon,f(a)+\epsilon).
+\]
+Desde el punto de vista de los espacios métricos, estos intervalos son
+precisamente bolas abiertas. Por lo tanto, la idea fundamental de la
+continuidad no depende de la estructura particular de $\mathbb{R}$ ni
+de la métrica euclidiana, sino que puede formularse en cualquier espacio
+métrico mediante sus respectivas bolas abiertas.
+
+\begin{definition}
+\label{def:continuidad-metrica}
+Sean $(X,d_X)$ y $(Y,d_Y)$ espacios métricos. Decimos que una función
+$f\colon X\to Y$ es \emph{continua} en un punto $x_0\in X$ si, para todo
+$\epsilon>0$, existe $\delta>0$ tal que, para todo $x\in X$,
+\[
+d_X(x,x_0)<\delta
+\implies
+d_Y\bigl(f(x),f(x_0)\bigr)<\epsilon.
+\]
+\end{definition}
+
+Si una función $f\colon X\to Y$ es continua en todo punto de $X$,
+decimos simplemente que $f$ es \emph{continua en $X$} o que es una
+\emph{función continua}.
+
+La definición anterior puede interpretarse mediante bolas abiertas. En
+efecto, para todo $\epsilon>0$ debe existir $\delta>0$ tal que
+\[
+f\bigl(B_{d_X}(x_0,\delta)\bigr)
+\subseteq
+B_{d_Y}\bigl(f(x_0),\epsilon\bigr).
+\]
+Es decir, los puntos suficientemente cercanos a $x_0$ son enviados por
+$f$ a puntos suficientemente cercanos a $f(x_0)$.
+
+\begin{example}
+Consideremos la función
+\[
+f\colon \mathbb{R}\to\mathbb{R},
+\qquad
+f(x)=2x+1,
+\]
+donde tanto el dominio como el codominio están dotados de la métrica
+euclidiana
+\[
+d(x,y)=|x-y|.
+\]
+Demostraremos que $f$ es continua en cualquier punto $x_0\in\mathbb{R}$.
+
+Sea $\epsilon>0$. Necesitamos encontrar $\delta>0$ tal que
+\[
+|x-x_0|<\delta
+\implies
+|f(x)-f(x_0)|<\epsilon.
+\]
+Observamos que
+\[
+|f(x)-f(x_0)|
+=
+|(2x+1)-(2x_0+1)|
+=
+2|x-x_0|.
+\]
+Por lo tanto, basta elegir
+\[
+\delta=\frac{\epsilon}{2}.
+\]
+En efecto, si $|x-x_0|<\delta$, entonces
+\[
+|f(x)-f(x_0)|
+=
+2|x-x_0|
+<
+2\delta
+=
+\epsilon.
+\]
+Así, $f$ es continua en $x_0$. Como $x_0$ fue arbitrario, concluimos
+que $f$ es continua en todo $\mathbb{R}$.
+\end{example}
+```
+
+
+Cuando la continuidad sobre un punto ocurre sobre todo $X$ decimos que la funcion
+es continua sobre $X$.
+\begin{example}
+  Escribir un ejemeplo. 
+\end{example}
+
+\section{Subespacios}
+
+\begin{definition}
+\label{def:subespacio}
+Sea $(X,d)$ un espacio métrico y $Y\subseteq X$ no vacío. La restricción $d|_{Y\times Y}$ define una métrica sobre $Y$, llamada la \emph{métrica inducida}. Al par $(Y,d|_{Y\times Y})$ se le llama \emph{subespacio métrico}.
+\end{definition}
+
+\begin{example}
+$\mathbb{Q}$, como subconjunto de $\mathbb{R}$ con la métrica usual, es un subespacio métrico. Como veremos en el \cref{ch:completitud}, su comportamiento respecto a sucesiones de Cauchy difiere radicalmente del de $\mathbb{R}$.
+\end{example}
+
+\section{Productos de espacios métricos}
+
+\begin{definition}
+\label{def:producto-metrico}
+Sean $(X,d_X)$ y $(Y,d_Y)$ espacios métricos. Sobre $X\times Y$ se pueden definir varias métricas; la más usuales son:
+\begin{itemize}
+  \item $d_1((x_1,y_1),(x_2,y_2))=d_X(x_1,x_2)+d_Y(y_1,y_2)$;
+  \item $d_2((x_1,y_1),(x_2,y_2))=(d_X(x_1,x_2)^2+d_Y(y_1,y_2)^2)^{1/2}$;
+  \item $d_\infty((x_1,y_1),(x_2,y_2))=\max\{d_X(x_1,x_2),d_Y(y_1,y_2)\}$.
+\end{itemize}
+Todas son equivalentes.
+\end{definition}
+
+\section{Espacios métricos inducidos}
+
+\begin{definition}
+\label{def:metrica-inducida-topologia}
+Sea $(X,d)$ un espacio métrico. Se define la \emph{bola abierta} de centro $x$ y radio $r>0$ como
+\[
+  B(x,r)=\{y\in X:\,d(x,y)<r\}.
+\]
+La familia de bolas abiertas genera una topología sobre $X$ (véase el \cref{ch:topologia-metricos}).
+\end{definition}
+
+\begin{notation}
+\label{not:bolas}
+A lo largo del libro, $B(x,r)$ denota la bola abierta, $\overline{B}(x,r)$ la bola cerrada $\{y:d(x,y)\leq r\}$, y $S(x,r)$ la esfera $\{y:d(x,y)=r\}$.
+\end{notation}
+
+\begin{exercise}
+Demuestre que en un espacio métrico discreto, toda bola abierta $B(x,r)$ con $r\leq 1$ coincide con $\{x\}$.
+\end{exercise}
+
+\begin{exercise}
+Sea $d$ una métrica sobre $X$. Pruebe que $d'(x,y)=\min\{1,d(x,y)\}$ es también una métrica y que induce la misma topología que $d$.
+\end{exercise}
+
+\begin{exercise}
+Verifique que la métrica del supremo sobre $C([a,b])$ satisface la desigualdad triangular.
+\end{exercise}
+
+\begin{problem}
+Sea $(X,d)$ un espacio métrico. Defina $\rho(x,y)=\frac{d(x,y)}{1+d(x,y)}$. Demuestre que $\rho$ es una métrica acotada que genera la misma topología que $d$. ¿Es $\rho$ equivalente a $d$ en el sentido de la \cref{def:metricas-equivalentes}?
+\end{problem}

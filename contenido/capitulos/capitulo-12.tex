@@ -1,0 +1,140 @@
+\chapter{Funciones de variación acotada}
+\label{ch:variacion-acotada}
+\index{Variación total}\index{Función de variación acotada}\index{Función absolutamente continua}\index{Conjunto de medida cero}\index{Casi en todas partes}
+
+\section{Variación total}
+
+La noción de variación acotada, introducida por Camille Jordan en 1881, nació del intento de caracterizar aquellas funciones para las cuales la gráfica tiene ``longitud finita''. Jordan observó que una función continua podía oscilar infinitamente en un intervalo compacto, como la función seno del topólogo, y que el cálculo elemental de longitud de arco no era aplicable sin un control global de las oscilaciones.
+
+\begin{definition}
+\label{def:variacion}
+Sea $f\colon[a,b]\to\mathbb{R}$. Dada una partición $P=\{a=x_0<x_1<\dots<x_n=b\}$, se define la \emph{variación} de $f$ sobre $P$ como
+\[
+  V(f,P)=\sum_{i=1}^{n}|f(x_i)-f(x_{i-1})|.
+\]
+La \emph{variación total} de $f$ en $[a,b]$ es
+\[
+  V_a^b(f)=\sup\{V(f,P):\,P\text{ partición de }[a,b]\}.
+\]
+Se dice que $f$ es de \emph{variación acotada} si $V_a^b(f)<\infty$.
+\end{definition}
+
+\begin{example}
+\label{ej:monotona-va}
+Toda función monótona en $[a,b]$ es de variación acotada, y $V_a^b(f)=|f(b)-f(a)|$.
+\end{example}
+
+\begin{example}
+\label{ej:lipschitz-va}
+Toda función lipschitziana es de variación acotada.
+\end{example}
+
+\begin{example}
+\label{ej:no-va}
+La función $f(x)=x\sin(1/x)$ para $x\neq 0$, $f(0)=0$, no es de variación acotada en $[0,1]$.
+\end{example}
+
+\section{Funciones monótonas}
+
+\begin{theorem}
+\label{teo:monotona-discontinuidades}
+Toda función monótona $f\colon[a,b]\to\mathbb{R}$ tiene a lo sumo una cantidad numerable de discontinuidades, todas de salto.
+\end{theorem}
+\begin{proof}
+En cada punto de discontinuidad $x$, el salto $f(x^+)-f(x^-)$ es positivo. Como la suma de los saltos no puede exceder $|f(b)-f(a)|$, solo puede haber una cantidad finita de saltos mayores que $1/n$ para cada $n$. La union numerable de conjuntos finitos es numerable.
+\end{proof}
+
+\section{Funciones de variación acotada}
+
+\begin{theorem}[Jordan]
+\label{teo:jordan}
+Una función $f\colon[a,b]\to\mathbb{R}$ es de variación acotada si y solo si puede escribirse como diferencia de dos funciones crecientes: $f=g-h$, con $g,h$ crecientes.
+\end{theorem}
+\begin{proof}
+$(\Rightarrow)$ Definimos $g(x)=V_a^x(f)$ y $h(x)=V_a^x(f)-f(x)$. Se verifica que $g$ es creciente y $h$ también.
+
+$(\Leftarrow)$ Si $f=g-h$, entonces $V_a^b(f)\leq V_a^b(g)+V_a^b(h)=|g(b)-g(a)|+|h(b)-h(a)|<\infty$.
+\end{proof}
+
+\section{Funciones absolutamente continuas}
+
+\begin{definition}
+\label{def:absolutamente-continua}
+Una función $f\colon[a,b]\to\mathbb{R}$ es \emph{absolutamente continua} si para todo $\varepsilon>0$ existe $\delta>0$ tal que, para toda familia finita de intervalos disjuntos $(a_i,b_i)$ con $\sum(b_i-a_i)<\delta$, se tiene $\sum|f(b_i)-f(a_i)|<\varepsilon$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:ac-implica-va}
+Toda función absolutamente continua es de variación acotada.
+\end{proposition}
+
+\section{Derivada puntual y conjuntos de medida cero}
+
+Antes de enunciar los teoremas de derivación de Lebesgue, necesitamos dos nociones que se desarrollan con plenitud en el \cref{ch:teoria-medida}, pero cuyo significado básico puede precisarse aquí mismo.
+
+\begin{definition}
+\label{def:derivada-puntual}
+Sea $f\colon[a,b]\to\mathbb{R}$. Se dice que $f$ es \emph{derivable} en $x_0\in(a,b)$ si existe
+\[
+  f'(x_0)=\lim_{h\to 0}\frac{f(x_0+h)-f(x_0)}{h}.
+\]
+\end{definition}
+
+\begin{definition}
+\label{def:medida-cero-elemental}
+Un conjunto $N\subseteq\mathbb{R}$ tiene \emph{medida cero} (en el sentido de Lebesgue) si para todo $\varepsilon>0$ existe una familia numerable de intervalos abiertos $(I_n)$ tal que $N\subseteq\bigcup_n I_n$ y $\sum_n \ell(I_n)<\varepsilon$, donde $\ell(I_n)$ es la longitud del intervalo.
+\end{definition}
+
+\begin{proposition}
+\label{prop:medida-cero-numerable}
+Todo conjunto numerable tiene medida cero. La unión numerable de conjuntos de medida cero tiene medida cero.
+\end{proposition}
+
+Diremos que una propiedad se cumple \emph{casi en todas partes} (c.e.p.) si se cumple en todo punto salvo quizás en un conjunto de medida cero.
+
+\section{Derivadas casi en todas partes}
+
+\begin{theorem}[Lebesgue]
+\label{teo:lebesgue-derivada}
+Toda función de variación acotada en $[a,b]$ es derivable casi en todas partes y su derivada es integrable (en el sentido de Lebesgue; véase el \cref{ch:teoria-medida}).
+\end{theorem}
+
+Este teorema, profundamente vinculado a la teoría de la medida, muestra que la regularidad de una función no es una propiedad puntual sino ``casi'' global.
+
+\section{Relación entre continuidad absoluta y variación acotada}
+
+\begin{theorem}
+\label{teo:carac-ac}
+Una función $f$ es absolutamente continua en $[a,b]$ si y solo si existe una función integrable $g$ tal que
+\[
+  f(x)=f(a)+\int_a^x g(t)\,dt.
+\]
+En tal caso, $g=f'$ casi en todas partes.
+\end{theorem}
+
+\section{Teorema fundamental del cálculo para funciones absolutamente continuas}
+
+\begin{theorem}
+\label{teo:fundamental-ac}
+Si $f$ es absolutamente continua en $[a,b]$, entonces
+\[
+  f(x)-f(a)=\int_a^x f'(t)\,dt\quad\text{para todo }x\in[a,b].
+\]
+Recíprocamente, si $g$ es integrable, entonces $f(x)=\int_a^x g(t)\,dt$ es absolutamente continua y $f'=g$ casi en todas partes.
+\end{theorem}
+
+\begin{exercise}
+Demuestre que toda función absolutamente continua es uniformemente continua, pero que el recíproco no es cierto (sugerencia: función de Cantor).
+\end{exercise}
+
+\begin{exercise}
+Calcule la variación total de $f(x)=x^2$ en $[0,1]$.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que la composición de una función absolutamente continua con una lipschitziana es absolutamente continua.
+\end{exercise}
+
+\begin{problem}
+Sea $f$ de variación acotada. Demuestre que $f$ es continua si y solo si $x\mapsto V_a^x(f)$ es continua.
+\end{problem}

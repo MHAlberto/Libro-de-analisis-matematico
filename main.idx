@@ -1,0 +1,162 @@
+\indexentry{Espacio métrico}{1}
+\indexentry{Métrica}{1}
+\indexentry{Distancia}{1}
+\indexentry{Desigualdad de Cauchy--Schwarz}{1}
+\indexentry{Métricas equivalentes}{1}
+\indexentry{Subespacio métrico}{1}
+\indexentry{Bola abierta}{1}
+\indexentry{Entorno}{1}
+\indexentry{Clausura}{1}
+\indexentry{Interior}{1}
+\indexentry{Frontera}{1}
+\indexentry{Punto de acumulación}{1}
+\indexentry{Punto aislado}{1}
+\indexentry{Conjunto denso}{1}
+\indexentry{Axiomas de separación}{1}
+\indexentry{Espacio topológico}{11}
+\indexentry{Topología}{11}
+\indexentry{Conjunto abierto}{11}
+\indexentry{Conjunto cerrado}{11}
+\indexentry{Adherencia}{11}
+\indexentry{Base topológica}{11}
+\indexentry{Subbase}{11}
+\indexentry{Sucesión}{15}
+\indexentry{Convergencia}{15}
+\indexentry{Subsucesión}{15}
+\indexentry{Sucesión de Cauchy}{15}
+\indexentry{Límite superior}{15}
+\indexentry{Límite inferior}{15}
+\indexentry{Función continua}{19}
+\indexentry{Continuidad}{19}
+\indexentry{Continuidad secuencial}{19}
+\indexentry{Homeomorfismo}{19}
+\indexentry{Continuidad uniforme}{19}
+\indexentry{Compacidad}{23}
+\indexentry{Cubierta abierta}{23}
+\indexentry{Compacidad secuencial}{23}
+\indexentry{Totalmente acotado}{23}
+\indexentry{Teorema de Heine--Borel}{23}
+\indexentry{Teorema de Bolzano--Weierstrass}{23}
+\indexentry{Punto límite}{23}
+\indexentry{Conexidad}{27}
+\indexentry{Conjunto conexo}{27}
+\indexentry{Conexión por caminos}{27}
+\indexentry{Componente conexa}{27}
+\indexentry{Arco}{27}
+\indexentry{Espacio completo}{29}
+\indexentry{Completación}{29}
+\indexentry{Criterio de Cantor}{29}
+\indexentry{Principio de contracción de Banach}{29}
+\indexentry{Punto fijo}{29}
+\indexentry{Serie}{33}
+\indexentry{Convergencia absoluta}{33}
+\indexentry{Convergencia condicional}{33}
+\indexentry{Criterios de convergencia}{33}
+\indexentry{Serie de potencias}{33}
+\indexentry{Convergencia uniforme}{33}
+\indexentry{Principio de contracción de Banach}{37}
+\indexentry{Categoría de Baire}{37}
+\indexentry{Teorema de Ascoli--Arzelà}{37}
+\indexentry{Teorema de Stone--Weierstrass}{37}
+\indexentry{Teorema de Dini}{37}
+\indexentry{Lema de Urysohn}{37}
+\indexentry{Teorema de Tietze}{37}
+\indexentry{Espacio separable}{41}
+\indexentry{Conjunto denso}{41}
+\indexentry{Espacio de Baire}{41}
+\indexentry{Segunda categoría}{41}
+\indexentry{Equicontinuidad}{45}
+\indexentry{Acotación uniforme}{45}
+\indexentry{Teorema de Ascoli--Arzelà}{45}
+\indexentry{Espacio normado}{45}
+\indexentry{Dualidad}{45}
+\indexentry{Variación total}{49}
+\indexentry{Función de variación acotada}{49}
+\indexentry{Función absolutamente continua}{49}
+\indexentry{Conjunto de medida cero}{49}
+\indexentry{Casi en todas partes}{49}
+\indexentry{Aproximación uniforme}{53}
+\indexentry{Polinomios de Bernstein}{53}
+\indexentry{Teorema de Stone--Weierstrass}{53}
+\indexentry{Función suave}{53}
+\indexentry{Distribución}{57}
+\indexentry{Función de prueba}{57}
+\indexentry{Delta de Dirac}{57}
+\indexentry{Derivada débil}{57}
+\indexentry{Soporte}{57}
+\indexentry{Medida}{61}
+\indexentry{sigma-algebra@$\sigma$-álgebra}{61}
+\indexentry{Medida exterior}{61}
+\indexentry{Conjunto medible}{61}
+\indexentry{Medida de Lebesgue}{61}
+\indexentry{Función medible}{61}
+\indexentry{Integral de Lebesgue}{61}
+\indexentry{Espacio normado}{65}
+\indexentry{Espacio de Banach}{65}
+\indexentry{Espacio de Hilbert}{65}
+\indexentry{Operador lineal}{65}
+\indexentry{Funcional lineal}{65}
+\indexentry{Operador compacto}{65}
+\indexentry{Diferencial de Fréchet}{69}
+\indexentry{Derivada de Fréchet}{69}
+\indexentry{Teorema de la función inversa}{69}
+\indexentry{Regla de la cadena}{69}
+\indexentry{Valor propio}{71}
+\indexentry{Función propia}{71}
+\indexentry{Operador compacto}{71}
+\indexentry{Operador autoadjunto}{71}
+\indexentry{Espectro}{71}
+\indexentry{Descomposición espectral}{71}
+\indexentry{Ecuación diferencial}{73}
+\indexentry{Problema de valor inicial}{73}
+\indexentry{Existencia y unicidad}{73}
+\indexentry{Exponencial de matrices}{73}
+\indexentry{Estabilidad}{73}
+\indexentry{Ecuación en derivadas parciales}{73}
+\indexentry{Espacio topológico}{77}
+\indexentry{Subbase}{77}
+\indexentry{Axiomas de separación}{77}
+\indexentry{Producto de espacios}{77}
+\indexentry{Teorema de Tychonoff}{77}
+\indexentry{Espacio de probabilidad}{81}
+\indexentry{Variable aleatoria}{81}
+\indexentry{Esperanza}{81}
+\indexentry{Convergencia en probabilidad}{81}
+\indexentry{Varianza}{81}
+\indexentry{Leyes de los grandes números}{81}
+\indexentry{Teorema central del límite}{81}
+\indexentry{Conjunto convexo}{85}
+\indexentry{Función convexa}{85}
+\indexentry{Teorema de separación}{85}
+\indexentry{Optimización}{85}
+\indexentry{Punto de silla}{85}
+\indexentry{Conjunto}{87}
+\indexentry{Pertenencia}{87}
+\indexentry{Relación de equivalencia}{87}
+\indexentry{Relación de orden}{87}
+\indexentry{Función}{87}
+\indexentry{Familia}{87}
+\indexentry{Equipotencia}{87}
+\indexentry{Conjunto numerable}{87}
+\indexentry{Cardinalidad}{87}
+\indexentry{Números reales}{95}
+\indexentry{Cortadura de Dedekind}{95}
+\indexentry{Sucesión de Cauchy}{95}
+\indexentry{Supremo}{95}
+\indexentry{Ínfimo}{95}
+\indexentry{Valor absoluto}{95}
+\indexentry{Propiedad arquimediana}{95}
+\indexentry{Densidad de los racionales}{95}
+\indexentry{Número complejo}{101}
+\indexentry{Conjugado}{101}
+\indexentry{Módulo}{101}
+\indexentry{Forma polar}{101}
+\indexentry{Raíz de la unidad}{101}
+\indexentry{Teorema fundamental del álgebra}{101}
+\indexentry{Exponencial compleja}{101}
+\indexentry{Espacio vectorial}{105}
+\indexentry{Norma}{105}
+\indexentry{Producto interno}{105}
+\indexentry{Valor propio}{105}
+\indexentry{Teorema espectral}{105}
+\indexentry{Exponencial de matrices}{105}

@@ -1,0 +1,145 @@
+\chapter{Álgebra lineal: espacios vectoriales y valores propios}
+\label{ap:algebra-lineal}
+\index{Espacio vectorial}\index{Norma}\index{Producto interno}\index{Valor propio}\index{Teorema espectral}\index{Exponencial de matrices}
+
+Este apéndice recoge los conceptos básicos del álgebra lineal finito-dimensional que se utilizan a lo largo del texto: espacios vectoriales, normas, productos internos, valores propios y la exponencial de matrices. Su lectura permite que el libro sea autocontenido en todo lo referente a herramientas matriciales.
+
+\section{Espacios vectoriales y normas}
+
+\begin{definition}
+\label{def:espacio-vectorial-ap}
+Un \emph{espacio vectorial} sobre $\mathbb{R}$ es un conjunto $V$ equipado con dos operaciones ---suma $+\colon V\times V\to V$ y producto por escalares $\cdot\colon\mathbb{R}\times V\to V$--- que satisfacen las propiedades usuales de asociatividad, conmutatividad, elemento neutro, inversos aditivos, y distributividad del producto escalar respecto de la suma en $V$ y en $\mathbb{R}$.
+\end{definition}
+
+Los ejemplos más importantes para este libro son $\mathbb{R}^n$, el espacio $C([a,b])$ de funciones continuas, y los espacios de matrices $M_{m\times n}(\mathbb{R})$.
+
+\begin{definition}
+\label{def:norma-ap}
+Una \emph{norma} sobre un espacio vectorial $V$ es una función $\|\cdot\|\colon V\to\mathbb{R}$ tal que:
+\begin{enumerate}
+  \item[(i)] $\|x\|\geq 0$, con igualdad si y solo si $x=0$;
+  \item[(ii)] $\|\lambda x\|=|\lambda|\,\|x\|$ para todo $\lambda\in\mathbb{R}$, $x\in V$;
+  \item[(iii)] $\|x+y\|\leq\|x\|+\|y\|$ (desigualdad triangular).
+\end{enumerate}
+\end{definition}
+
+\begin{example}[Normas en $\mathbb{R}^n$]
+Las normas más usuales son:
+\[
+  \|x\|_1=\sum_{i=1}^{n}|x_i|,\qquad
+  \|x\|_2=\Bigl(\sum_{i=1}^{n}x_i^2\Bigr)^{1/2},\qquad
+  \|x\|_\infty=\max_{1\leq i\leq n}|x_i|.
+\]
+\end{example}
+
+\begin{theorem}[Equivalencia de normas]
+\label{teo:equivalencia-normas-ap}
+En $\mathbb{R}^n$ (y en cualquier espacio de dimensión finita), todas las normas son equivalentes: si $\|\cdot\|_a$ y $\|\cdot\|_b$ son normas, existen constantes $c,C>0$ tales que $c\|x\|_a\leq\|x\|_b\leq C\|x\|_a$ para todo $x$.
+\end{theorem}
+
+\section{Producto interno}
+
+\begin{definition}
+\label{def:producto-interno-ap}
+Un \emph{producto interno} sobre un espacio vectorial real $V$ es una aplicación $\langle\cdot,\cdot\rangle\colon V\times V\to\mathbb{R}$ bilineal, simétrica y definida positiva. Es decir:
+\begin{enumerate}
+  \item[(i)] $\langle x,x\rangle\geq 0$ y $\langle x,x\rangle=0\Leftrightarrow x=0$;
+  \item[(ii)] $\langle x,y\rangle=\langle y,x\rangle$;
+  \item[(iii)] $\langle x,\lambda y+\mu z\rangle=\lambda\langle x,y\rangle+\mu\langle x,z\rangle$.
+\end{enumerate}
+La \emph{norma inducida} es $\|x\|=\sqrt{\langle x,x\rangle}$.
+\end{definition}
+
+\begin{theorem}[Cauchy--Schwarz]
+\label{teo:cauchy-schwarz-ap}
+Para cualesquiera $x,y\in V$,
+\[
+  |\langle x,y\rangle|\leq\|x\|\,\|y\|.
+\]
+La igualdad se da si y solo si $x$ e $y$ son linealmente dependientes.
+\end{theorem}
+\begin{proof}
+Si $y=0$ el resultado es trivial. Para $y\neq 0$, sea $\lambda=\langle x,y\rangle/\langle y,y\rangle$. Entonces
+\[
+  0\leq\langle x-\lambda y,x-\lambda y\rangle=\|x\|^2-\frac{\langle x,y\rangle^2}{\|y\|^2},
+\]
+de donde se deduce el teorema.
+\end{proof}
+
+\begin{corollary}
+La norma inducida por un producto interno satisface la desigualdad triangular.
+\end{corollary}
+
+\section{Valores propios y vectores propios}
+
+\begin{definition}
+\label{def:valor-propio-ap}
+Sea $A\in M_n(\mathbb{R})$. Un escalar $\lambda\in\mathbb{C}$ es un \emph{valor propio} de $A$ si existe $v\neq 0$ tal que $Av=\lambda v$. El vector $v$ se denomina \emph{vector propio} asociado a $\lambda$. El polinomio $p_A(\lambda)=\det(A-\lambda I)$ se llama \emph{polinomio característico} de $A$; sus raíces son exactamente los valores propios.
+\end{definition}
+
+\begin{theorem}
+Los valores propios de una matriz simétrica real $A=A^{\top}$ son todos reales. Más aún, existe una base ortonormal de $\mathbb{R}^n$ formada por vectores propios de $A$.
+\end{theorem}
+\begin{proof}[Bosquejo]
+Si $Av=\lambda v$ con $v\neq 0$, tomando conjugados y usando $A=\overline{A}$ se obtiene $\lambda=\overline{\lambda}$. La existencia de la base ortonormal se prueba por inducción sobre $n$.
+\end{proof}
+
+\begin{theorem}[Descomposición espectral]
+\label{teo:espectral-ap}
+Si $A$ es simétrica real, entonces $A=QDQ^{\top}$, donde $Q$ es una matriz ortogonal ($Q^{\top}Q=I$) y $D$ es diagonal con los valores propios de $A$ en la diagonal.
+\end{theorem}
+
+\begin{definition}
+Se dice que $A$ es \emph{definida positiva} si $\langle Ax,x\rangle>0$ para todo $x\neq 0$. Equivalentemente, todos sus valores propios son estrictamente positivos.
+\end{definition}
+
+\section{Exponencial de matrices}
+
+\begin{definition}
+\label{def:exponencial-matriz-ap}
+Para $A\in M_n(\mathbb{R})$, la \emph{exponencial de matriz} se define mediante la serie
+\[
+  e^{A}=\sum_{k=0}^{\infty}\frac{A^k}{k!},
+\]
+que converge absolutamente en la norma operador $\|A\|=\sup_{\|x\|=1}\|Ax\|$.
+\end{definition}
+
+\begin{theorem}
+\label{teo:prop-exponencial-ap}
+\begin{enumerate}
+  \item[(i)] $\frac{d}{dt}e^{tA}=A\,e^{tA}=e^{tA}A$.
+  \item[(ii)] Si $A$ y $B$ conmutan ($AB=BA$), entonces $e^{A+B}=e^{A}e^{B}$.
+  \item[(iii)] $e^{A}$ es invertible y $(e^{A})^{-1}=e^{-A}$.
+  \item[(iv)] Si $A$ es simétrica, $\|e^{A}\|=e^{\lambda_{\max}}$, donde $\lambda_{\max}$ es el mayor valor propio de $A$.
+\end{enumerate}
+\end{theorem}
+
+\begin{example}
+Si $A$ es diagonalizable, $A=PDP^{-1}$, entonces $e^{A}=Pe^{D}P^{-1}$, donde $e^{D}$ es la matriz diagonal con $e^{\lambda_i}$ en la posición $i$-ésima.
+\end{example}
+
+\section{Ejercicios}
+
+\begin{exercise}
+Demuestre que si $A$ es ortogonal ($A^{\top}A=I$), todos sus valores propios complejos tienen módulo $1$.
+\end{exercise}
+
+\begin{exercise}
+Calcule $e^{tA}$ para $A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$. Verifique que $e^{tA}$ es una matriz de rotación.
+\end{exercise}
+
+\begin{exercise}
+Sea $A$ simétrica. Demuestre que $A$ es definida positiva si y solo si todos sus menores principales son positivos (criterio de Sylvester).
+\end{exercise}
+
+\begin{exercise}
+Demuestre que toda norma en $\mathbb{R}^n$ es equivalente a la norma euclidiana. Sugerencia: use compacidad de la esfera unidad.
+\end{exercise}
+
+\begin{exercise}
+Sea $A$ una matriz $n\times n$ con $n$ valores propios distintos. Demuestre que $A$ es diagonalizable.
+\end{exercise}
+
+\begin{exercise}
+Use la descomposición espectral para probar que si $A$ es simétrica, entonces $\|A\|_2=\max_i|\lambda_i|$, donde $\|\cdot\|_2$ es la norma operador inducida por la norma euclidiana.
+\end{exercise}

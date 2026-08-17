@@ -1,0 +1,100 @@
+\chapter{Aproximación de funciones}
+\label{ch:aproximacion}
+\index{Aproximación uniforme}\index{Polinomios de Bernstein}\index{Teorema de Stone--Weierstrass}\index{Función suave}
+
+\section{Aproximación uniforme}
+
+Una de las preguntas centrales del análisis matemático es hasta qué punto una función complicada puede sustituirse por una más sencilla sin cometer un error mayor que una tolerancia prescrita. Karl Weierstrass, en 1885, respondió esta pregunta de manera definitiva para funciones continuas: todo función continua en un intervalo compacto puede aproximarse uniformemente por polinomios. Este resultado, que parecía contradecir la existencia de funciones continuas no derivables, mostró que la ``irregularidad'' no es un obstáculo para la aproximación polinomial, sino solo para la representación en serie de Taylor.
+
+\begin{theorem}[Weierstrass]
+\label{teo:weierstrass-aprox}
+Para toda $f\in C([a,b])$ y todo $\varepsilon>0$, existe un polinomio $p$ tal que $\sup_{x\in[a,b]}|f(x)-p(x)|<\varepsilon$.
+\end{theorem}
+
+\section{Polinomios de Bernstein}
+
+Sergei Bernstein, en 1912, proporcionó una prueba constructiva del teorema de Weierstrass mediante polinomios que hoy llevan su nombre. A diferencia de la interpolación de Lagrange, los polinomios de Bernstein aproximan globalmente y preservan propiedades cualitativas como la monotonía y la convexidad.
+
+\begin{definition}
+\label{def:bernstein}
+Sea $f\in C([0,1])$. El \emph{polinomio de Bernstein} de grado $n$ asociado a $f$ es
+\[
+  B_n(f,x)=\sum_{k=0}^{n}f\Bigl(\frac{k}{n}\Bigr)\binom{n}{k}x^k(1-x)^{n-k}.
+\]
+\end{definition}
+
+\begin{theorem}[Bernstein]
+\label{teo:bernstein}
+La sucesión $B_n(f,\cdot)$ converge uniformemente a $f$ en $[0,1]$.
+\end{theorem}
+\begin{proof}[Bosquejo analítico]
+Sean $r_k(x)=\binom{n}{k}x^k(1-x)^{n-k}$ los coeficientes binomiales. Se verifica directamente que $\sum_{k=0}^n r_k(x)=1$, $\sum_{k=0}^n (k/n)r_k(x)=x$ y $\sum_{k=0}^n (k/n-x)^2 r_k(x)=x(1-x)/n\leq 1/(4n)$. Dado $\varepsilon>0$, sea $\delta>0$ tal que $|f(x)-f(y)|<\varepsilon$ si $|x-y|<\delta$ (continuidad uniforme). Partiendo la suma en $|k/n-x|<\delta$ y $|k/n-x|\geq\delta$ y usando la estimación de varianza $\sum (k/n-x)^2 r_k(x)=x(1-x)/n$, se obtiene
+\[
+  |B_n(f,x)-f(x)|\leq\varepsilon+2\|f\|_\infty\,\frac{x(1-x)}{n\delta^2}\leq\varepsilon+\frac{\|f\|_\infty}{2n\delta^2},
+\]
+lo cual es menor que $2\varepsilon$ para $n$ suficientemente grande, independientemente de $x$.
+\end{proof}
+
+\section{Teorema de Stone--Weierstrass}
+
+El teorema de Weierstrass fue generalizado espectacularmente por Marshall Stone en 1937. Stone observó que la propiedad crucial de los polinomios no era su forma algebraica, sino su capacidad de separar puntos.
+
+\begin{theorem}[Stone--Weierstrass]
+\label{teo:stone-weierstrass}
+Sea $X$ un espacio compacto Hausdorff y $\mathcal{A}\subseteq C(X,\mathbb{R})$ una subálgebra que:
+\begin{enumerate}
+  \item[(i)] separa puntos: para $x\neq y$ existe $f\in\mathcal{A}$ con $f(x)\neq f(y)$;
+  \item[(ii)] contiene las constantes.
+\end{enumerate}
+Entonces $\mathcal{A}$ es densa en $C(X)$ con la métrica del supremo.
+\end{theorem}
+\begin{proof}[Bosquejo]
+La demostración procede en tres etapas: (1) toda subálgebra cerrada es un retículo (cerrada bajo máximos y mínimos); (2) un retículo que separa puntos y contiene constantes es denso (por el teorema de Kakutani--Krein); (3) la clausura de $\mathcal{A}$ satisface estas condiciones.
+\end{proof}
+
+\begin{corollary}
+\label{cor:stone-complejo}
+Si $\mathcal{A}\subseteq C(X,\mathbb{C})$ es una subálgebra cerrada bajo conjugación, separa puntos y contiene constantes, entonces es densa.
+\end{corollary}
+
+\section{Funciones suaves}
+
+\begin{theorem}
+\label{teo:aprox-cinfinito}
+Las funciones $C^{\infty}$ con soporte compacto son densas en $L^p(\mathbb{R}^n)$ para $1\leq p<\infty$.
+\end{theorem}
+
+\section{Densidad en espacios de funciones}
+
+\begin{theorem}
+\label{teo:densidad-lp}
+Para $1\leq p<\infty$, los polinomios trigonométricos son densos en $L^p([0,2\pi])$.
+\end{theorem}
+
+\section{Aplicaciones}
+
+\begin{example}[Métodos numéricos]
+\label{ej:numericos}
+La aproximación polinomial por trozos (splines) y los elementos finitos se basan en variantes del teorema de Weierstrass adaptadas a restricciones locales.
+\end{example}
+
+\begin{example}[Teoría de representación]
+\label{ej:representacion}
+En el análisis armónico abstracto, el teorema de Stone--Weierstrass garantiza que las funciones continuas sobre un grupo compacto pueden aproximarse por representaciones irreducibles (teorema de Peter--Weyl).
+\end{example}
+
+\begin{exercise}
+Calcule el polinomio de Bernstein de grado 2 para $f(x)=x^2$ en $[0,1]$.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que las funciones lipschitzianas son densas en $C([a,b])$.
+\end{exercise}
+
+\begin{exercise}
+Sea $X=\{1,2\}$ con la topología discreta. Describa explícitamente $C(X)$ y verifique el teorema de Stone--Weierstrass para este caso.
+\end{exercise}
+
+\begin{problem}
+Use el teorema de Stone--Weierstrass para probar que las funciones trigonométricas $1,\cos x,\sin x,\cos 2x,\sin 2x,\dots$ generan un conjunto denso en $C([0,2\pi])$.
+\end{problem}

@@ -1,0 +1,165 @@
+\chapter{Espacios topológicos}
+\label{ch:topologia}
+\index{Espacio topológico}\index{Topología}\index{Conjunto abierto}\index{Conjunto cerrado}\index{Adherencia}\index{Base topológica}\index{Subbase}
+
+\section{Definición y ejemplos básicos}
+
+Todo espacio métrico induce de manera natural una topología, cuyos
+conjuntos abiertos son generados por las bolas de la \cref{def:metrica} del
+capítulo anterior (véase \cref{ej:euclidea}). Sin embargo, la noción de
+topología es más general y permite estudiar estructuras que no provienen de
+ninguna métrica.
+
+\begin{definition}\label{def:topologia}
+Una \emph{topología} sobre un conjunto no vacío $X$ es una familia
+$\tau\subseteq\mathcal{P}(X)$ que verifica:
+\begin{enumerate}
+  \item[(T1)] $\emptyset\in\tau$ y $X\in\tau$;
+  \item[(T2)] la unión arbitraria de elementos de $\tau$ pertenece a $\tau$;
+  \item[(T3)] la intersección finita de elementos de $\tau$ pertenece a $\tau$.
+\end{enumerate}
+Al par $(X,\tau)$ se le llama \emph{espacio topológico}, y los elementos de
+$\tau$ son los \emph{conjuntos abiertos}.
+\end{definition}
+
+\begin{example}\label{ej:top-trivial}
+La familia $\tau=\{\emptyset,X\}$ es una topología sobre $X$, llamada la
+\emph{topología trivial} (o \emph{indiscreta}).
+\end{example}
+
+\begin{example}\label{ej:top-discreta}
+La familia $\tau=\mathcal{P}(X)$ es una topología, llamada la \emph{topología
+discreta}. Todo subconjunto es abierto (y también cerrado).
+\end{example}
+
+\begin{example}\label{ej:top-cofinita}
+Sea $X$ infinito. La colección
+\[
+  \tau=\{\,U\subseteq X : U=\emptyset\text{ o }X\setminus U\text{ es finito}\,\}
+\]
+es la \emph{topología cofinita}. La condición (T2) se sigue de que la
+intersección de una familia arbitraria de conjuntos finitos es finita; (T3)
+de que la unión finita de finitos es finita.
+\end{example}
+
+\section{Conjuntos abiertos y cerrados}
+
+\begin{definition}\label{def:abierto-metrico}
+En un espacio métrico $(X,d)$, un subconjunto $U\subseteq X$ es \emph{abierto}
+si para cada $x\in U$ existe $r>0$ tal que $B(x,r)\subseteq U$.
+\end{definition}
+
+La familia de los conjuntos abiertos en un espacio métrico constituye una
+topología, denominada la \emph{topología métrica}. Así pues, todo espacio
+métrico es un espacio topológico. El recíproco no es cierto: existen espacios
+topológicos cuya topología no puede definirse mediante ninguna métrica
+(\emph{espacios no metrizables}).
+
+\begin{definition}\label{def:cerrado-top}
+Un subconjunto $F\subseteq X$ de un espacio topológico es \emph{cerrado} si
+su complementario $X\setminus F$ es abierto.
+\end{definition}
+
+\begin{proposition}\label{prop:prop-cerrados-top}
+En un espacio topológico $(X,\tau)$ se cumple:
+\begin{enumerate}
+  \item[(i)] $\emptyset$ y $X$ son cerrados;
+  \item[(ii)] la intersección arbitraria de cerrados es cerrada;
+  \item[(iii)] la unión finita de cerrados es cerrada.
+\end{enumerate}
+\end{proposition}
+
+\section{Interior, adherencia y frontera}
+
+\begin{definition}\label{def:interior-top}
+El \emph{interior} de un conjunto $A\subseteq X$ es el mayor abierto contenido
+en $A$, esto es,
+\[
+  \operatorname{int}(A)=\bigcup\{\,U\in\tau : U\subseteq A\,\}.
+\]
+\end{definition}
+
+\begin{definition}\label{def:adherencia}
+La \emph{adherencia} (o \emph{clausura}) de $A\subseteq X$ es el menor cerrado
+que contiene a $A$, esto es,
+\[
+  \overline{A}=\bigcap\{\,F\subseteq X : F\text{ cerrado y }A\subseteq F\,\}.
+\]
+\end{definition}
+
+\begin{definition}\label{def:frontera-top}
+La \emph{frontera} (o \emph{borde}) de $A\subseteq X$ se define por
+\[
+  \partial A = \overline{A}\setminus\operatorname{int}(A).
+\]
+\end{definition}
+
+\begin{proposition}\label{prop:carac-adherencia}
+Un punto $x\in X$ pertenece a $\overline{A}$ si y solo si todo abierto que
+contiene a $x$ intersecta a $A$.
+\end{proposition}
+
+\section{Bases y subbases}
+
+\begin{definition}\label{def:base-top}
+Una familia $\mathcal{B}\subseteq\tau$ es una \emph{base} de la topología
+$\tau$ si todo abierto no vacío es unión de elementos de $\mathcal{B}$.
+\end{definition}
+
+\begin{example}\label{ej:base-metrica}
+En un espacio métrico, la familia de todas las bolas abiertas
+$\{B(x,r):x\in X,\,r>0\}$ es una base de la topología métrica.
+\end{example}
+
+\begin{definition}\label{def:subbase-top}
+Una familia $\mathcal{S}\subseteq\tau$ es una \emph{subbase} de $\tau$ si la
+colección de intersecciones finitas de elementos de $\mathcal{S}$ forma una base.
+\end{definition}
+
+\section{Conexidad}
+
+\begin{definition}\label{def:conexo-top}
+Un espacio topológico $(X,\tau)$ es \emph{conexo} si los únicos subconjuntos
+abiertos y cerrados simultáneamente son $\emptyset$ y $X$.
+\end{definition}
+
+\begin{proposition}\label{prop:r-conexo}
+El espacio $\mathbb{R}$ con la topología usual es conexo.
+\end{proposition}
+
+\begin{proposition}\label{prop:imagen-conexa-top}
+La imagen continua de un espacio conexo es conexa. Es decir, si $X$ es conexo
+y $f\colon X\to Y$ es continua, entonces $f(X)$ es conexo en $Y$.
+\end{proposition}
+
+\begin{corollary}[Teorema del valor intermedio]\label{cor:valor-intermedio}
+Sea $f\colon[a,b]\to\mathbb{R}$ continua. Si $c$ es un valor comprendido entre
+$f(a)$ y $f(b)$, entonces existe $x\in[a,b]$ tal que $f(x)=c$.
+\end{corollary}
+
+\section{Ejercicios}
+
+\begin{exercise}
+Demuestre que la topología cofinita sobre $\mathbb{N}$ no es metrizable.
+Sugerencia: estudie las sucesiones convergentes en esta topología.
+\end{exercise}
+
+\begin{exercise}
+Sea $A\subseteq X$ en un espacio topológico. Pruebe que
+$\operatorname{int}(A)=X\setminus\overline{X\setminus A}$.
+\end{exercise}
+
+\begin{exercise}
+Muestre que si $X$ es un espacio métrico con la métrica discreta, entonces la
+topología inducida es la discreta. Determine la base mínima de esta topología.
+\end{exercise}
+
+\begin{exercise}
+Sea $f\colon X\to Y$ continua y suprayectiva. Si $X$ es conexo, demuestre que
+$Y$ es conexo. Dé un ejemplo en el que $Y$ sea conexo pero $X$ no lo sea.
+\end{exercise}
+
+\begin{problem}
+Caracterice todos los subconjuntos conexos de $\mathbb{Q}$ con la topología
+heredada de $\mathbb{R}$.
+\end{problem}

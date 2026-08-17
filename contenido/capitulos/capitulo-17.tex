@@ -1,0 +1,101 @@
+\chapter{Diferenciación en espacios normados}
+\label{ch:diferenciacion}
+\index{Diferencial de Fréchet}\index{Derivada de Fréchet}\index{Teorema de la función inversa}\index{Regla de la cadena}
+
+\section{El diferencial de Fréchet}
+
+La noción de derivada se extiende de manera natural del cálculo en una variable
+al contexto de espacios normados. La idea central sigue siendo la aproximación
+lineal local de una función.
+
+\begin{definition}\label{def:frechet}
+Sean $E$ y $F$ espacios normados, $U\subseteq E$ abierto y $f\colon U\to F$.
+Se dice que $f$ es \emph{diferenciable} (en el sentido de Fréchet) en
+$x_0\in U$ si existe una aplicación lineal continua $T\colon E\to F$ tal que
+\begin{equation}\label{eq:frechet}
+  \lim_{h\to 0}\frac{\|f(x_0+h)-f(x_0)-T(h)\|}{\|h\|}=0.
+\end{equation}
+En tal caso, $T$ es única y se denomina \emph{diferencial} de $f$ en $x_0$,
+notada $Df(x_0)$ o $f'(x_0)$.
+\end{definition}
+
+\begin{remark}
+Cuando $E=F=\mathbb{R}$, la definición anterior coincide con la derivada usual:
+$T(h)=f'(x_0)\,h$.
+\end{remark}
+
+\begin{example}\label{ej:derivada-lineal}
+Si $f\colon E\to F$ es lineal y continua, entonces $f$ es diferenciable en
+todo punto y $Df(x)=f$ para todo $x\in E$.
+\end{example}
+
+\begin{example}\label{ej:derivada-bilineal}
+Sea $b\colon E_1\times E_2\to F$ una aplicación bilineal continua. Entonces $b$
+es diferenciable en todo punto y su diferencial está dada por
+\[
+  Db(x_1,x_2)(h_1,h_2)=b(x_1,h_2)+b(h_1,x_2).
+\]
+\end{example}
+
+\section{Reglas de diferenciación}
+
+\begin{proposition}[Regla de la cadena]\label{prop:cadena}
+Sean $U\subseteq E$ abierto, $V\subseteq F$ abierto, $f\colon U\to V$
+diferenciable en $x_0$ y $g\colon V\to G$ diferenciable en $f(x_0)$. Entonces
+$g\circ f$ es diferenciable en $x_0$ y
+\begin{equation}\label{eq:cadena}
+  D(g\circ f)(x_0)=Dg(f(x_0))\circ Df(x_0).
+\end{equation}
+\end{proposition}
+
+\begin{theorem}[del valor medio]\label{teo:valor-medio}
+Sea $f\colon U\to F$ diferenciable en el segmento $[x,y]\subseteq U$. Entonces
+\begin{equation}\label{eq:valor-medio}
+  \|f(y)-f(x)\|\leq\sup_{z\in[x,y]}\|Df(z)\|\,\|y-x\|.
+\end{equation}
+\end{theorem}
+
+\section{El teorema de la función inversa}
+
+\begin{theorem}[de la función inversa]\label{teo:inversa}
+Sea $f\colon U\subseteq E\to F$ de clase $C^1$ (es decir, continuamente
+diferenciable) y sea $x_0\in U$ tal que $Df(x_0)$ es un isomorfismo lineal
+sobreyectivo. Entonces existen entornos abiertos $V\subseteq U$ de $x_0$ y
+$W\subseteq F$ de $f(x_0)$ tales que $f\colon V\to W$ es biyectiva y su
+inversa $f^{-1}\colon W\to V$ es de clase $C^1$. Además,
+\begin{equation}\label{eq:inversa}
+  D(f^{-1})(f(x_0))=\bigl(Df(x_0)\bigr)^{-1}.
+\end{equation}
+\end{theorem}
+
+Este teorema constituye uno de los pilares del cálculo diferencial en varias
+variables y en dimensiones infinitas, pues garantiza que la linealización local
+de una función controla su comportamiento local no lineal siempre que la
+linealización sea invertible.
+
+\section{Ejercicios}
+
+\begin{exercise}
+Calcule el diferencial de Fréchet de la función $f\colon\mathbb{R}^2\to\mathbb{R}$
+definida por $f(x,y)=x^2+xy+y^2$ en un punto genérico $(x_0,y_0)$.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que si $f$ es diferenciable en $x_0$, entonces $f$ es continua en
+$x_0$.
+\end{exercise}
+
+\begin{exercise}
+Sea $f\colon M_n(\mathbb{R})\to M_n(\mathbb{R})$ dada por $f(A)=A^2$. Calcule
+$Df(A)(H)$ para matrices $A,H\in M_n(\mathbb{R})$.
+\end{exercise}
+
+\begin{exercise}
+Use el \cref{teo:inversa} para probar que existe un entorno de la matriz
+identidad $I$ en $M_n(\mathbb{R})$ en el cual toda matriz posee raíz cuadrada.
+\end{exercise}
+
+\begin{problem}
+Formule y demuestre un teorema de la función implícita en espacios de Banach
+usando el \cref{teo:inversa} como herramienta principal.
+\end{problem}

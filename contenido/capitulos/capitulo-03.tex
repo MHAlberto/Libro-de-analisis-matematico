@@ -1,0 +1,134 @@
+\chapter{Sucesiones}
+\label{ch:sucesiones}
+\index{Sucesión}\index{Convergencia}\index{Subsucesión}\index{Sucesión de Cauchy}\index{Límite superior}\index{Límite inferior}
+
+\section{Convergencia}
+
+La noción de sucesión convergente es quizá el ejemplo más claro de cómo el rigor del siglo~XIX transformó una intuición milenaria en una definición operativa. Los griegos ya manejaban procesos de aproximación sucesiva; Newton y Leibniz las usaron extensamente; pero fue Augustin-Louis Cauchy, en su \emph{Cours d'Analyse} de 1821, quien formuló la primera definición que se aproxima a la moderna. Sin embargo, la versión definitiva, con la cuantificación explícita sobre $\varepsilon$ y $N$, se debe a Karl Weierstrass y sus lecciones en Berlín a partir de 1861.
+
+\begin{definition}
+\label{def:convergencia}
+Sea $(X,d)$ un espacio métrico. Una sucesión $(x_n)_{n\in\mathbb{N}}$ en $X$ \emph{converge} a $x\in X$, denotado $x_n\to x$, si
+\begin{equation}\label{eq:convergencia}
+  \forall\varepsilon>0\ \exists N\in\mathbb{N}\ \forall n\geq N:\quad d(x_n,x)<\varepsilon.
+\end{equation}
+En tal caso, $x$ es el \emph{límite} de $(x_n)$.
+\end{definition}
+
+\begin{theorem}[Unicidad del límite]
+\label{teo:unicidad-limite}
+En un espacio métrico, el límite de una sucesión convergente, si existe, es único.
+\end{theorem}
+\begin{proof}
+Supongamos $x_n\to x$ y $x_n\to y$. Para todo $\varepsilon>0$, existen $N_1,N_2$ tales que $d(x_n,x)<\varepsilon/2$ para $n\geq N_1$ y $d(x_n,y)<\varepsilon/2$ para $n\geq N_2$. Tomando $n\geq\max\{N_1,N_2\}$, la desigualdad triangular da
+\[
+  d(x,y)\leq d(x,x_n)+d(x_n,y)<\varepsilon.
+\]
+Como $\varepsilon>0$ es arbitrario, $d(x,y)=0$, luego $x=y$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:convergencia-componentes}
+En $\mathbb{R}^n$ con la métrica euclidiana, $x^{(k)}\to x$ si y solo si cada coordenada converge: $x^{(k)}_i\to x_i$ para $i=1,\dots,n$.
+\end{proposition}
+
+\section{Subsucesiones}
+
+\begin{definition}
+\label{def:subsucesion}
+Una \emph{subsucesión} de $(x_n)$ es una sucesión de la forma $(x_{n_k})_{k\in\mathbb{N}}$ donde $(n_k)$ es una sucesión estrictamente creciente de índices.
+\end{definition}
+
+\begin{proposition}
+\label{prop:limite-subsucesion}
+Si $x_n\to x$, entonces toda subsucesión de $(x_n)$ converge a $x$.
+\end{proposition}
+
+\begin{theorem}[Bolzano--Weierstrass en $\mathbb{R}^n$]
+\label{teo:bw-rn}
+Toda sucesión acotada en $\mathbb{R}^n$ posee una subsucesión convergente.
+\end{theorem}
+\begin{proof}[Bosquejo]
+Por inducción sobre la dimensión. En $\mathbb{R}$, una sucesión acotada posee una subsucesión monótona (teorema de Weierstrass), la cual converge por completitud. En $\mathbb{R}^n$, se extrae primero una subsucesión convergente en la primera coordenada, luego de esta una subsucesión convergente en la segunda, y así sucesivamente.
+\end{proof}
+
+\section{Sucesiones de Cauchy}
+
+\begin{definition}
+\label{def:cauchy}
+Una sucesión $(x_n)$ en $(X,d)$ es de \emph{Cauchy} si
+\begin{equation}\label{eq:cauchy}
+  \forall\varepsilon>0\ \exists N\in\mathbb{N}\ \forall m,n\geq N:\quad d(x_m,x_n)<\varepsilon.
+\end{equation}
+\end{definition}
+
+\begin{proposition}
+\label{prop:convergente-cauchy}
+Toda sucesión convergente en un espacio métrico es de Cauchy.
+\end{proposition}
+\begin{proof}
+Si $x_n\to x$, dado $\varepsilon>0$ existe $N$ tal que $d(x_n,x)<\varepsilon/2$ para $n\geq N$. Entonces para $m,n\geq N$,
+\[
+  d(x_m,x_n)\leq d(x_m,x)+d(x,x_n)<\varepsilon.
+\]
+\end{proof}
+
+El recíproco del \cref{prop:convergente-cauchy} no es cierto en general. La sucesión de aproximaciones racionales de $\sqrt{2}$ es de Cauchy en $\mathbb{Q}$ pero no converge en $\mathbb{Q}$. Los espacios donde sí vale el recíproso son precisamente los \emph{completos}, estudiados en el \cref{ch:completitud}.
+
+\section{Límite superior e inferior}
+
+\begin{definition}
+\label{def:limsup-liminf}
+Sea $(a_n)$ una sucesión acotada en $\mathbb{R}$. Se definen:
+\[
+  \limsup_{n\to\infty} a_n=\lim_{n\to\infty}\sup_{k\geq n}a_k,\qquad
+  \liminf_{n\to\infty} a_n=\lim_{n\to\infty}\inf_{k\geq n}a_k.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:limsup-liminf-carac}
+\begin{enumerate}
+  \item[(i)] $\liminf a_n\leq\limsup a_n$.
+  \item[(ii)] $a_n\to L$ si y solo si $\liminf a_n=\limsup a_n=L$.
+\end{enumerate}
+\end{proposition}
+
+\section{Criterios de convergencia}
+
+\begin{theorem}[Criterio de comparación]
+\label{teo:comparacion-sucesiones}
+Sean $(a_n)$, $(b_n)$ sucesiones en $\mathbb{R}$ con $0\leq a_n\leq b_n$ para todo $n$. Si $b_n\to 0$, entonces $a_n\to 0$.
+\end{theorem}
+
+\begin{theorem}[Criterio de la razón]
+\label{teo:cociente}
+Sea $(a_n)$ una sucesión en $\mathbb{R}$ tal que $\lim_{n\to\infty}|a_{n+1}/a_n|=L$. Si $L<1$, entonces $a_n\to 0$.
+\end{theorem}
+
+\begin{theorem}[Criterio de Cauchy para sucesiones reales]
+\label{teo:cauchy-reales}
+Una sucesión de números reales converge si y solo si es de Cauchy.
+\end{theorem}
+\begin{proof}
+La implicación directa es el \cref{prop:convergente-cauchy}. Para el recíproco, sea $(a_n)$ de Cauchy. La sucesión está acotada, luego por Bolzano--Weierstrass posee una subsucesión convergente $a_{n_k}\to L$. Dado $\varepsilon>0$, sea $N$ tal que $|a_m-a_n|<\varepsilon/2$ para $m,n\geq N$, y $K$ tal que $n_K\geq N$ y $|a_{n_K}-L|<\varepsilon/2$. Entonces para $n\geq N$,
+\[
+  |a_n-L|\leq |a_n-a_{n_K}|+|a_{n_K}-L|<\varepsilon.
+\]
+\end{proof}
+
+\begin{exercise}
+Demuestre que una sucesión de Cauchy está acotada.
+\end{exercise}
+
+\begin{exercise}
+Sea $(x_n)$ una sucesión en un espacio métrico tal que $\sum_{n=1}^{\infty}d(x_n,x_{n+1})<\infty$. Pruebe que $(x_n)$ es de Cauchy.
+\end{exercise}
+
+\begin{exercise}
+Calcule $\limsup$ y $\liminf$ de la sucesión $a_n=(1+(-1)^n)n/(n+1)$.
+\end{exercise}
+
+\begin{problem}
+Sea $(X,d)$ un espacio métrico. Una sucesión $(x_n)$ se dice \emph{contractiva} si existe $c\in[0,1)$ tal que $d(x_{n+1},x_n)\leq c\,d(x_n,x_{n-1})$ para todo $n\geq 2$. Demuestre que toda sucesión contractiva es de Cauchy y que, si $X$ es completo, converge.
+\end{problem}

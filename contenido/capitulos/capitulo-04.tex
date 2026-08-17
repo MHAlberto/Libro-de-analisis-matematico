@@ -1,0 +1,98 @@
+\chapter{Funciones continuas}
+\label{ch:funciones-continuas}
+\index{Función continua}\index{Continuidad}\index{Continuidad secuencial}\index{Homeomorfismo}\index{Continuidad uniforme}
+
+\section{Continuidad}
+
+La continuidad es uno de los conceptos más fecundos de toda la matemática, pero también uno de los que más tardó en alcanzar su forma definitiva. Euler, en el siglo~XVIII, la identificaba informalmente con la posibilidad de trazar la gráfica de una función ``sin levantar el lápiz del papel''. Esta imagen geométrica, aunque intuitiva, no permite demostrar teoremas generales. La definición moderna, debida a Bolzano (1817) y Weierstrass (1861), desplaza el énfasis de la curva a la proximidad entre puntos: una función es continua si puntos cercanos en el dominio se aplican en puntos cercanos en el codominio.
+
+\begin{definition}
+\label{def:continuidad}
+Sean $(X,d_X)$ e $(Y,d_Y)$ espacios métricos. Una función $f\colon X\to Y$ es \emph{continua} en $x_0\in X$ si
+\begin{equation}\label{eq:continuidad}
+  \forall\varepsilon>0\ \exists\delta>0:\quad d_X(x,x_0)<\delta\Rightarrow d_Y(f(x),f(x_0))<\varepsilon.
+\end{equation}
+Se dice que $f$ es continua en $X$ cuando lo es en todo punto.
+\end{definition}
+
+\begin{example}
+\label{ej:polinomios-continuos}
+Todo polinomio $p\colon\mathbb{R}\to\mathbb{R}$ es continuo. La función $f(x)=1/x$ es continua en $\mathbb{R}\setminus\{0\}$ pero no admite extensión continua a $\mathbb{R}$.
+\end{example}
+
+\section{Continuidad secuencial}
+
+\begin{theorem}[Caracterización secuencial]
+\label{teo:continuidad-secuencial}
+$f\colon X\to Y$ es continua en $x_0$ si y solo si para toda sucesión $x_n\to x_0$ en $X$ se tiene $f(x_n)\to f(x_0)$ en $Y$.
+\end{theorem}
+\begin{proof}
+$(\Rightarrow)$ Dado $\varepsilon>0$, sea $\delta>0$ como en \eqref{eq:continuidad}. Si $x_n\to x_0$, existe $N$ tal que $d_X(x_n,x_0)<\delta$ para $n\geq N$, luego $d_Y(f(x_n),f(x_0))<\varepsilon$.
+
+$(\Leftarrow)$ Si $f$ no fuera continua en $x_0$, existiría $\varepsilon>0$ tal que para cada $n\in\mathbb{N}$ existe $x_n$ con $d_X(x_n,x_0)<1/n$ pero $d_Y(f(x_n),f(x_0))\geq\varepsilon$. Entonces $x_n\to x_0$ pero $f(x_n)\not\to f(x_0)$.
+\end{proof}
+
+\section{Caracterización topológica}
+
+\begin{theorem}
+\label{teo:continuidad-topologica}
+$f\colon X\to Y$ es continua en $X$ si y solo si la imagen inversa de todo abierto de $Y$ es un abierto de $X$.
+\end{theorem}
+\begin{proof}
+$(\Rightarrow)$ Sea $V\subseteq Y$ abierto y $x_0\in f^{-1}(V)$. Como $V$ es abierto, existe $\varepsilon>0$ con $B(f(x_0),\varepsilon)\subseteq V$. Por continuidad, existe $\delta>0$ tal que $B(x_0,\delta)\subseteq f^{-1}(V)$.
+
+$(\Leftarrow)$ Sea $x_0\in X$ y $\varepsilon>0$. El conjunto $V=B(f(x_0),\varepsilon)$ es abierto, luego $f^{-1}(V)$ es abierto y contiene a $x_0$. Existe $\delta>0$ con $B(x_0,\delta)\subseteq f^{-1}(V)$, lo cual implica \eqref{eq:continuidad}.
+\end{proof}
+
+Esta caracterización es la clave de la generalización topológica: en un espacio topológico abstracto, donde no hay métrica, la continuidad se \emph{define} mediante la preservación de abiertos por imagen inversa.
+
+\section{Homeomorfismos}
+
+\begin{definition}
+\label{def:homeomorfismo}
+Una función $f\colon X\to Y$ es un \emph{homeomorfismo} si es biyectiva, continua, y su inversa $f^{-1}$ es también continua. Cuando existe un homeomorfismo entre $X$ e $Y$, se dice que son \emph{homeomorfos}.
+\end{definition}
+
+Los homeomorfismos preservan todas las propiedades topológicas: abiertos, cerrados, clausura, interior, compacidad, conexidad, etc. La topología se ocupa precisamente de clasificar espacios ``salvo homeomorfismo''.
+
+\begin{example}
+\label{ej:homeomorfismo-r}
+La función $f(x)=\arctan x$ es un homeomorfismo entre $\mathbb{R}$ y $(-\pi/2,\pi/2)$. Sin embargo, $\mathbb{R}$ no es homeomorfo a $[0,1]$ (la compacidad, que estudiaremos en el \cref{ch:compacidad}, es un invariante topológico).
+\end{example}
+
+\section{Continuidad uniforme}
+
+\begin{definition}
+\label{def:uniforme}
+Una función $f\colon(X,d_X)\to(Y,d_Y)$ es \emph{uniformemente continua} si
+\begin{equation}\label{eq:uniforme}
+  \forall\varepsilon>0\ \exists\delta>0\ \forall x_1,x_2\in X:\quad d_X(x_1,x_2)<\delta\Rightarrow d_Y(f(x_1),f(x_2))<\varepsilon.
+\end{equation}
+\end{definition}
+
+La diferencia crucial con la continuidad ordinaria es que $\delta$ no depende del punto $x_0$, sino únicamente de $\varepsilon$.
+
+\begin{theorem}[de Heine]
+\label{teo:heine}
+Toda función continua definida sobre un espacio métrico compacto (\cref{ch:compacidad}) y con valores en otro espacio métrico es uniformemente continua.
+\end{theorem}
+
+\begin{proof}[Bosquejo]
+Para cada $x\in X$, sea $\delta_x$ como en la definición de continuidad. Las bolas $B(x,\delta_x/2)$ recubren $X$. Por compacidad, existe un subrecubrimiento finito. El mínimo de los radios correspondientes proporciona un $\delta$ uniforme.
+\end{proof}
+
+\begin{exercise}
+Demuestre que $f(x)=x^2$ es continua en $\mathbb{R}$ pero no uniformemente continua.
+\end{exercise}
+
+\begin{exercise}
+Sea $f\colon X\to Y$ continua e inyectiva, con $X$ compacto. Demuestre que $f$ es un homeomorfismo sobre su imagen.
+\end{exercise}
+
+\begin{exercise}
+Pruebe que la composición de funciones uniformemente continuas es uniformemente continua.
+\end{exercise}
+
+\begin{problem}
+Sea $f\colon\mathbb{R}\to\mathbb{R}$ continua y periódica de período $T>0$. Demuestre que $f$ es uniformemente continua en $\mathbb{R}$.
+\end{problem}

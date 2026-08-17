@@ -1,0 +1,145 @@
+\chapter{Introducción al análisis funcional}
+\label{ch:analisis-funcional}
+\index{Espacio normado}\index{Espacio de Banach}\index{Espacio de Hilbert}\index{Operador lineal}\index{Funcional lineal}\index{Operador compacto}
+
+\section{Espacios normados}
+
+El análisis funcional nació de la necesidad de estudiar espacios cuyos elementos son funciones, y donde la noción de ``tamaño'' se generaliza mediante una norma. Stefan Banach, en su tesis de 1920, sistematizó el estudio de estos espacios completos, que hoy llevan su nombre. El salto conceptual es enorme: en lugar de estudiar una función aislada, se estudia la \emph{estructura} del espacio que la contiene, y las transformaciones lineales entre tales espacios.
+
+\begin{definition}
+\label{def:norma}
+Una \emph{norma} sobre un espacio vectorial real $E$ es una función $\|\cdot\|\colon E\to\mathbb{R}$ tal que:
+\begin{enumerate}
+  \item[(i)] $\|x\|\geq 0$, y $\|x\|=0\Leftrightarrow x=0$.
+  \item[(ii)] $\|\lambda x\|=|\lambda|\,\|x\|$ para todo $\lambda\in\mathbb{R}$.
+  \item[(iii)] $\|x+y\|\leq\|x\|+\|y\|$ (desigualdad triangular).
+\end{enumerate}
+Al par $(E,\|\cdot\|)$ se le llama \emph{espacio normado}.
+\end{definition}
+
+\begin{example}
+\label{ej:lp-normado}
+Para $1\leq p<\infty$, el espacio $\ell^p$ de sucesiones $(x_n)$ con $\sum|x_n|^p<\infty$ es normado con $\|x\|_p=(\sum|x_n|^p)^{1/p}$.
+\end{example}
+
+\begin{example}
+\label{ej:cb-normado}
+$C([a,b])$ con $\|f\|_\infty=\sup_{t\in[a,b]}|f(t)|$ es un espacio normado.
+\end{example}
+
+\section{Espacios de Banach}
+
+\begin{definition}
+\label{def:banach}
+Un espacio normado completo (en la métrica inducida por la norma) se llama \emph{espacio de Banach}.
+\end{definition}
+
+\begin{example}
+\label{ej:banach-clasicos}
+$\mathbb{R}^n$, $\ell^p$ para $1\leq p\leq\infty$, $C([a,b])$ con el supremo, $L^p([a,b])$ para $1\leq p\leq\infty$, son espacios de Banach.
+\end{example}
+
+\begin{theorem}
+\label{teo:completitud-lp}
+$L^p(X,\mu)$ es completo para $1\leq p\leq\infty$ (teorema de Riesz--Fischer).
+\end{theorem}
+
+\section{Espacios de Hilbert}
+
+\begin{definition}
+\label{def:producto-interno}
+Un \emph{producto interno} sobre un espacio vectorial real $H$ es una forma bilineal simétrica $\langle\cdot,\cdot\rangle\colon H\times H\to\mathbb{R}$ tal que:
+\begin{enumerate}
+  \item[(i)] $\langle x,x\rangle\geq 0$, con igualdad solo si $x=0$.
+  \item[(ii)] $\langle x,y\rangle=\langle y,x\rangle$.
+  \item[(iii)] Es lineal en cada argumento.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{def:hilbert}
+Un espacio con producto interno completo respecto a la norma $\|x\|=\sqrt{\langle x,x\rangle}$ se llama \emph{espacio de Hilbert}.
+\end{definition}
+
+\begin{example}
+\label{ej:l2-hilbert}
+$\ell^2$ y $L^2([a,b])$ son espacios de Hilbert con productos internos naturales.
+\end{example}
+
+\begin{theorem}[de representación de Riesz]
+\label{teo:riesz}
+Si $H$ es un espacio de Hilbert, todo funcional lineal continuo $\phi\colon H\to\mathbb{R}$ puede representarse como $\phi(x)=\langle x,y\rangle$ para un único $y\in H$.
+\end{theorem}
+
+\section{Operadores lineales}
+
+\begin{definition}
+\label{def:operador}
+Un \emph{operador lineal} entre espacios normados $E$ y $F$ es una aplicación lineal $T\colon E\to F$. Es \emph{acotado} si existe $M>0$ tal que $\|Tx\|\leq M\|x\|$ para todo $x\in E$.
+\end{definition}
+
+\begin{theorem}
+\label{teo:continuo-acotado}
+Un operador lineal entre espacios normados es continuo si y solo si es acotado.
+\end{theorem}
+
+\section{Funcionales lineales}
+
+\begin{definition}
+\label{def:functional}
+Un \emph{funcional lineal} es un operador lineal $E\to\mathbb{R}$. El espacio de funcionales lineales continuos se denomina \emph{dual topológico} $E'$.
+\end{definition}
+
+\begin{theorem}[Hahn--Banach, enunciado]
+\label{teo:hahn-banach}
+Todo funcional lineal definido en un subespacio y acotado por una seminorma puede extenderse a todo el espacio preservando la cota.
+\end{theorem}
+
+\section{Operadores compactos}
+
+\begin{definition}
+\label{def:operador-compacto}
+Un operador $T\colon E\to F$ es \emph{compacto} si transforma conjuntos acotados en conjuntos relativamente compactos.
+\end{definition}
+
+\begin{theorem}
+\label{teo:compacidad-rango}
+Los operadores compactos de rango finito son densos en el espacio de operadores compactos (en espacios de Hilbert).
+\end{theorem}
+
+\section{Panorama de los teoremas fundamentales}
+
+El análisis funcional posee tres grandes teoremas de estructura que aparecen una y otra vez:
+\begin{enumerate}
+  \item \textbf{Hahn--Banach}: existencia de suficientes funcionales para separar puntos.
+  \item \textbf{Principio de acotación uniforme (Banach--Steinhaus)}: una familia de operadores acotada puntualmente es uniformemente acotada.
+  \item \textbf{Teorema de la función abierta (Banach--Schauder)}: un operador lineal continuo y sobreyectivo entre Banach es abierto.
+\end{enumerate}
+
+\section{Aplicaciones}
+
+\begin{example}[Ecuaciones diferenciales]
+\label{ej:edos-af}
+Los problemas de contorno lineales pueden formularse como $Lu=f$, donde $L$ es un operador entre espacios de Sobolev. La inversibilidad de $L$ equivale a la existencia de una solución única.
+\end{example}
+
+\begin{example}[Mecánica cuántica]
+\label{ej:cuantica}
+Los estados de un sistema cuántico son vectores de un espacio de Hilbert; los observables son operadores autoadjuntos; la evolución temporal está dada por un operador unitario.
+\end{example}
+
+\begin{exercise}
+Demuestre que en un espacio normado, la bola unidad es compacta si y solo si el espacio tiene dimensión finita (teorema de Riesz).
+\end{exercise}
+
+\begin{exercise}
+Pruebe la desigualdad de Cauchy--Schwarz en un espacio con producto interno.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que todo espacio de Hilbert es reflexivo.
+\end{exercise}
+
+\begin{problem}
+Sea $T\colon\ell^2\to\ell^2$ definido por $T(x_1,x_2,\dots)=(x_1/1,x_2/2,\dots)$. Demuestre que $T$ es compacto y calcule su norma.
+\end{problem}

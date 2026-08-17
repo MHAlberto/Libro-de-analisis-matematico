@@ -1,0 +1,79 @@
+\chapter{Introducción a la teoría espectral}
+\label{ch:teoria-espectral}
+\index{Valor propio}\index{Función propia}\index{Operador compacto}\index{Operador autoadjunto}\index{Espectro}\index{Descomposición espectral}
+
+\section{Valores propios}
+
+La teoría espectral busca generalizar, a operadores en dimensiones infinitas, la descomposición diagonal de matrices. David Hilbert, en sus trabajos sobre ecuaciones integrales (1904--1910), descubrió que muchos operadores importantes admiten una ``descomposición espectral'' análoga a la diagonalización, aunque los ``eigenvalores'' podían formar un espectro continuo. Esta teoría constituye uno de los puentes más profundos entre el análisis funcional y las aplicaciones físicas.
+
+\begin{definition}
+\label{def:espectro}
+Sea $E$ un espacio de Banach y $T\colon E\to E$ un operador lineal acotado. El \emph{espectro} $\sigma(T)$ es el conjunto de $\lambda\in\mathbb{C}$ tales que $T-\lambda I$ no es invertible con inversa acotada. Los $\lambda$ para los cuales $T-\lambda I$ no es inyectivo son los \emph{valores propios} (o \emph{eigenvalores}).
+\end{definition}
+
+\begin{example}
+\label{ej:multiplicacion}
+Sea $T\colon L^2([0,1])\to L^2([0,1])$ definido por $Tf(x)=xf(x)$. Entonces $T$ no tiene valores propios, pero su espectro es $[0,1]$ (espectro continuo).
+\end{example}
+
+\section{Funciones propias}
+
+\begin{definition}
+\label{def:funcion-propia}
+Si $\lambda$ es un valor propio de $T$, un vector no nulo $v$ tal que $Tv=\lambda v$ se denomina \emph{función propia} (o \emph{eigenvector}).
+\end{definition}
+
+\begin{example}
+\label{ej:derivada}
+El operador derivada $D\colon C^1([0,2\pi])\to C([0,2\pi])$ tiene valores propios $\lambda_n=in$ con funciones propias $e^{inx}$.
+\end{example}
+
+\section{Operadores compactos}
+
+\begin{theorem}[Riesz--Schauder]
+\label{teo:riesz-schauder}
+Si $T$ es un operador compacto en un espacio de Banach, su espectro es a lo sumo numerable, $0$ es el único posible punto de acumulación, y todo $\lambda\neq 0$ en el espectro es un valor propio de multiplicidad finita.
+\end{theorem}
+
+\section{Operadores autoadjuntos (idea)}
+
+\begin{definition}
+\label{def:autoadjunto}
+En un espacio de Hilbert, un operador $T$ es \emph{autoadjunto} si $\langle Tx,y\rangle=\langle x,Ty\rangle$ para todo $x,y$.
+\end{definition}
+
+\begin{theorem}[Espectral para autoadjuntos compactos]
+\label{teo:espectral-compacto}
+Si $T$ es autoadjunto y compacto, existe una base ortonormal de $H$ formada por funciones propias de $T$. Los valores propios son reales y tienden a $0$.
+\end{theorem}
+
+\section{Descomposición espectral (motivación)}
+
+El teorema espectral general afirma que todo operador autoadjunto (no necesariamente compacto) admite una ``medida espectral'' $E$ tal que
+\[
+  T=\int_{\sigma(T)}\lambda\,dE(\lambda).
+\]
+Esta fórmula generaliza la diagonalización $A=PDP^{-1}$ de matrices simétricas.
+
+\section{Aplicaciones a ecuaciones diferenciales}
+
+\begin{example}[Problema de Sturm--Liouville]
+\label{ej:sturm-liouville}
+La ecuación $-(py')'+qy=\lambda w y$ en $[a,b]$ con condiciones de contorno define un operador autoadjunto cuyos valores propios forman una sucesión creciente $\lambda_n\to\infty$, y las funciones propias constituyen una base ortogonal de $L^2_w([a,b])$.
+\end{example}
+
+\begin{exercise}
+Demuestre que los valores propios de un operador autoadjunto son reales.
+\end{exercise}
+
+\begin{exercise}
+Sea $T\colon\ell^2\to\ell^2$ el operador shift derecha $T(x_1,x_2,\dots)=(0,x_1,x_2,\dots)$. Determine su espectro.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que si $T$ es compacto y autoadjunto, entonces $\|T\|$ es igual al máximo de los valores absolutos de sus valores propios.
+\end{exercise}
+
+\begin{problem}
+Formule y demuestre un teorema de alternativa de Fredholm para operadores compactos: la ecuación $u-Tu=f$ tiene solución si y solo si $f$ es ortogonal al núcleo de $I-T^*$.
+\end{problem}

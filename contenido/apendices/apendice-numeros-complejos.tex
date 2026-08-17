@@ -1,0 +1,169 @@
+\chapter{Números complejos}
+\label{ap:numeros-complejos}
+\index{Número complejo}\index{Conjugado}\index{Módulo}\index{Forma polar}\index{Raíz de la unidad}\index{Teorema fundamental del álgebra}\index{Exponencial compleja}
+
+Este apéndice recoge los conceptos básicos de los números complejos que se emplean a lo largo del libro: la construcción formal del cuerpo $\mathbb{C}$, la representación binómica y polar, las raíces de la unidad, el teorema fundamental del álgebra y las funciones elementales de variable compleja. Los números complejos aparecen de manera natural en el análisis, la teoría espectral y las ecuaciones diferenciales.
+
+\section{Construcción del cuerpo \texorpdfstring{$\mathbb{C}$}{C}}
+
+Los números reales no resuelven todas las ecuaciones polinómicas: la ecuación $x^2+1=0$ no tiene solución en $\mathbb{R}$. Para remediarlo se amplía $\mathbb{R}$ añadiendo una raíz de $-1$.
+
+\begin{definition}
+\label{def:complejo}
+El conjunto $\mathbb{C}$ de los \emph{números complejos} es $\mathbb{R}^2$ dotado de las operaciones
+\begin{equation}\label{eq:suma-compleja}
+  (a,b)+(c,d)=(a+c,b+d),
+\end{equation}
+\begin{equation}\label{eq:producto-complejo}
+  (a,b)\cdot(c,d)=(ac-bd,ad+bc).
+\end{equation}
+\end{definition}
+
+\begin{theorem}[$\mathbb{C}$ es un cuerpo]
+\label{teo:c-cuerpo}
+$(\mathbb{C},+,\cdot)$ es un cuerpo. El elemento neutro de la suma es $(0,0)$, el del producto es $(1,0)$, y el inverso de $z=(a,b)\neq 0$ es
+\[
+  z^{-1}=\Bigl(\frac{a}{a^2+b^2},\frac{-b}{a^2+b^2}\Bigr).
+\]
+\end{theorem}
+
+Identificando $(a,0)$ con $a\in\mathbb{R}$, el cuerpo $\mathbb{R}$ se sumerge en $\mathbb{C}$. Escribiendo $i=(0,1)$, se tiene $i^2=(-1,0)=-1$, y todo número complejo se expresa de manera única como
+\[
+  z=a+bi,\qquad a,b\in\mathbb{R},
+\]
+la forma \emph{binómica} o \emph{cartesiana} de $z$. El número real $a=\operatorname{Re}(z)$ es la \emph{parte real} y $b=\operatorname{Im}(z)$ la \emph{parte imaginaria}.
+
+\section{Conjugación y módulo}
+
+\begin{definition}
+\label{def:conjugado-modulo}
+Para $z=a+bi\in\mathbb{C}$:
+\begin{itemize}
+  \item El \emph{conjugado} de $z$ es $\overline{z}=a-bi$.
+  \item El \emph{módulo} de $z$ es $|z|=\sqrt{a^2+b^2}$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+\label{teo:prop-conjugacion}
+Para cualesquiera $z,w\in\mathbb{C}$:
+\begin{enumerate}
+  \item[(i)] $\overline{z+w}=\overline{z}+\overline{w}$ y $\overline{z\,w}=\overline{z}\,\overline{w}$;
+  \item[(ii)] $z\overline{z}=|z|^2$, de modo que $z^{-1}=\overline{z}/|z|^2$ si $z\neq 0$;
+  \item[(iii)] $|zw|=|z|\,|w|$ y $|z+w|\leq|z|+|w|$ (desigualdad triangular);
+  \item[(iv)] $\operatorname{Re}(z)=\frac{z+\overline{z}}{2}$ e $\operatorname{Im}(z)=\frac{z-\overline{z}}{2i}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+La parte (i) se comprueba directamente con las definiciones \eqref{eq:suma-compleja} y \eqref{eq:producto-complejo}. Para (iii), nótese que $|zw|^2=zw\,\overline{zw}=z\overline{z}\,w\overline{w}=|z|^2|w|^2$. La desigualdad triangular sigue de $|z+w|^2=|z|^2+|w|^2+2\operatorname{Re}(z\overline{w})\leq(|z|+|w|)^2$.
+\end{proof}
+
+\section{Forma polar}
+
+\begin{definition}
+\label{def:forma-polar}
+Todo número complejo $z\neq 0$ admite la representación \emph{polar}
+\[
+  z=r(\cos\theta+i\sin\theta),
+\]
+donde $r=|z|$ y $\theta$ es un \emph{argumento} de $z$, es decir, un ángulo tal que $\cos\theta=a/r$ y $\sin\theta=b/r$.
+\end{definition}
+
+El argumento no es único: si $\theta$ es un argumento, también lo es $\theta+2k\pi$ para todo $k\in\mathbb{Z}$. Se denota $\operatorname{Arg}(z)$ al argumento principal, tomado en $(-\pi,\pi]$.
+
+\begin{theorem}[Fórmula de De Moivre]
+\label{teo:demoivre}
+Para $z=r(\cos\theta+i\sin\theta)$ y $n\in\mathbb{N}$,
+\[
+  z^n=r^n(\cos(n\theta)+i\sin(n\theta)).
+\]
+\end{theorem}
+
+En particular, la fórmula de Euler $e^{i\theta}=\cos\theta+i\sin\theta$ permite escribir $z=re^{i\theta}$ y recuperar las leyes del producto $|zw|=|z|\,|w|$ y $\operatorname{Arg}(zw)=\operatorname{Arg}(z)+\operatorname{Arg}(w)$.
+
+\section{Raíces de la unidad}
+
+\begin{theorem}
+\label{teo:raices-unidad}
+Para cada $n\in\mathbb{N}$, la ecuación $z^n=1$ tiene exactamente $n$ soluciones en $\mathbb{C}$, a saber
+\[
+  \zeta_k=e^{2k\pi i/n}=\cos\frac{2k\pi}{n}+i\sin\frac{2k\pi}{n},\qquad k=0,1,\dots,n-1.
+\]
+\end{theorem}
+
+Estas $n$ raíces forman un grupo cíclico bajo el producto, cuyos generadores se denominan \emph{raíces primitivas} de la unidad.
+
+\begin{example}
+Las raíces cúbicas de la unidad son
+\[
+  1,\qquad \omega=e^{2\pi i/3}=-\frac12+\frac{\sqrt3}{2}i,\qquad \omega^2=e^{4\pi i/3}=-\frac12-\frac{\sqrt3}{2}i,
+\]
+y satisfacen $1+\omega+\omega^2=0$.
+\end{example}
+
+\section{El teorema fundamental del álgebra}
+
+\begin{theorem}[Fundamental del álgebra]
+\label{teo:fundamental-algebra}
+Todo polinomio $p(z)=a_nz^n+a_{n-1}z^{n-1}+\cdots+a_0$ de grado $n\geq 1$ con coeficientes en $\mathbb{C}$ posee al menos una raíz compleja. En consecuencia, $p$ factoriza como
+\[
+  p(z)=a_n\prod_{k=1}^{n}(z-z_k),
+\]
+donde $z_1,\dots,z_n\in\mathbb{C}$ son sus raíces, contadas con multiplicidad.
+\end{theorem}
+
+\begin{proof}[Bosquejo]
+Como $|p(z)|\to\infty$ cuando $|z|\to\infty$, la función $|p|$ alcanza su mínimo en algún punto $z_0$. Si $p(z_0)\neq 0$, un argumento de decrecimiento por el término de menor grado de $p(z_0+h)$ muestra que en la vecindad de $z_0$ el módulo puede reducirse, contradicción. Luego $p(z_0)=0$. La factorización se obtiene por división sucesiva.
+\end{proof}
+
+\begin{corollary}
+Todo polinomio de grado $n$ con coeficientes reales factoriza en $\mathbb{C}$ como producto de factores lineales; sus raíces no reales aparecen por pares conjugados.
+\end{corollary}
+
+\section{Funciones de variable compleja}
+
+\begin{definition}
+\label{def:exp-compleja}
+La \emph{exponencial compleja} se define por
+\[
+  e^{z}=e^{a+bi}=e^{a}(\cos b+i\sin b).
+\]
+Las funciones \emph{seno} y \emph{coseno} complejos se definen por
+\[
+  \sin z=\frac{e^{iz}-e^{-iz}}{2i},\qquad
+  \cos z=\frac{e^{iz}+e^{-iz}}{2}.
+\]
+\end{definition}
+
+La exponencial compleja satisface $e^{z+w}=e^{z}e^{w}$ y es periódica de período $2\pi i$. Las funciones trigonométricas complejas heredan las identidades clásicas, y el logaritmo complejo se define como inversa local de la exponencial.
+
+\section{Ejercicios}
+
+\begin{exercise}
+Demuestre que el inverso de $z=a+bi\neq 0$ dado en el \cref{teo:c-cuerpo} es correcto verificando $z z^{-1}=1$.
+\end{exercise}
+
+\begin{exercise}
+Calcule $(1+i)^n$ para $n=1,2,\dots,8$ usando la forma polar. ¿Qué patrón se observa?
+\end{exercise}
+
+\begin{exercise}
+Resuelva la ecuación $z^2-2z+5=0$ y compruebe que las raíces son conjugadas.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que $\sin(2z)=2\sin z\cos z$ para $z\in\mathbb{C}$ usando las definiciones anteriores.
+\end{exercise}
+
+\begin{exercise}
+Pruebe que $|z+w|^2+|z-w|^2=2(|z|^2+|w|^2)$ (identidad del paralelogramo).
+\end{exercise}
+
+\begin{exercise}
+Sea $z=re^{i\theta}$. Exprese $z^n+\overline{z}^n$ en términos de $r$ y $\cos(n\theta)$.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que si $z$ es raíz del polinomio $p$ con coeficientes reales, entonces $\overline{z}$ también lo es.
+\end{exercise}

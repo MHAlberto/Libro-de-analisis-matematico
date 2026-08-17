@@ -1,0 +1,146 @@
+\chapter{Introducción a la teoría de la medida}
+\label{ch:teoria-medida}
+\index{Medida}\index{sigma-algebra@$\sigma$-álgebra}\index{Medida exterior}\index{Conjunto medible}\index{Medida de Lebesgue}\index{Función medible}\index{Integral de Lebesgue}
+
+\section{Motivación}
+
+La integral de Riemann, desarrollada en el siglo~XIX, era suficiente para la mayoría de las aplicaciones del análisis clásico. Sin embargo, presentaba limitaciones fundamentales: no podía integrar todos los límites de sucesiones de funciones integrables, no manejaba bien conjuntos de medida cero, y su extensión a dimensiones superiores resultaba torpe. La necesidad de una teoría de integración más robusta impulsó a Émile Borel, Henri Lebesgue y, posteriormente, Constantin Carathéodory a desarrollar la teoría de la medida.
+
+La idea central de Lebesgue (1902) fue revolucionaria: en lugar de particionar el dominio de la función (como hace Riemann), se particiona el codominio. El área bajo la curva se aproxima por sumas de ``barras'' horizontales, lo cual permite integrar funciones mucho más generales y garantiza teoremas de convergencia poderosos.
+
+\section{Álgebras y \texorpdfstring{$\sigma$}{sigma}-álgebras}
+
+\begin{definition}
+\label{def:sigma-algebra}
+Una \emph{$\sigma$-álgebra} sobre un conjunto $X$ es una familia $\mathcal{A}\subseteq\mathcal{P}(X)$ tal que:
+\begin{enumerate}
+  \item[(i)] $X\in\mathcal{A}$.
+  \item[(ii)] Si $A\in\mathcal{A}$, entonces $X\setminus A\in\mathcal{A}$.
+  \item[(iii)] Si $(A_n)_{n\in\mathbb{N}}\subseteq\mathcal{A}$, entonces $\bigcup_{n=1}^{\infty}A_n\in\mathcal{A}$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{def:algebra}
+Una \emph{álgebra} de conjuntos satisface (i), (ii) y la unión finita (en lugar de numerable).
+\end{definition}
+
+\begin{example}
+\label{ej:borel}
+La $\sigma$-álgebra de \emph{Borel} $\mathcal{B}(\mathbb{R})$ es la menor $\sigma$-álgebra que contiene a todos los intervalos abiertos. Es generada también por los intervalos cerrados, los semicerrados, o las bolas abiertas.
+\end{example}
+
+\section{Medidas}
+
+\begin{definition}
+\label{def:medida}
+Una \emph{medida} sobre una $\sigma$-álgebra $\mathcal{A}$ es una función $\mu\colon\mathcal{A}\to[0,+\infty]$ tal que:
+\begin{enumerate}
+  \item[(i)] $\mu(\emptyset)=0$.
+  \item[(ii)] $\sigma$-aditividad: si $(A_n)$ son disjuntos dos a dos, $\mu(\bigcup_n A_n)=\sum_n\mu(A_n)$.
+\end{enumerate}
+Al terceto $(X,\mathcal{A},\mu)$ se le llama \emph{espacio de medida}.
+\end{definition}
+
+\begin{example}[Medida de conteo]
+\label{ej:conteo}
+Sobre cualquier conjunto $X$, $\mu(A)=|A|$ (número de elementos, o $+\infty$ si $A$ es infinito) es una medida.
+\end{example}
+
+\begin{example}[Medida de Dirac]
+\label{ej:dirac-medida}
+Fijado $x_0\in X$, $\delta_{x_0}(A)=1$ si $x_0\in A$, $0$ en otro caso, es una medida.
+\end{example}
+
+\section{Medida exterior}
+
+\begin{definition}
+\label{def:medida-exterior}
+Una \emph{medida exterior} sobre $X$ es una función $\mu^*\colon\mathcal{P}(X)\to[0,+\infty]$ tal que:
+\begin{enumerate}
+  \item[(i)] $\mu^*(\emptyset)=0$.
+  \item[(ii)] Monotonía: $A\subseteq B\Rightarrow\mu^*(A)\leq\mu^*(B)$.
+  \item[(iii)] Subaditividad numerable: $\mu^*(\bigcup_n A_n)\leq\sum_n\mu^*(A_n)$.
+\end{enumerate}
+\end{definition}
+
+\section{Conjuntos medibles}
+
+\begin{theorem}[Carathéodory]
+\label{teo:caratheodory}
+Dada una medida exterior $\mu^*$, la familia
+\[
+  \mathcal{M}=\{A\subseteq X:\,\mu^*(E)=\mu^*(E\cap A)+\mu^*(E\setminus A)\text{ para todo }E\subseteq X\}
+\]
+es una $\sigma$-álgebra, y la restricción de $\mu^*$ a $\mathcal{M}$ es una medida completa.
+\end{theorem}
+
+\section{Medida de Lebesgue}
+
+\begin{definition}
+\label{def:lebesgue-exterior}
+La \emph{medida exterior de Lebesgue} $\lambda^*$ en $\mathbb{R}$ se define por
+\[
+  \lambda^*(A)=\inf\Bigl\{\sum_{n=1}^{\infty}(b_n-a_n):\,A\subseteq\bigcup_{n=1}^{\infty}(a_n,b_n)\Bigr\}.
+\]
+\end{definition}
+
+\begin{theorem}
+\label{teo:lebesgue-medida}
+Los conjuntos medibles en el sentido de Carathéodory para $\lambda^*$ forman una $\sigma$-álgebra $\mathcal{L}(\mathbb{R})$ que contiene a $\mathcal{B}(\mathbb{R})$. La restricción $\lambda=\lambda^*|_{\mathcal{L}}$ es la \emph{medida de Lebesgue}, invariante por traslaciones y que asigna longitud $b-a$ a cada intervalo $[a,b]$.
+\end{theorem}
+
+\section{Funciones medibles}
+
+\begin{definition}
+\label{def:medible}
+Una función $f\colon(X,\mathcal{A})\to\mathbb{R}$ es \emph{medible} si $f^{-1}(U)\in\mathcal{A}$ para todo abierto $U\subseteq\mathbb{R}$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:limite-medible}
+El límite puntual de una sucesión de funciones medibles es medible.
+\end{proposition}
+
+\section{Integral de Lebesgue (introducción)}
+
+\begin{definition}
+\label{def:integral-lebesgue}
+Para una función simple no negativa $s=\sum_{i=1}^{n}a_i\mathbf{1}_{A_i}$, se define $\int s\,d\mu=\sum a_i\mu(A_i)$. Para $f\geq 0$ medible,
+\[
+  \int f\,d\mu=\sup\Bigl\{\int s\,d\mu:\,0\leq s\leq f,\,s\text{ simple}\Bigr\}.
+\]
+\end{definition}
+
+\section{Principales teoremas de convergencia}
+
+\begin{theorem}[de convergencia monótona]
+\label{teo:monotona}
+Si $0\leq f_n\uparrow f$ puntualmente, entonces $\int f_n\,d\mu\uparrow\int f\,d\mu$.
+\end{theorem}
+
+\begin{theorem}[de Fatou]
+\label{teo:fatou}
+Si $f_n\geq 0$, entonces $\int\liminf f_n\,d\mu\leq\liminf\int f_n\,d\mu$.
+\end{theorem}
+
+\begin{theorem}[de convergencia dominada]
+\label{teo:dominada}
+Si $f_n\to f$ puntualmente y existe $g$ integrable tal que $|f_n|\leq g$, entonces $\int f_n\,d\mu\to\int f\,d\mu$.
+\end{theorem}
+
+\begin{exercise}
+Demuestre que la medida de Lebesgue de $\mathbb{Q}$ es cero.
+\end{exercise}
+
+\begin{exercise}
+Sea $f_n(x)=n\mathbf{1}_{[0,1/n]}(x)$. Calcule $\lim_{n\to\infty}\int f_n\,d\lambda$ y compare con $\int\lim f_n\,d\lambda$. ¿Cuál teorema de convergencia falla aquí?
+\end{exercise}
+
+\begin{exercise}
+Pruebe que toda función continua en $[a,b]$ es medible de Borel.
+\end{exercise}
+
+\begin{problem}
+Demuestre que si $f\colon\mathbb{R}\to\mathbb{R}$ es derivable, entonces $f'$ es medible de Lebesgue (puede no ser continua).
+\end{problem}

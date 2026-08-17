@@ -1,0 +1,78 @@
+% ---------------------------------------------------------------------
+%  HERRAMIENTAS MATEMÁTICAS Y ENTORNOS
+% ---------------------------------------------------------------------
+\usepackage{bm}
+\usepackage{amsthm}
+
+% --- estilo "plain": encabezado en negrita, cuerpo en cursiva ---
+\newtheoremstyle{plainbook}
+  {12pt plus 2pt minus 2pt}   % espacio antes
+  {12pt plus 2pt minus 2pt}   % espacio después
+  {\itshape}                  % cuerpo
+  {}                          % sangría
+  {\bfseries}                 % encabezado
+  {.}                         % puntuación tras el encabezado
+  {0.6em}                     % espacio tras el encabezado
+  {}
+
+% --- estilo "definición": encabezado en negrita, cuerpo en romana ---
+\newtheoremstyle{defbook}
+  {12pt plus 2pt minus 2pt}
+  {12pt plus 2pt minus 2pt}
+  {\normalfont}
+  {}
+  {\bfseries}
+  {.}
+  {0.6em}
+  {}
+
+% --- estilo "observación/nota": encabezado en cursiva, cuerpo romano ---
+\newtheoremstyle{notebook}
+  {10pt plus 2pt minus 2pt}
+  {10pt plus 2pt minus 2pt}
+  {\normalfont}
+  {}
+  {\itshape}
+  {.}
+  {0.6em}
+  {}
+
+% Cada entorno recibe su propio contador (para que cleveref use el nombre
+% correcto de cada tipo), pero todos se alían al contador de "theorem".
+\theoremstyle{plainbook}
+\newtheorem{theorem}{Teorema}[chapter]
+
+\theoremstyle{plainbook}
+\newtheorem{lemma}{Lema}[chapter]
+\newtheorem{proposition}{Proposición}[chapter]
+\newtheorem{corollary}{Corolario}[chapter]
+\newtheorem{conjecture}{Conjetura}[chapter]
+
+\theoremstyle{defbook}
+\newtheorem{axiom}{Axioma}[chapter]
+\newtheorem{definition}{Definición}[chapter]
+\newtheorem{example}{Ejemplo}[chapter]
+\newtheorem{exercise}{Ejercicio}[chapter]
+\newtheorem{problem}{Problema}[chapter]
+
+\theoremstyle{notebook}
+\newtheorem{remark}{Observación}[chapter]
+\newtheorem{notation}{Notación}[chapter]
+
+\makeatletter
+\let\c@lemma\c@theorem
+\let\c@proposition\c@theorem
+\let\c@corollary\c@theorem
+\let\c@conjecture\c@theorem
+\let\c@axiom\c@theorem
+\let\c@definition\c@theorem
+\let\c@example\c@theorem
+\let\c@exercise\c@theorem
+\let\c@problem\c@theorem
+\let\c@remark\c@theorem
+\let\c@notation\c@theorem
+\makeatother
+
+% Demostración con marca cuadrada discreta
+\renewcommand{\qedsymbol}{$\mdlgblksquare$}
+\renewcommand{\proofname}{Demostración}

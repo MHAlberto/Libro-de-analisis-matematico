@@ -1,0 +1,41 @@
+% ---------------------------------------------------------------------
+%  HIPERVÍNCULOS — discretos, sin recuadros
+% ---------------------------------------------------------------------
+\usepackage[
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdfusetitle,
+  bookmarksnumbered=true,
+  bookmarksopen=true
+]{hyperref}
+\usepackage{bookmark}
+
+% ---------------------------------------------------------------------
+%  REFERENCIAS CRUZADAS Y BIBLIOGRAFÍA
+% ---------------------------------------------------------------------
+\usepackage[capitalise,spanish]{cleveref}
+\crefname{theorem}{teorema}{teoremas}
+\Crefname{theorem}{Teorema}{Teoremas}
+\crefname{lemma}{lema}{lemas}
+\Crefname{lemma}{Lema}{Lemas}
+\crefname{proposition}{proposición}{proposiciones}
+\Crefname{proposition}{Proposición}{Proposiciones}
+\crefname{corollary}{corolario}{corolarios}
+\Crefname{corollary}{Corolario}{Corolarios}
+\crefname{definition}{definición}{definiciones}
+\Crefname{definition}{Definición}{Definiciones}
+\crefname{example}{ejemplo}{ejemplos}
+\Crefname{example}{Ejemplo}{Ejemplos}
+\crefname{remark}{observación}{observaciones}
+\Crefname{remark}{Observación}{Observaciones}
+\crefname{equation}{ecuación}{ecuaciones}
+\Crefname{equation}{Ecuación}{Ecuaciones}
+\crefname{chapter}{capítulo}{capítulos}
+\Crefname{chapter}{Capítulo}{Capítulos}
+\crefname{section}{sección}{secciones}
+\Crefname{section}{Sección}{Secciones}
+
+% Bibliografía con biblatex (motor moderno, mejor para matemáticas)
+\usepackage[backend=biber, style=numeric, sorting=ynt, hyperref=true]{biblatex}

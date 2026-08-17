@@ -1,0 +1,111 @@
+\chapter{Espacios separables y espacios completos}
+\label{ch:espacios-separables}
+\index{Espacio separable}\index{Conjunto denso}\index{Espacio de Baire}\index{Segunda categoría}
+
+\section{Espacios separables}
+
+La separabilidad es una propiedad de ``tamaño controlable'': un espacio es separable si contiene un subconjunto numerable que aproxima a todos sus puntos. Esta condición, aparentemente técnica, tiene consecuencias profundas: en espacios separables, toda sucesión acotada posee una subsucesión débilmente convergente (teorema de Eberlein--Šmulian); las medidas de probabilidad pueden aproximarse por combinaciones convexas de deltas de Dirac; y muchos espacios de funciones usuales son separables, lo cual facilita su implementación computacional.
+
+\begin{definition}
+\label{def:separable}
+Un espacio métrico $(X,d)$ es \emph{separable} si posee un subconjunto denso numerable.
+\end{definition}
+
+\begin{example}
+\label{ej:rn-separable}
+$\mathbb{R}^n$ es separable, pues $\mathbb{Q}^n$ es denso y numerable.
+\end{example}
+
+\begin{example}
+\label{ej:cb-separable}
+$C([a,b])$ con la métrica del supremo es separable. Los polinomios con coeficientes racionales forman un conjunto denso numerable (por el teorema de Weierstrass, \cref{teo:weierstrass-aprox}).
+\end{example}
+
+\begin{example}
+\label{ej:linf-no-separable}
+El espacio $\ell^{\infty}$ de las sucesiones acotadas con la métrica del supremo no es separable. La familia de sucesiones de ceros y unos es no numerable y cualquier dos elementos distintos están a distancia $1$.
+\end{example}
+
+\section{Conjuntos densos numerables}
+
+\begin{theorem}
+\label{teo:base-numerable}
+Un espacio métrico es separable si y solo si su topología posee una base numerable.
+\end{theorem}
+\begin{proof}
+Si $\{x_n\}$ es denso, las bolas $B(x_n,q)$ con $q\in\mathbb{Q}^+$ forman una base numerable. Recíprocamente, si $\{U_n\}$ es una base numerable, eligiendo un punto $x_n\in U_n$ en cada elemento no vacío obtenemos un conjunto denso numerable.
+\end{proof}
+
+\begin{corollary}
+\label{cor:lindelof}
+Todo espacio métrico separable es \emph{Lindelöf}: de todo recubrimiento abierto se puede extraer un subrecubrimiento numerable.
+\end{corollary}
+
+\section{Espacios completamente métricos}
+
+\begin{definition}
+\label{def:completamente-metrico}
+Un espacio métrico $(X,d)$ es \emph{completamente métrico} si admite una métrica completa que genere la misma topología. (Nótese que no exigimos que la métrica original sea completa.)
+\end{definition}
+
+\begin{theorem}[Alexandrov]
+\label{teo:alexandrov}
+Un subespacio de un espacio métrico completo es completamente métrico si y solo si es un $G_\delta$ (intersección numerable de abiertos).
+\end{theorem}
+
+\section{Espacios de Baire}
+
+Ya definidos en el \cref{ch:grandes-teoremas}, los espacios de Baire merecen un estudio más detallado.
+
+\begin{theorem}[Baire, recapitulación]
+\label{teo:baire-recap}
+Todo espacio métrico completo es de Baire. La intersección de abiertos densos es densa; ningún espacio de Baire es union numerable de conjuntos nowhere dense.
+\end{theorem}
+
+\begin{proposition}
+\label{prop:abierto-denso-baire}
+En un espacio de Baire, todo abierto no vacío es de segunda categoría en sí mismo (es decir, no es union numerable de nowhere dense).
+\end{proposition}
+
+\section{Propiedades fundamentales}
+
+\begin{theorem}
+\label{teo:separable-herencia}
+Todo subespacio de un espacio métrico separable es separable.
+\end{theorem}
+\begin{proof}
+Si $D$ es denso numerable en $X$ y $Y\subseteq X$, para cada $x\in D$ y $n\in\mathbb{N}$ con $B(x,1/n)\cap Y\neq\emptyset$, elegimos $y_{x,n}\in B(x,1/n)\cap Y$. El conjunto de tales $y_{x,n}$ es denso en $Y$.
+\end{proof}
+
+\begin{theorem}
+\label{teo:producto-separable}
+El producto numerable de espacios métricos separables es separable.
+\end{theorem}
+
+\section{Ejemplos importantes}
+
+\begin{example}[Espacio de Hilbert L2]
+\label{ej:l2-separable}
+El espacio de Lebesgue $L^2([0,1])$ es separable. Los polinomios trigonométricos con coeficientes racionales son densos. En efecto, por el teorema de Stone--Weierstrass (\cref{teo:stone-weierstrass}) aplicado a funciones continuas sobre la circunferencia $[0,2\pi]$ con $0$ y $2\pi$ identificados, el álgebra generada por $\{1,\cos nx,\sin nx:\,n\in\mathbb{N}\}$ es densa en $C([0,2\pi])$ con la métrica del supremo; por densidad, también lo es en $L^2([0,2\pi])$ con la norma cuadrática.
+\end{example}
+
+\begin{example}[Espacio de Cantor]
+\label{ej:cantor-separable}
+El conjunto de Cantor, como subespacio de $\mathbb{R}$, es compacto, perfecto, totalmente disconexo y separable (de hecho, es homeomorfo al producto numerable $\{0,1\}^{\mathbb{N}}$).
+\end{example}
+
+\begin{exercise}
+Demuestre que todo espacio métrico compacto es separable.
+\end{exercise}
+
+\begin{exercise}
+Sea $X$ separable y $f\colon X\to Y$ sobreyectiva continua. Demuestre que $Y$ es separable.
+\end{exercise}
+
+\begin{exercise}
+Pruebe que $\ell^p$ es separable para $1\leq p<\infty$, pero $\ell^{\infty}$ no lo es.
+\end{exercise}
+
+\begin{problem}
+Un espacio métrico se dice \emph{polaco} si es separable y completamente métrico. Demuestre que $\mathbb{R}\setminus\mathbb{Q}$ es polaco, pero no es completo con la métrica usual.
+\end{problem}

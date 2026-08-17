@@ -1,0 +1,108 @@
+\chapter{Grandes teoremas del análisis}
+\label{ch:grandes-teoremas}
+\index{Principio de contracción de Banach}\index{Categoría de Baire}\index{Teorema de Ascoli--Arzelà}\index{Teorema de Stone--Weierstrass}\index{Teorema de Dini}\index{Lema de Urysohn}\index{Teorema de Tietze}
+
+\section{Principio de contracción de Banach}
+
+Ya demostrado en el \cref{ch:completitud}, el teorema del punto fijo de Banach merece ser recordado aquí como uno de los grandes teoremas estructurales del análisis. No es un resultado de cálculo: no calcula nada, sino que \emph{garantiza} la existencia y unicidad de una solución bajo condiciones cualitativas. Es el paradigma de cómo el rigor transforma la matemática aplicada.
+
+\begin{theorem}[Banach, recapitulación]
+\label{teo:banach-recap}
+Sea $(X,d)$ completo no vacío. Toda contracción $f\colon X\to X$ tiene un único punto fijo, y las iteradas $x_{n+1}=f(x_n)$ convergen a él desde cualquier punto inicial.
+\end{theorem}
+
+\section{Teorema de la Categoría de Baire}
+
+El teorema de Baire, publicado por René-Louis Baire en 1899, es uno de los resultados más profundos y útiles del análisis. Establece que un espacio completo ``no puede ser cubierto por polvo'': no es union numerable de conjuntos ``magros''. Esta aparente sutileza tiene consecuencias espectaculares: la existencia de funciones continuas no derivables en ningún punto, la no completitud de ciertos espacios de funciones suaves, y el teorema de la función abierta en análisis funcional.
+
+\begin{definition}
+\label{def:nowhere-dense}
+Un subconjunto $A\subseteq X$ es \emph{nowhere dense} (de primera categoría en sí mismo) si $\operatorname{int}(\overline{A})=\emptyset$.
+\end{definition}
+
+\begin{definition}
+\label{def:baire-space}
+Un espacio métrico $X$ es un \emph{espacio de Baire} si la intersección de toda familia numerable de abiertos densos es densa en $X$.
+\end{definition}
+
+\begin{theorem}[Baire]
+\label{teo:baire}
+Todo espacio métrico completo es un espacio de Baire.
+\end{theorem}
+\begin{proof}[Bosquejo]
+Sea $\{U_n\}$ una sucesión de abiertos densos y $V$ un abierto no vacío. Como $U_1$ es denso, $V\cap U_1$ contiene una bola cerrada $B_1$ de radio $r_1<1$. Como $U_2$ es denso, $B_1^{\circ}\cap U_2$ contiene una bola cerrada $B_2$ de radio $r_2<1/2$, etc. Las bolas $B_n$ son encajadas con diámetros tendiendo a cero. Por completitud, $\bigcap B_n=\{x^*\}$, y $x^*\in V\cap\bigcap U_n$.
+\end{proof}
+
+\begin{theorem}[Conjuntos residuales]
+\label{teo:residual}
+En un espacio de Baire, un conjunto que contiene una intersección numerable de abiertos densos es \emph{residual} (o \emph{co-magro}). Su complemento es de primera categoría. Los conjuntos residuales son densos.
+\end{theorem}
+
+\section{Teorema de Ascoli--Arzelà}
+
+La compacidad en espacios de funciones es más sutil que en espacios finito-dimensionales. El teorema de Ascoli--Arzelà, que demostraremos en el \cref{ch:familias-funciones}, caracteriza exactamente cuándo una familia de funciones continuas tiene la propiedad de que toda sucesión posee una subsucesión convergente. La clave está en la combinación de \emph{acotación uniforme} y \emph{equicontinuidad}.
+
+\begin{theorem}[Ascoli--Arzelà, enunciado]
+\label{teo:ascoli-arzela-enunciado}
+Sea $X$ un espacio métrico compacto. Una familia $\mathcal{F}\subseteq C(X)$ es relativamente compacta en la métrica del supremo si y solo si está uniformemente acotada y equicontinua.
+\end{theorem}
+
+\section{Teorema de Stone--Weierstrass}
+
+El teorema de aproximación de Weierstrass (1885) establece que todo función continua en un intervalo compacto puede aproximarse uniformemente por polinomios. Marshall Stone generalizó este resultado en 1937 a álgebras de funciones sobre espacios compactos Hausdorff, mostrando que la propiedad clave no es la forma polinomial, sino la capacidad de separar puntos.
+
+\begin{theorem}[Weierstrass clásico]
+\label{teo:weierstrass}
+Para toda $f\in C([a,b])$ y todo $\varepsilon>0$, existe un polinomio $p$ tal que $\sup_{x\in[a,b]}|f(x)-p(x)|<\varepsilon$.
+\end{theorem}
+
+\begin{theorem}[Stone--Weierstrass, enunciado]
+\label{teo:stone-weierstrass-enunciado}
+Sea $X$ compacto Hausdorff y $\mathcal{A}\subseteq C(X)$ una subálgebra que separa puntos y contiene las constantes. Entonces $\mathcal{A}$ es densa en $C(X)$ con la métrica del supremo.
+\end{theorem}
+
+\section{Teorema de Dini}
+
+\begin{theorem}[Dini]
+\label{teo:dini}
+Sea $X$ compacto y $(f_n)$ una sucesión monótona (creciente o decreciente) de funciones continuas que converge puntualmente a una función continua $f$. Entonces la convergencia es uniforme.
+\end{theorem}
+\begin{proof}[Bosquejo]
+Supongamos $f_n\downarrow f$. Sea $g_n=f_n-f\geq 0$, continuas, decrecientes a cero puntualmente. Dado $\varepsilon>0$, los conjuntos $K_n=\{x\in X:\,g_n(x)\geq\varepsilon\}$ son compactos, encajados, con intersección vacía. Por la propiedad de intersección finita, algún $K_N$ es vacío, luego $g_n(x)<\varepsilon$ para todo $n\geq N$ y todo $x$.
+\end{proof}
+
+\section{Lema de Urysohn (introducción)}
+
+\begin{theorem}[Urysohn, enunciado]
+\label{teo:urysohn}
+Sea $X$ un espacio topológico normal (es decir, $T_1$ y donde cualesquiera dos cerrados disjuntos pueden separarse por abiertos disjuntos). Para cualesquiera cerrados disjuntos $A,B\subseteq X$, existe una función continua $f\colon X\to[0,1]$ tal que $f|_A=0$ y $f|_B=1$.
+\end{theorem}
+
+Este lema, fundamental en topología general, muestra que la separación de cerrados por abiertos implica la separación por funciones continuas. Su demostración en espacios métricos es mucho más sencilla que en el caso general.
+
+\section{Teorema de extensión de Tietze (introducción)}
+
+\begin{theorem}[Tietze, enunciado]
+\label{teo:tietze}
+Sea $X$ un espacio topológico normal y $A\subseteq X$ cerrado. Toda función continua $f\colon A\to\mathbb{R}$ admite una extensión continua $\widetilde{f}\colon X\to\mathbb{R}$.
+\end{theorem}
+
+\begin{remark}
+Los teoremas de Urysohn y Tietze serán revisitados en el \cref{ch:topologia-general}, donde se demostrarán en el contexto de espacios topológicos normales.
+\end{remark}
+
+\begin{exercise}
+Use el teorema de Baire para probar que el conjunto de funciones continuas no derivables en ningún punto de $[0,1]$ es residual en $C([0,1])$ con la métrica del supremo.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que si $X$ es un espacio métrico completo sin puntos aislados, entonces $X$ no es numerable.
+\end{exercise}
+
+\begin{exercise}
+Sea $f_n(x)=x^n$ en $[0,1]$. ¿Aplica el teorema de Dini? ¿Por qué la convergencia no es uniforme en $[0,1]$?
+\end{exercise}
+
+\begin{problem}
+Demuestre el teorema de Urysohn en espacios métricos construyendo explícitamente $f(x)=d(x,A)/(d(x,A)+d(x,B))$.
+\end{problem}
