@@ -1,10 +1,12 @@
 \chapter{Espacios métricos}
 \label{ch:espacios-metricos}
-\index{Espacio métrico}\index{Métrica}\index{Distancia}\index{Desigualdad de Cauchy--Schwarz}\index{Métricas equivalentes}\index{Subespacio métrico}\index{Bola abierta}\index{Entorno}\index{Clausura}\index{Interior}\index{Frontera}\index{Punto de acumulación}\index{Punto aislado}\index{Conjunto denso}\index{Axiomas de separación}
+\index{Espacio métrico}\index{Métrica}\index{Distancia}\index{Desigualdad de Cauchy--Schwarz}\index{Desigualdad de Hölder}\index{Desigualdad de Minkowski}\index{Métricas equivalentes}\index{Subespacio métrico}\index{Bola abierta}\index{Diámetro}\index{Entorno}\index{Clausura}\index{Interior}\index{Frontera}\index{Punto de acumulación}\index{Punto aislado}\index{Conjunto denso}\index{Separabilidad}\index{Axiomas de separación}\index{Isometría}\index{Conjunto de Cantor}
 
-\section{Definición}
+\section{Introducción}
 
 Con los números reales ya construidos, el siguiente paso natural en la evolución del rigor es abstraer la noción de distancia. El análisis matemático no estudia únicamente funciones sobre $\mathbb{R}$; sus objetos fundamentales son los espacios métricos, introducidos por Maurice Fréchet en su tesis de 1906 como una generalización que unifica el tratamiento de sucesiones, funciones, conjuntos y transformaciones.
+
+\subsection{Definición de espacio métrico}
 
 \begin{definition}
 \label{def:metrica}
@@ -18,6 +20,8 @@ Al par $(X,d)$ se le llama \emph{espacio métrico}.
 \end{definition}
 
 La condición (iii) es la que confiere a la métrica su carácter de medida de proximidad compatible con una estructura de límite. Intuitivamente, dice que ir directamente de $x$ a $z$ nunca puede ser más largo que pasar por un intermediario $y$.
+
+\subsection{Ejemplos de métricas}
 
 \begin{example}
 \label{ej:euclidea}
@@ -39,14 +43,14 @@ es una métrica. La desigualdad triangular es inmediata: si $x\neq z$, entonces 
 
 \begin{example}
 \label{ej:supremo}
-Sea $C([a,b])$ el conjunto de las funciones continuas $f\colon[a,b]\to\mathbb{R}$. La fórmula
+Sea $C([a,b])$ el conjunto de las funciones continuas $f\colon[a,b]\to\mathbb{R}$, definidas sobre el intervalo cerrado $[a,b]$. La fórmula
 \begin{equation}\label{eq:supremo}
   d(f,g)=\sup_{t\in[a,b]}|f(t)-g(t)|
 \end{equation}
-define la \emph{métrica del supremo} sobre $C([a,b])$.
+define la \emph{métrica del supremo} (también llamada \emph{métrica infinita}, por analogía con $d_\infty$) sobre el espacio $C([a,b])$ de las funciones continuas sobre el intervalo cerrado $[a,b]$.
 \end{example}
 
-\section{La desigualdad de Cauchy--Schwarz}
+\subsection{La desigualdad de Cauchy--Schwarz}
 
 Antes de continuar con más ejemplos, demostramos la herramienta básica que justifica la desigualdad triangular de la métrica euclidiana.
 
@@ -74,7 +78,150 @@ La función $d_2(x,y)=(\sum|x_i-y_i|^2)^{1/2}$ satisface la desigualdad triangul
 Escribiendo $z_i=x_i-y_i$ y $w_i=y_i-z_i$ (ajustando índices), se aplica Cauchy--Schwarz para acotar $\|x-z\|^2$.
 \end{proof}
 
-\section{Ejemplos fundamentales}
+\subsection{La desigualdad de Hölder}
+
+La desigualdad de Cauchy--Schwarz admite una generalización natural a toda pareja de exponentes conjugados.
+
+\begin{definition}
+\label{def:exponentes-conjugados}
+Sean $p,q\in(1,\infty)$ tales que $\frac{1}{p}+\frac{1}{q}=1$. Diremos que $p$ y $q$ son \emph{exponentes conjugados}.
+\end{definition}
+
+\begin{theorem}[Desigualdad de Hölder en $\mathbb{R}^n$]
+\label{teo:holder-rn}
+Para cualesquiera $x,y\in\mathbb{R}^n$ y exponentes conjugados $p,q$,
+\[
+  \sum_{i=1}^{n}|x_i y_i|\leq\biggl(\sum_{i=1}^{n}|x_i|^p\biggr)^{1/p}\biggl(\sum_{i=1}^{n}|y_i|^q\biggr)^{1/q}.
+\]
+El caso $p=q=2$ no es otro que la desigualdad de Cauchy--Schwarz (\cref{teo:cauchy-schwarz-cap5}).
+\end{theorem}
+\begin{proof}
+Recordemos la desigualdad de Young: para $a,b\geq 0$ y exponentes conjugados $p,q$,
+\[
+  ab\leq\frac{a^p}{p}+\frac{b^q}{q}.
+\]
+Si $A=\bigl(\sum|x_i|^p\bigr)^{1/p}$ y $B=\bigl(\sum|y_i|^q\bigr)^{1/q}$ se anulan, el resultado es trivial. En caso contrario aplicamos Young a $a=|x_i|/A$ y $b=|y_i|/B$:
+\[
+  \frac{|x_i y_i|}{AB}\leq\frac{|x_i|^p}{pA^p}+\frac{|y_i|^q}{qB^q},
+\]
+y sumando sobre $i$ obtenemos
+\[
+  \frac{\sum_{i=1}^{n}|x_i y_i|}{AB}\leq\frac{1}{p}+\frac{1}{q}=1.
+\]
+\end{proof}
+
+La desigualdad de Hölder es la pieza que permite transferir al caso $p\neq 2$ los argumentos que la métrica euclidiana recibe de Cauchy--Schwarz: con ella se demuestra la desigualdad de Minkowski y, en última instancia, la desigualdad triangular de todas las métricas $\ell^p$.
+
+\subsection{La desigualdad de Minkowski}
+
+\begin{theorem}[Desigualdad de Minkowski en $\mathbb{R}^n$]
+\label{teo:minkowski-rn}
+Para $1\leq p<\infty$ y cualesquiera $x,y\in\mathbb{R}^n$,
+\[
+  \biggl(\sum_{i=1}^{n}|x_i+y_i|^p\biggr)^{1/p}\leq\biggl(\sum_{i=1}^{n}|x_i|^p\biggr)^{1/p}+\biggl(\sum_{i=1}^{n}|y_i|^p\biggr)^{1/p}.
+\]
+\end{theorem}
+\begin{proof}
+Para $p=1$ es la desigualdad triangular usual. Supongamos $1<p<\infty$ y sea $q$ el conjugado de $p$. Escribamos $S=\bigl(\sum_{i=1}^{n}|x_i+y_i|^p\bigr)^{1/p}$. Entonces
+\[
+  S^p=\sum_{i=1}^{n}|x_i+y_i|^p=\sum_{i=1}^{n}|x_i+y_i||x_i+y_i|^{p-1}\leq\sum_{i=1}^{n}\bigl(|x_i|+|y_i|\bigr)|x_i+y_i|^{p-1}.
+\]
+Por la desigualdad de Hölder (\cref{teo:holder-rn}),
+\[
+  \sum_{i=1}^{n}|x_i||x_i+y_i|^{p-1}\leq\biggl(\sum_{i=1}^{n}|x_i|^p\biggr)^{1/p}\biggl(\sum_{i=1}^{n}|x_i+y_i|^{q(p-1)}\biggr)^{1/q},
+\]
+y como $q(p-1)=p$, el segundo factor es $S^{p/q}=S^{p-1}$. La estimación análoga vale para el término con $|y_i|$, de modo que
+\[
+  S^p\leq S^{p-1}\Bigl(\bigl(\sum|x_i|^p\bigr)^{1/p}+\bigl(\sum|y_i|^p\bigr)^{1/p}\Bigr),
+\]
+y basta dividir entre $S^{p-1}$ (si $S\neq 0$; el caso $S=0$ es trivial).
+\end{proof}
+
+\begin{corollary}
+\label{cor:lp-metrica-rn}
+Para $1\leq p<\infty$,
+\[
+  d_p(x,y)=\biggl(\sum_{i=1}^{n}|x_i-y_i|^p\biggr)^{1/p}
+\]
+es una métrica sobre $\mathbb{R}^n$, pues la desigualdad triangular se sigue de aplicar Minkowski a los vectores $x-y$ e $y-z$, cuya suma es $x-z$.
+\end{corollary}
+
+\subsection{Las desigualdades en forma integral}
+
+Los espacios de funciones $C([a,b])$ heredan las mismas desigualdades en versión integral, con las sumas sustituidas por la integral de Riemann.
+
+\begin{theorem}[Hölder y Minkowski en forma integral]
+\label{teo:desigualdades-integrales}
+Sean $f,g\in C([a,b])$ y $1<p<\infty$.
+\begin{enumerate}
+  \item[(i)] \emph{Hölder integral}: si $q$ es el conjugado de $p$,
+  \[
+    \int_a^b|f(t)g(t)|\,dt\leq\biggl(\int_a^b|f(t)|^p\,dt\biggr)^{1/p}\biggl(\int_a^b|g(t)|^q\,dt\biggr)^{1/q};
+  \]
+  \item[(ii)] \emph{Minkowski integral}: para $1\leq p<\infty$,
+  \[
+    \biggl(\int_a^b|f(t)+g(t)|^p\,dt\biggr)^{1/p}\leq\biggl(\int_a^b|f(t)|^p\,dt\biggr)^{1/p}+\biggl(\int_a^b|g(t)|^p\,dt\biggr)^{1/p}.
+  \]
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Para (i) se replica la demostración de la \cref{teo:holder-rn} sustituyendo sumas por integrales y aplicando la desigualdad de Young puntualmente: con
+\[
+A=\biggl(\int_a^b|f(t)|^p\,dt\biggr)^{1/p},\qquad
+B=\biggl(\int_a^b|g(t)|^q\,dt\biggr)^{1/q},
+\]
+se tiene, para cada $t\in[a,b]$,
+\[
+\frac{|f(t)g(t)|}{AB}\leq\frac{|f(t)|^p}{pA^p}+\frac{|g(t)|^q}{qB^q},
+\]
+e integrando se obtiene (i). Para (ii) se sigue, palabra por palabra, la prueba del \cref{teo:minkowski-rn} usando (i) en lugar de Hölder en sumas.
+\end{proof}
+
+\begin{corollary}
+\label{cor:lp-metrica}
+Para $1\leq p<\infty$,
+\[
+  d_p(f,g)=\biggl(\int_a^b|f(t)-g(t)|^p\,dt\biggr)^{1/p}
+\]
+es una métrica sobre $C([a,b])$, pues la desigualdad triangular se sigue de aplicar (ii) a $f-g=(f-h)+(h-g)$.
+\end{corollary}
+
+\begin{example}[Métrica del taxi en funciones]
+\label{ej:l1}
+Sobre $C([a,b])$, la integral
+\[
+  d_1(f,g)=\int_a^b|f(t)-g(t)|\,dt
+\]
+define otra métrica, distinta de la del supremo. La convergencia en $d_1$ se llama \emph{convergencia en media}. (La integral es la de Riemann.)
+\end{example}
+
+\subsection{Métricas en los espacios de sucesiones}
+
+Los espacios de sucesiones constituyen los ejemplos más importantes de espacios métricos infinito-dimensionales.
+
+\begin{definition}[Espacios $\ell^p$ de sucesiones]
+\label{def:spaces-ellp}
+Para $1\leq p<\infty$ se define
+\[
+  \ell^p=\Bigl\{x=(x_n)\in\mathbb{R}^{\mathbb{N}}:\sum_{n=1}^{\infty}|x_n|^p<\infty\Bigr\},
+\]
+y para $p=\infty$,
+\[
+  \ell^{\infty}=\Bigl\{x=(x_n)\in\mathbb{R}^{\mathbb{N}}:\sup_{n\in\mathbb{N}}|x_n|<\infty\Bigr\}.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:metricas-sucesiones}
+Para $1\leq p<\infty$, la aplicación
+\[
+  d_p(x,y)=\Bigl(\sum_{n=1}^{\infty}|x_n-y_n|^p\Bigr)^{1/p}
+\]
+define una métrica sobre $\ell^p$; y $d_\infty(x,y)=\sup_{n\in\mathbb{N}}|x_n-y_n|$ define una métrica sobre $\ell^{\infty}$.
+\end{proposition}
+\begin{proof}
+La convergencia de las series está garantizada por la estimación $|x_n-y_n|^p\leq 2^p(|x_n|^p+|y_n|^p)$, y la desigualdad triangular es la versión en series de las desigualdades de Minkowski (\cref{teo:minkowski-rn}, \cref{teo:desigualdades-integrales}), que se extienden por paso al límite a partir de los truncamientos finitos. El caso $p=\infty$ es inmediato.
+\end{proof}
 
 \begin{example}[Métricas $\ell^p$ sobre $\mathbb{R}^n$]
 \label{ej:lp}
@@ -94,59 +241,105 @@ El espacio de las sucesiones cuadrado-sumables,
 con la métrica $d(x,y)=(\sum|x_n-y_n|^2)^{1/2}$, es un espacio métrico. La convergencia de la serie que define la métrica se garantiza por la desigualdad de Cauchy--Schwarz en cada truncamiento finito y un paso al límite.
 \end{example}
 
-\begin{example}[Métrica del taxi en funciones]
-\label{ej:l1}
-Sobre $C([a,b])$, la integral
-\[
-  d_1(f,g)=\int_a^b|f(t)-g(t)|\,dt
-\]
-define otra métrica, distinta de la del supremo. La convergencia en $d_1$ se llama \emph{convergencia en media}. (La integral es la de Riemann.)
-\end{example}
+El espacio $\ell^2$ es el prototipo de \emph{espacio de Hilbert}; los espacios $\ell^p$ con $p\neq 2$, en cambio, no admiten un producto interior que induzca su métrica.
 
-\section{Métricas equivalentes}
+\subsection{Productos de espacios métricos}
 
 \begin{definition}
-\label{def:metricas-equivalentes}
-Dos métricas $d$ y $d'$ sobre $X$ son \emph{equivalentes} si existen constantes $c,C>0$ tales que
+\label{def:producto-metrico}
+Sean $(X,d_X)$ y $(Y,d_Y)$ espacios métricos. Sobre $X\times Y$ se pueden definir varias métricas; la más usuales son:
+\begin{itemize}
+  \item $d_1((x_1,y_1),(x_2,y_2))=d_X(x_1,x_2)+d_Y(y_1,y_2)$;
+  \item $d_2((x_1,y_1),(x_2,y_2))=(d_X(x_1,x_2)^2+d_Y(y_1,y_2)^2)^{1/2}$;
+  \item $d_\infty((x_1,y_1),(x_2,y_2))=\max\{d_X(x_1,x_2),d_Y(y_1,y_2)\}$.
+\end{itemize}
+Todas son equivalentes.
+\end{definition}
+
+\subsection{Ejercicios}
+
+\begin{exercise}
+Verifique que la métrica del supremo sobre $C([a,b])$ satisface la desigualdad triangular.
+\end{exercise}
+
+\section{Bolas abiertas y diámetro}
+
+\subsection{Bolas abiertas}
+
+\begin{definition}
+\label{def:bola-abierta}
+Sea $(X,d)$ un espacio métrico, $x\in X$ y $r>0$. La \emph{bola abierta} de centro $x$ y radio $r$ es
 \[
-  c\,d(x,y)\leq d'(x,y)\leq C\,d(x,y)\quad\text{para todo }x,y\in X.
+  B(x,r)=\{y\in X:\,d(x,y)<r\}.
 \]
 \end{definition}
 
-\begin{proposition}
-\label{prop:equiv-misma-topologia}
-Métricas equivalentes generan la misma familia de conjuntos abiertos (véase la \cref{def:abierto}).
-\end{proposition}
+Las bolas abiertas constituyen los ``ladrillos'' con los que se construye toda la topología métrica. Nótese que el radio $r$ es un número real positivo arbitrario; esta arbitrariedad es la que permite capturar la noción de ``proximidad local'' sin cuantificarla de manera única.
 
-\begin{example}
-En $\mathbb{R}^n$, todas las métricas $\ell^p$ son equivalentes. Sin embargo, la métrica discreta no es equivalente a ninguna de ellas.
+\begin{notation}
+\label{not:bolas}
+A lo largo del libro, $B(x,r)$ denota la bola abierta, $\overline{B}(x,r)$ la bola cerrada $\{y:d(x,y)\leq r\}$, y $S(x,r)$ la esfera $\{y:d(x,y)=r\}$.
+\end{notation}
+
+\subsection{El diámetro de un conjunto}
+
+\begin{definition}
+\label{def:diametro}
+Sea $(X,d)$ un espacio métrico y $A\subseteq X$ no vacío. El \emph{diámetro} de $A$ es
+\[
+  \operatorname{diam}(A)=\sup\{d(x,y):\,x,y\in A\}\in[0,+\infty].
+\]
+Diremos que $A$ es \emph{acotado} si $\operatorname{diam}(A)<+\infty$; en caso contrario, $A$ es \emph{no acotado}.
+\end{definition}
+
+Todo conjunto finito es acotado. En la métrica discreta, $\operatorname{diam}(A)=0$ si $A$ tiene un solo punto y $1$ en cualquier otro caso. Para la bola abierta de la métrica usual de $\mathbb{R}$, $\operatorname{diam}\bigl((a-\delta,a+\delta)\bigr)=2\delta$. En general, si $A\subseteq B(x,r)$, entonces $\operatorname{diam}(A)\leq 2r$. La noción de diámetro será esencial en el \cref{ch:grandes-teoremas}, donde aparecerán familias de cerrados encajados cuyos diámetros tienden a cero.
+
+\subsection{Ejercicios}
+
+\begin{exercise}
+Demuestre que en un espacio métrico discreto, toda bola abierta $B(x,r)$ con $r\leq 1$ coincide con $\{x\}$.
+\end{exercise}
+
+\section{Funciones continuas}
+\label{sec:funciones-continuas}
+
+\subsection{Definición de continuidad}
+
+La definición $\epsilon$-$\delta$ de continuidad que se utiliza habitualmente en cálculo de una variable supone, aunque no siempre se haga explícito, que estamos trabajando con la métrica euclidiana. En efecto, una función $f\colon\mathbb{R}\to\mathbb{R}$ es continua en un punto $a\in\mathbb{R}$ si, para todo $\epsilon>0$, existe $\delta>0$ tal que, para todo $x\in\mathbb{R}$,
+\[
+  |x-a|<\delta\implies|f(x)-f(a)|<\epsilon.
+\]
+Esta definición utiliza directamente la distancia euclidiana en $\mathbb{R}$. La condición $|x-a|<\delta$ describe el intervalo abierto $(a-\delta,a+\delta)$, mientras que la condición $|f(x)-f(a)|<\epsilon$ describe el intervalo abierto $(f(a)-\epsilon,f(a)+\epsilon)$. Desde el punto de vista de los espacios métricos, estos intervalos son precisamente bolas abiertas. Por lo tanto, la idea fundamental de la continuidad no depende de la estructura particular de $\mathbb{R}$ ni de la métrica euclidiana, sino que puede formularse en cualquier espacio métrico mediante sus respectivas bolas abiertas.
+
+\begin{definition}
+\label{def:continuidad-metrica}
+Sean $(X,d_X)$ y $(Y,d_Y)$ espacios métricos. Decimos que $f\colon X\to Y$ es \emph{continua} en el punto $x_0\in X$ si, para todo $\epsilon>0$, existe $\delta>0$ tal que, para todo $x\in X$,
+\[
+  d_X(x,x_0)<\delta\implies d_Y\bigl(f(x),f(x_0)\bigr)<\epsilon.
+\]
+\end{definition}
+Si una función $f\colon X\to Y$ es continua en todo punto de $X$, decimos simplemente que $f$ es \emph{continua en $X$} o que es una \emph{función continua}. La definición anterior puede interpretarse mediante bolas abiertas. En efecto, para todo $\epsilon>0$ debe existir $\delta>0$ tal que
+\[
+  f\bigl(B_{d_X}(x_0,\delta)\bigr)\subseteq B_{d_Y}\bigl(f(x_0),\epsilon\bigr).
+\]
+Es decir, los puntos suficientemente cercanos a $x_0$ son enviados por $f$ a puntos suficientemente cercanos a $f(x_0)$.
+
+\subsection{Ejemplos básicos}
+
+\begin{example}[La función afín en la métrica usual]
+Sean $X=Y=\mathbb{R}$ con la métrica usual $d(x,y)=|x-y|$ y sea $f\colon\mathbb{R}\to\mathbb{R}$ definida por $f(x)=2x+1$. Demostraremos que $f$ es continua en cualquier punto $x_0\in\mathbb{R}$.
+
+Sea $\epsilon>0$. Buscamos $\delta>0$ tal que $|x-x_0|<\delta$ implique $|f(x)-f(x_0)|<\epsilon$. Observamos que
+\[
+  |f(x)-f(x_0)|=|(2x+1)-(2x_0+1)|=2|x-x_0|.
+\]
+Basta entonces elegir $\delta=\epsilon/2$: si $|x-x_0|<\delta$,
+\[
+  |f(x)-f(x_0)|=2|x-x_0|<2\delta=\epsilon.
+\]
+Así, $f$ es continua en $x_0$, y como $x_0$ fue arbitrario, $f$ es continua en todo $\mathbb{R}$.
 \end{example}
 
-\section{Homeomorfismos} 
-La definición $\epsilon$-$\delta$ de continuidad que se utiliza habitualmente en cálculo de una variable supone, aunque no siempre se haga explícito, que estamos trabajando con la métrica euclidiana.
- En efecto, una función $f\colon \mathbb{R}\to\mathbb{R}$ es continua en un punto $a\in\mathbb{R}$ si, para todo 
- $\epsilon>0$, existe $\delta>0$ tal que, para todo $x\in\mathbb{R}$, 
-
- \[ |x-a|<\delta \implies |f(x)-f(a)|<\epsilon. \] 
- Esta definición utiliza directamente la distancia euclidiana en $\mathbb{R}$. La condición $|x-a|<\delta$ 
- describe el intervalo abierto \[ (a-\delta,a+\delta), \] mientras que la condición $|f(x)-f(a)|<\epsilon$ 
- describe el intervalo abierto \[ (f(a)-\epsilon,f(a)+\epsilon). \] Desde el punto de vista de los espacios 
- métricos, estos intervalos son precisamente bolas abiertas. Por lo tanto, la idea fundamental de la continuidad
-  no depende de la estructura particular de $\mathbb{R}$ ni de la métrica euclidiana, sino que puede formularse 
-  en cualquier espacio métrico mediante sus respectivas bolas abiertas.
-  
-\begin{definition} 
-  \label{def:continuidad-metrica} 
-  Sean $(X,d_X)$ y $(Y,d_Y)$ espacios métricos. Decimos que una función $f\colon X\to Y$ es \emph{continua} en un 
-  punto $x_0\in X$ si, para todo $\epsilon>0$, existe $\delta>0$ tal que, para todo $x\in X$, \[ d_X(x,x_0)<\delta \implies d_Y\bigl(f(x),f(x_0)\bigr)<\epsilon. \] \end{definition}
-   Si una función $f\colon X\to Y$ es continua en todo punto de $X$, decimos simplemente que $f$ es 
-   \emph{continua en $X$} o que es una \emph{función continua}. La definición anterior puede interpretarse mediante
-    bolas abiertas. En efecto, para todo $\epsilon>0$ debe existir $\delta>0$ tal que
-    
-    \[ f\bigl(B_{d_X}(x_0,\delta)\bigr) \subseteq B_{d_Y}\bigl(f(x_0),\epsilon\bigr). \] 
-    
-    Es decir, los puntos suficientemente cercanos a $x_0$ son enviados por $f$ a puntos suficientemente cercanos a
-     $f(x_0)$.
 \begin{example}
 Sean $X=\mathbb{R}$ y $Y=\mathbb{R}$, ambos dotados de la métrica discreta
 \[
@@ -168,8 +361,7 @@ Sea $\epsilon>0$. Tomemos $\delta=1$. Si
 \[
 d_X(x,x_0)<\delta,
 \]
-entonces, por la definición de la métrica discreta, necesariamente
-$x=x_0$. Por consiguiente,
+entonces, por la definición de la métrica discreta, necesariamente $x=x_0$. Por consiguiente,
 \[
 d_Y\bigl(f(x),f(x_0)\bigr)
 =
@@ -179,13 +371,35 @@ d_Y\bigl(x^2,x_0^2\bigr)
 <
 \epsilon.
 \]
-Por lo tanto, $f$ es continua en $x_0$. Como $x_0$ fue arbitrario,
-$f$ es continua en todo $X$.
+Por lo tanto, $f$ es continua en $x_0$. Como $x_0$ fue arbitrario, $f$ es continua en todo $X$.
 
-Este ejemplo muestra que la continuidad no depende únicamente de la
-expresión algebraica de una función, sino también de las métricas que
-determinan la estructura de los espacios involucrados.
+Este ejemplo muestra que la continuidad no depende únicamente de la expresión algebraica de una función, sino también de las métricas que determinan la estructura de los espacios involucrados.
 \end{example}
+
+\subsection{Isometrías}
+
+Una clase especial de funciones continuas está formada por aquellas que conservan de manera exacta la distancia entre los puntos.
+
+\begin{definition}
+\label{def:isometria}
+Sean $(X,d_X)$ y $(Y,d_Y)$ espacios métricos. Una función $f\colon X\to Y$ es una \emph{isometría} si
+\[
+  d_Y\bigl(f(x),f(x')\bigr)=d_X(x,x')\quad\text{para todo }x,x'\in X.
+\]
+Si, además, $f$ es sobreyectiva, se dice que los espacios $X$ e $Y$ son \emph{isométricos}.
+\end{definition}
+
+Toda isometría es inyectiva: si $f(x)=f(x')$, entonces $d_X(x,x')=d_Y\bigl(f(x),f(x')\bigr)=0$, de donde $x=x'$. Además, una isometría es siempre continua: dado $\epsilon>0$ basta tomar $\delta=\epsilon$, pues
+\[
+  d_X(x,x_0)<\delta\implies d_Y\bigl(f(x),f(x_0)\bigr)=d_X(x,x_0)<\epsilon.
+\]
+Si la isometría es sobreyectiva, su inversa también lo es, luego también es continua, y por tanto toda isometría sobreyectiva es en particular un homeomorfismo. La noción de isometría es, sin embargo, más fina que la de homeomorfismo: exige la conservación exacta de las distancias, no solo de las propiedades topológicas.
+
+\begin{example}
+La aplicación $f\colon\mathbb{R}\to\mathbb{R}$ definida por $f(x)=-x$ es una isometría de $\mathbb{R}$ sobre sí mismo con la métrica usual, pues $|f(x)-f(y)|=|-x+y|=|x-y|$. En cambio, la inclusión $i\colon\mathbb{Q}\to\mathbb{R}$ es una isometría (restricción de la distancia usual) que no es sobreyectiva.
+\end{example}
+
+\subsection{Homeomorfismos}
 
 Existen situaciones en las que ciertas propiedades de un espacio
 métrico son sencillas de identificar directamente, mientras que las
@@ -282,9 +496,9 @@ Así, aunque $\mathbb{R}$ y $(-1,1)$ son conjuntos diferentes, son
 equivalentes desde el punto de vista de la estructura topológica.
 \end{example}
 
-
-
 \section{Subespacios}
+
+\subsection{Definición y ejemplos}
 
 \begin{definition}
 \label{def:subespacio}
@@ -295,39 +509,90 @@ Sea $(X,d)$ un espacio métrico y $Y\subseteq X$ no vacío. La restricción $d|_
 $\mathbb{Q}$, como subconjunto de $\mathbb{R}$ con la métrica usual, es un subespacio métrico. Como veremos en el \cref{ch:completitud}, su comportamiento respecto a sucesiones de Cauchy difiere radicalmente del de $\mathbb{R}$.
 \end{example}
 
-\section{Productos de espacios métricos}
+\subsection{Continuidad y subespacios}
 
-\begin{definition}
-\label{def:producto-metrico}
-Sean $(X,d_X)$ y $(Y,d_Y)$ espacios métricos. Sobre $X\times Y$ se pueden definir varias métricas; la más usuales son:
-\begin{itemize}
-  \item $d_1((x_1,y_1),(x_2,y_2))=d_X(x_1,x_2)+d_Y(y_1,y_2)$;
-  \item $d_2((x_1,y_1),(x_2,y_2))=(d_X(x_1,x_2)^2+d_Y(y_1,y_2)^2)^{1/2}$;
-  \item $d_\infty((x_1,y_1),(x_2,y_2))=\max\{d_X(x_1,x_2),d_Y(y_1,y_2)\}$.
-\end{itemize}
-Todas son equivalentes.
-\end{definition}
+La construcción de subespacios interacciona de manera natural con las funciones continuas de la \cref{sec:funciones-continuas}.
 
-\section{Bolas abiertas}
+\begin{proposition}
+\label{prop:inclusion-isometria}
+Sea $(X,d)$ un espacio métrico y $Y\subseteq X$ no vacío con la métrica inducida. La inclusión $i\colon Y\to X$, $i(y)=y$, es una isometría. En particular, es continua.
+\end{proposition}
+\begin{proof}
+Para cualesquiera $y_1,y_2\in Y$, la métrica inducida está definida por $d_Y(y_1,y_2)=d(y_1,y_2)$, de modo que $d\bigl(i(y_1),i(y_2)\bigr)=d_Y(y_1,y_2)$.
+\end{proof}
 
-La distinción entre puntos ``interiores'', ``exteriores'' y ``frontera'' de un conjunto era intuitiva para los geométricos griegos, pero no adquirió un estatus formal preciso hasta el desarrollo de la topología en el siglo~XX. Henri Poincaré, en sus estudios sobre la geometría de dimensiones superiores, y más tarde Maurice Fréchet y Felix Hausdorff, comprendieron que las propiedades estructurales de los espacios ---abiertos, cerrados, convergencia, compacidad--- podían estudiarse abstractamente, sin necesidad de una distancia explícita. En este capítulo desarrollamos estas nociones en el contexto métrico, que es el puente natural hacia la topología general.
-
-\begin{definition}
-\label{def:bola-abierta}
-Sea $(X,d)$ un espacio métrico, $x\in X$ y $r>0$. La \emph{bola abierta} de centro $x$ y radio $r$ es
+\begin{proposition}
+\label{prop:restriccion-continua}
+Sean $(X,d_X)$, $(Y,d_Y)$ y $(Z,d_Z)$ espacios métricos y $Y\subseteq X$ un subespacio. Si $f\colon X\to Z$ es continua en $x_0\in Y$, entonces la restricción $f|_Y\colon Y\to Z$ es continua en $x_0$.
+\end{proposition}
+\begin{proof}
+Dado $\epsilon>0$, por la continuidad de $f$ existe $\delta>0$ tal que $d_X(x,x_0)<\delta$ implica $d_Z\bigl(f(x),f(x_0)\bigr)<\epsilon$ para todo $x\in X$. En particular, para todo $y\in Y$ con $d_Y(y,x_0)=d_X(y,x_0)<\delta$ se cumple
 \[
-  B(x,r)=\{y\in X:\,d(x,y)<r\}.
+  d_Z\bigl(f|_Y(y),f|_Y(x_0)\bigr)=d_Z\bigl(f(y),f(x_0)\bigr)<\epsilon.
+\]
+\end{proof}
+
+\subsection{Ejercicios}
+
+\begin{exercise}
+Caracterice los puntos aislados de $\mathbb{Q}$ como subespacio de $\mathbb{R}$.
+\end{exercise}
+
+\section{Métricas equivalentes}
+
+\subsection{Las métricas usuales de $\mathbb{R}$}
+
+Sobre $\mathbb{R}$, todas las métricas de la familia $\ell^p$ se colapsan en una sola: para $1\leq p<\infty$,
+\[
+  d_p(x,y)=\bigl(|x-y|^p\bigr)^{1/p}=|x-y|=d_\infty(x,y).
+\]
+Por tanto, en la recta real las métricas euclidiana, taxicab y del máximo coinciden: no hay comparación alguna en una dimensión. La situación cambia en $\mathbb{R}^n$.
+
+\begin{example}
+\label{ej:comparacion-metricas-rn}
+En $\mathbb{R}^n$, para todo $x,y\in\mathbb{R}^n$ se cumplen las estimaciones
+\[
+  d_\infty(x,y)\leq d_2(x,y)\leq d_1(x,y)\leq n\,d_\infty(x,y).
+\]
+La primera desigualdad se debe a que $|x_i-y_i|\leq\bigl(\sum_{j=1}^{n}|x_j-y_j|^2\bigr)^{1/2}$ para cada $i$; la segunda se sigue de Cauchy--Schwarz aplicada a los vectores $x-y$ y $(1,\dots,1)$; la tercera es inmediata.
+\end{example}
+
+Estas estimaciones muestran cómo las tres métricas se dominan mutuamente con constantes uniformes e independientes de los puntos, y son el modelo que motiva la definición general de equivalencia presentada a continuación.
+
+\subsection{Métricas equivalentes}
+
+\begin{definition}
+\label{def:metricas-equivalentes}
+Dos métricas $d$ y $d'$ sobre $X$ son \emph{equivalentes} si existen constantes $c,C>0$ tales que
+\[
+  c\,d(x,y)\leq d'(x,y)\leq C\,d(x,y)\quad\text{para todo }x,y\in X.
 \]
 \end{definition}
 
-Las bolas abiertas constituyen los ``ladrillos'' con los que se construye toda la topología métrica. Nótese que el radio $r$ es un número real positivo arbitrario; esta arbitrariedad es la que permite capturar la noción de ``proximidad local'' sin cuantificarla de manera única.
+\begin{proposition}
+\label{prop:equiv-misma-topologia}
+Métricas equivalentes generan la misma familia de conjuntos abiertos (véase el \cref{ch:topologia}).
+\end{proposition}
 
-\begin{notation}
-\label{not:bolas}
-A lo largo del libro, $B(x,r)$ denota la bola abierta, $\overline{B}(x,r)$ la bola cerrada $\{y:d(x,y)\leq r\}$, y $S(x,r)$ la esfera $\{y:d(x,y)=r\}$.
-\end{notation}
+\begin{example}
+En $\mathbb{R}^n$, todas las métricas $\ell^p$ son equivalentes, como se desprende de las estimaciones del \cref{ej:comparacion-metricas-rn}. Sin embargo, la métrica discreta no es equivalente a ninguna de ellas.
+\end{example}
 
-\section{Conjuntos abiertos}
+\subsection{Ejercicios}
+
+\begin{exercise}
+Sea $d$ una métrica sobre $X$. Pruebe que $d'(x,y)=\min\{1,d(x,y)\}$ es también una métrica y que induce la misma topología que $d$.
+\end{exercise}
+
+\begin{problem}
+Sea $(X,d)$ un espacio métrico. Defina $\rho(x,y)=\frac{d(x,y)}{1+d(x,y)}$. Demuestre que $\rho$ es una métrica acotada que genera la misma topología que $d$. ¿Es $\rho$ equivalente a $d$ en el sentido de la \cref{def:metricas-equivalentes}?
+\end{problem}
+
+\section{Abiertos}
+
+La distinción entre puntos ``interiores'', ``exteriores'' y ``frontera'' de un conjunto era intuitiva para los geométricos griegos, pero no adquirió un estatus formal preciso hasta el desarrollo de la topología en el siglo~XX. Henri Poincaré, en sus estudios sobre la geometría de dimensiones superiores, y más tarde Maurice Fréchet y Felix Hausdorff, comprendieron que las propiedades estructurales de los espacios ---abiertos, cerrados, convergencia, compacidad--- podían estudiarse abstractamente, sin necesidad de una distancia explícita. En este capítulo desarrollamos estas nociones en el contexto métrico, que es el puente natural hacia la topología general.
+
+\subsection{Conjuntos abiertos}
 
 \begin{definition}
 \label{def:abierto}
@@ -348,7 +613,46 @@ La familia $\tau$ de todos los conjuntos abiertos de un espacio métrico $(X,d)$
 (T1) es trivial. Para (T2), si $U=\bigcup_{i\in I}U_i$ con cada $U_i$ abierto, entonces para cada $x\in U$ existe $i$ tal que $x\in U_i$, y por tanto una bola $B(x,r)\subseteq U_i\subseteq U$. Para (T3), si $U_1,\dots,U_n$ son abiertos y $x\in\bigcap_{k=1}^n U_k$, elegimos $r_k>0$ con $B(x,r_k)\subseteq U_k$; entonces $B(x,r)\subseteq\bigcap U_k$ donde $r=\min\{r_1,\dots,r_n\}>0$.
 \end{proof}
 
-\section{Conjuntos cerrados}
+\subsection{Entornos}
+
+\begin{definition}
+\label{def:entorno}
+Un \emph{entorno} (o \emph{vecindad}) de $x\in X$ es un conjunto $V\subseteq X$ tal que existe un abierto $U$ con $x\in U\subseteq V$. Equivalentemente, $V$ contiene una bola abierta centrada en $x$.
+\end{definition}
+
+La noción de entorno permite reformular la convergencia y la continuidad en términos topológicos, sin mencionar explícitamente el radio de la bola.
+
+\subsection{Interior}
+
+\begin{definition}
+\label{def:interior}
+El \emph{interior} de $A\subseteq X$ es el mayor abierto contenido en $A$:
+\[
+  \operatorname{int}(A)=\bigcup\{U\subseteq X:\,U\text{ abierto y }U\subseteq A\}.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:int-complemento}
+$\operatorname{int}(A)=X\setminus\overline{X\setminus A}$.
+\end{proposition}
+
+\subsection{Puntos aislados}
+
+\begin{definition}
+\label{def:punto-aislado}
+Un punto $x\in A$ es \emph{aislado} en $A$ si existe $r>0$ tal que $B(x,r)\cap A=\{x\}$.
+\end{definition}
+
+\subsection{Ejercicios}
+
+\begin{exercise}
+Pruebe que un conjunto es abierto si y solo si coincide con su interior.
+\end{exercise}
+
+\section{Cerrado}
+
+\subsection{Conjuntos cerrados}
 
 \begin{definition}
 \label{def:cerrado}
@@ -365,16 +669,49 @@ En un espacio métrico $(X,d)$:
 \end{enumerate}
 \end{proposition}
 
-\section{Entornos}
+\subsection{Convergencia de sucesiones}
+
+La definición formal de convergencia utiliza la desigualdad triangular de la métrica y es la piedra angular sobre la que se construye el análisis en espacios métricos. Dejamos el estudio sistemático de las sucesiones para el \cref{ch:sucesiones}; aquí recogemos únicamente la definición y su relación con los conjuntos cerrados.
 
 \begin{definition}
-\label{def:entorno}
-Un \emph{entorno} (o \emph{vecindad}) de $x\in X$ es un conjunto $V\subseteq X$ tal que existe un abierto $U$ con $x\in U\subseteq V$. Equivalentemente, $V$ contiene una bola abierta centrada en $x$.
+\label{def:convergencia-sucesiones}
+Una sucesión $(x_n)$ en un espacio métrico $(X,d)$ \emph{converge} a $x\in X$ si para todo $\epsilon>0$ existe $N\in\mathbb{N}$ tal que
+\[
+  d(x_n,x)<\epsilon\quad\text{para todo }n\geq N.
+\]
+En tal caso escribimos $x_n\to x$, o $\lim_{n\to\infty}x_n=x$.
 \end{definition}
 
-La noción de entorno permite reformular la convergencia y la continuidad en términos topológicos, sin mencionar explícitamente el radio de la bola.
+En términos de bolas, $x_n\to x$ significa que para todo $\epsilon>0$ la bola $B(x,\epsilon)$ contiene a todos los términos de la sucesión a partir de cierto índice: la sucesión ``entra y permanece'' en cada entorno del límite. Nótese que $x_n\to x$ si y solo si la sucesión numérica $d(x_n,x)$ converge a $0$, de modo que la definición formal se reduce, en última instancia, a la convergencia en $\mathbb{R}$.
 
-\section{Clausura}
+\begin{proposition}
+\label{prop:cerrados-limites}
+Sea $(X,d)$ un espacio métrico y $F\subseteq X$. Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+  \item[(i)] $F$ es cerrado.
+  \item[(ii)] Para toda sucesión $(x_n)$ en $F$ con $x_n\to x\in X$, se tiene $x\in F$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i)$\Rightarrow$(ii): si $x\notin F$, entonces $x$ pertenece al abierto $X\setminus F$, luego existe $\epsilon>0$ con $B(x,\epsilon)\subseteq X\setminus F$. Pero $x_n\to x$ implica que $x_n\in B(x,\epsilon)$ para $n$ suficientemente grande, contradiciendo que $x_n\in F$.
+(ii)$\Rightarrow$(i): probamos que $X\setminus F$ es abierto. Si no lo fuera, existiría $x\in X\setminus F$ tal que $B(x,1/n)\nsubseteq X\setminus F$ para todo $n$, es decir, existiría $x_n\in F\cap B(x,1/n)$; en tal caso $x_n\to x$, y por (ii) $x\in F$, contradicción.
+\end{proof}
+
+\subsection{Puntos de acumulación}
+
+\begin{definition}
+\label{def:punto-acumulacion}
+Un punto $x\in X$ es un \emph{punto de acumulación} de $A\subseteq X$ si todo entorno de $x$ contiene al menos un punto de $A$ distinto de $x$.
+\end{definition}
+
+\begin{theorem}
+\label{teo:bolzano-weierstrass-r}
+Todo subconjunto infinito y acotado de $\mathbb{R}$ posee al menos un punto de acumulación en $\mathbb{R}$.
+\end{theorem}
+
+Este resultado, el teorema de Bolzano--Weierstrass para la recta real, será generalizado a espacios métricos compactos en el \cref{ch:compacidad}.
+
+\subsection{Clausura}
 
 \begin{definition}
 \label{def:clausura}
@@ -393,22 +730,9 @@ Un punto $x\in X$ pertenece a $\overline{A}$ si y solo si existe una sucesión $
 Si $x\in\overline{A}$ y $x\notin A$, entonces para cada $n\in\mathbb{N}$ la bola $B(x,1/n)$ intersecta a $A$ (de lo contrario $X\setminus B(x,1/n)$ sería un cerrado que contiene a $A$ pero no a $x$). Elegimos $a_n\in A\cap B(x,1/n)$; entonces $d(a_n,x)<1/n\to 0$. Recíprocamente, si $a_n\to x$ con $a_n\in A$, todo cerrado que contenga a $A$ debe contener el límite de toda sucesión convergente en él, luego $x\in\overline{A}$.
 \end{proof}
 
-\section{Interior}
+La \cref{teo:carac-clausura} pone de manifiesto la relación entre los puntos de contacto (los de $\overline{A}$) y los puntos límite de sucesiones: todo punto de $A$ y todo punto de acumulación de $A$ pertenecen a $\overline{A}$.
 
-\begin{definition}
-\label{def:interior}
-El \emph{interior} de $A\subseteq X$ es el mayor abierto contenido en $A$:
-\[
-  \operatorname{int}(A)=\bigcup\{U\subseteq X:\,U\text{ abierto y }U\subseteq A\}.
-\]
-\end{definition}
-
-\begin{proposition}
-\label{prop:int-complemento}
-$\operatorname{int}(A)=X\setminus\overline{X\setminus A}$.
-\end{proposition}
-
-\section{Frontera}
+\subsection{Frontera}
 
 \begin{definition}
 \label{def:frontera}
@@ -423,28 +747,7 @@ La \emph{frontera} (o \emph{borde}) de $A\subseteq X$ es
 $x\in\partial A$ si y solo si todo entorno de $x$ intersecta tanto $A$ como $X\setminus A$.
 \end{proposition}
 
-\section{Puntos de acumulación}
-
-\begin{definition}
-\label{def:punto-acumulacion}
-Un punto $x\in X$ es un \emph{punto de acumulación} de $A\subseteq X$ si todo entorno de $x$ contiene al menos un punto de $A$ distinto de $x$.
-\end{definition}
-
-\begin{theorem}
-\label{teo:bolzano-weierstrass-r}
-Todo subconjunto infinito y acotado de $\mathbb{R}$ posee al menos un punto de acumulación en $\mathbb{R}$.
-\end{theorem}
-
-Este resultado, el teorema de Bolzano--Weierstrass para la recta real, será generalizado a espacios métricos compactos en el \cref{ch:compacidad}.
-
-\section{Puntos aislados}
-
-\begin{definition}
-\label{def:punto-aislado}
-Un punto $x\in A$ es \emph{aislado} en $A$ si existe $r>0$ tal que $B(x,r)\cap A=\{x\}$.
-\end{definition}
-
-\section{Conjuntos densos}
+\subsection{Conjuntos densos}
 
 \begin{definition}
 \label{def:densidad}
@@ -459,7 +762,7 @@ $\mathbb{Q}$ es denso en $\mathbb{R}$ con la métrica usual.
 Ya se demostró en el \cref{teo:densidad-q} del \cref{ap:numeros-reales}.
 \end{proof}
 
-\section{Bases topológicas}
+\subsection{Bases topológicas}
 
 \begin{definition}
 \label{def:base}
@@ -468,14 +771,25 @@ Una familia $\mathcal{B}$ de abiertos es una \emph{base} de la topología si tod
 
 \begin{theorem}
 \label{teo:base-metrica}
-En un espacio métrico, la familia de todas las bolas abiertas $B(x,r)$ con $x\in X$ y $r>0$ racional es una base numerable de la topología métrica.
+Sea $(X,d)$ un espacio métrico separable y $D\subseteq X$ un subconjunto denso numerable. La familia de todas las bolas abiertas $B(d,r)$ con $d\in D$ y $r>0$ racional es una base numerable de la topología métrica.
 \end{theorem}
 
 \begin{proof}
-Dado un abierto $U$ y $x\in U$, existe $r>0$ con $B(x,r)\subseteq U$. Elegimos $q\in\mathbb{Q}$ tal que $0<q<r$; entonces $B(x,q)\subseteq B(x,r)\subseteq U$. Luego $U$ es unión de bolas con radios racionales.
+El conjunto $\{B(d,r):d\in D,\ r\in\mathbb{Q}_{>0}\}$ es numerable como unión sobre $d\in D$ de las familias numerables de radios. Dado un abierto $U$ y $x\in U$, existe $\rho>0$ con $B(x,\rho)\subseteq U$. Elegimos $q\in\mathbb{Q}$ con $0<q<\rho/2$ y, por densidad, $d\in D\cap B(x,q)$. Entonces $x\in B(d,q)\subseteq B(x,2q)\subseteq B(x,\rho)\subseteq U$, luego $U$ se escribe como unión de bolas de la familia.
 \end{proof}
 
-\section{Axiomas de separación en espacios métricos}
+Esta caracterización conecta las bases con la separabilidad, estudiada a continuación.
+
+\subsection{Separabilidad}
+
+\begin{definition}
+\label{def:separabilidad}
+Un espacio métrico $(X,d)$ es \emph{separable} si posee un subconjunto denso numerable.
+\end{definition}
+
+Por la \cref{teo:q-denso-r} y la numerabilidad de $\mathbb{Q}$, el espacio $\mathbb{R}$ es separable. La \cref{teo:base-metrica} muestra además que todo espacio métrico separable admite una base numerable; el recíproco también es cierto en espacios métricos, de modo que en este contexto la separabilidad es equivalente a la existencia de una base numerable. La separabilidad se estudia con detalle en el \cref{ch:espacios-separables}.
+
+\subsection{Axiomas de separación en espacios métricos}
 
 Los axiomas de separación clasifican los espacios topológicos según su capacidad para distinguir puntos o cerrados mediante abiertos. Aunque estos axiomas se estudian en profundidad en el \cref{ch:topologia-general}, los necesitamos ya en los capítulos de compacidad y en los grandes teoremas.
 
@@ -511,36 +825,65 @@ es continua, $f|_A=0$ y $f|_B=1$.
 La función $d(x,A)=\inf_{a\in A}d(x,a)$ es continua (Lipschitz con constante $1$), y el denominador nunca se anula porque $A$ y $B$ son disjuntos y cerrados.
 \end{proof}
 
-\section{Ejercicios}
-
-\begin{exercise}
-Demuestre que en un espacio métrico discreto, toda bola abierta $B(x,r)$ con $r\leq 1$ coincide con $\{x\}$.
-\end{exercise}
-
-\begin{exercise}
-Sea $d$ una métrica sobre $X$. Pruebe que $d'(x,y)=\min\{1,d(x,y)\}$ es también una métrica y que induce la misma topología que $d$.
-\end{exercise}
-
-\begin{exercise}
-Verifique que la métrica del supremo sobre $C([a,b])$ satisface la desigualdad triangular.
-\end{exercise}
+\subsection{Ejercicios}
 
 \begin{exercise}
 Demuestre que la frontera de una bola abierta en $\mathbb{R}^n$ con la métrica euclidiana es la esfera correspondiente.
 \end{exercise}
 
-\begin{exercise}
-Pruebe que un conjunto es abierto si y solo si coincide con su interior.
-\end{exercise}
-
-\begin{exercise}
-Caracterice los puntos aislados de $\mathbb{Q}$ como subespacio de $\mathbb{R}$.
-\end{exercise}
-
-\begin{problem}
-Sea $(X,d)$ un espacio métrico. Defina $\rho(x,y)=\frac{d(x,y)}{1+d(x,y)}$. Demuestre que $\rho$ es una métrica acotada que genera la misma topología que $d$. ¿Es $\rho$ equivalente a $d$ en el sentido de la \cref{def:metricas-equivalentes}?
-\end{problem}
-
 \begin{problem}
 Sea $X$ un espacio métrico y $A\subseteq X$. Demuestre que $\partial(\partial A)\subseteq\partial A$. ¿Es siempre $\partial(\partial A)=\partial A$?
 \end{problem}
+
+\section{Caracterización de $\mathbb{R}$ y el conjunto de Cantor}
+
+\subsection{Estructura de los abiertos de $\mathbb{R}$}
+
+El teorema que presentamos a continuación caracteriza por completo los subconjuntos abiertos de la recta real y es una de las primeras instancias de un \emph{teorema de estructura}: describe todos los objetos de una clase a partir de piezas elementales, en este caso, de intervalos abiertos.
+
+\begin{theorem}[Caracterización de los abiertos de $\mathbb{R}$]
+\label{teo:abiertos-r}
+Todo subconjunto abierto no vacío $U\subseteq\mathbb{R}$ puede escribirse como una unión numerable de intervalos abiertos disjuntos por pares:
+\[
+  U=\bigcup_{n\in\mathbb{N}}(a_n,b_n).
+\]
+La descomposición es única salvo reordenación de los intervalos.
+\end{theorem}
+\begin{proof}
+Definamos sobre $U$ la siguiente relación: $x\sim y$ si el intervalo cerrado de extremos $x$ e $y$ está contenido en $U$. Esta relación es de equivalencia. Cada clase de equivalencia es un intervalo, pues dados dos puntos de la clase, el intervalo que los une está contenido en $U$; es abierto porque $U$ lo es, y sus extremos no pertenecen a $U$ (si un extremo estuviera en $U$, se fusionaría con la clase vecina). Las clases son disjuntas por construcción y su familia es numerable porque, por la densidad de $\mathbb{Q}$ (véase \cref{teo:q-denso-r}), cada clase contiene al menos un racional, y el conjunto de racionales es numerable.
+\end{proof}
+
+\begin{remark}
+Los intervalos $(a_n,b_n)$ son precisamente las componentes conexas de $U$ (véase el \cref{ch:conexidad}). Obsérvese que una descomposición análoga no es válida en $\mathbb{R}^n$ para $n\geq 2$: los abiertos del plano no son, en general, uniones disjuntas de rectángulos abiertos.
+\end{remark}
+
+\subsection{El conjunto de Cantor}
+
+La caracterización anterior muestra que los abiertos de la recta se describen mediante intervalos. El conjunto de Cantor, por el contrario, es el ejemplo paradigmático de conjunto cerrado que desafía la intuición geométrica.
+
+\begin{definition}[Conjunto de Cantor]
+\label{def:conjunto-cantor}
+Se define $K_0=[0,1]$. Dado $K_n$, formado por $2^n$ intervalos cerrados disjuntos de longitud $3^{-n}$, se construye $K_{n+1}$ eliminando de cada uno de esos intervalos el tercio central abierto. El \emph{conjunto de Cantor} es
+\[
+  K=\bigcap_{n=0}^{\infty}K_n.
+\]
+\end{definition}
+
+Cada $K_n$ es una unión finita de conjuntos cerrados, luego es cerrado; $K$, como intersección numerable de cerrados, es cerrado en $[0,1]$ y, por tanto, en $\mathbb{R}$.
+
+\begin{proposition}
+\label{prop:propiedades-cantor}
+El conjunto de Cantor $K$ satisface:
+\begin{enumerate}
+  \item[(i)] $K$ es compacto.
+  \item[(ii)] $K$ tiene interior vacío: $\operatorname{int}(K)=\emptyset$.
+  \item[(iii)] $K$ no tiene puntos aislados: todo punto de $K$ es punto de acumulación de $K$.
+  \item[(iv)] $K$ no es numerable.
+  \item[(v)] $K$ es totalmente disconexo (véase el \cref{ch:conexidad}).
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) es consecuencia del teorema de Heine--Borel, pues $K$ es cerrado y acotado. Para (ii), la suma de las longitudes de los intervalos que forman $K_n$ es $(2/3)^n\to 0$: si $K$ contuviera un intervalo abierto $(a,b)$, entonces la longitud de $K_n$, que contiene a $K$, sería al menos $b-a>0$ para todo $n$, contradicción. Para (iii), dado $x\in K$ y $\epsilon>0$, el punto $x$ pertenece a uno de los intervalos cerrados $I_n\subseteq K_n$, de longitud $3^{-n}$; eligiendo $n$ con $3^{-n}<\epsilon$, dos extremos de $I_n$ (que pertenecen a $K$) son puntos de $K\cap B(x,\epsilon)$ distintos de $x$, pues $x$ no puede ser al mismo tiempo ambos extremos. Para (iv), cada $x\in K$ admite un único desarrollo $x=\sum_{n=1}^{\infty}2\varepsilon_n3^{-n}$ con $\varepsilon_n\in\{0,1\}$, lo que identifica $K$ con el conjunto $\{0,1\}^{\mathbb{N}}$ de las sucesiones binarias, que es no numerable por el teorema de Cantor (véase el \cref{teo:cantor-uncountable} del \cref{ap:teoria-conjuntos}). La propiedad (v) se demuestra en la \cref{ch:conexidad}.
+\end{proof}
+
+Este conjunto singulariza la distancia entre lo \emph{pequeño} en medida y lo \emph{grande} en cardinalidad: $K$ es ``insignificante'' por su interior vacío y su longitud total nula, pero ``enorme'' por ser no numerable. El conjunto de Cantor aparecerá de nuevo en la \cref{ch:espacios-separables}, donde se muestra que es homeomorfo al producto numerable $\{0,1\}^{\mathbb{N}}$, y en el estudio de la completitud.
